@@ -401,7 +401,26 @@ let Judge = new HasAnyoneWon();
 //variabelnamn: litenBokstavIBörjan
 //funktionsnamn: litenBokstavIBörjan
 
+class Reset {
+    Restart() {
+        for (var i = 1; i < 8; i++) {
+          $('.col_'+i).removeClass("bg_yellow bg_red");
+          cols = [
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0]
+          ];
+          window["number_of_clicks_col_"+ i] = 0;
+          playerTurnValue = 1;
+        }
+    }
+  }
 
+  let Reaper = new Reset();
 
 /*		
 
