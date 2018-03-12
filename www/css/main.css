@@ -8,7 +8,7 @@ main{
 	background-color: blue;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	border-radius: 1%;
+	
 	/*background-image: url(4iradboard.png);
 	background-size: cover;*/
 	 /* this doesnt do anything, why hmm? */
@@ -16,8 +16,8 @@ main{
 }
 
 .board-grid { 				/*container of bricks*/
-	width: 90%;			
-	height: 90%;			
+	width: 80%;			
+	height: 80%;			
 	display: grid;
 	grid-gap: 1.5em;
 	grid-template-columns: repeat(7, 1fr);
@@ -26,40 +26,40 @@ main{
 	}
 
 	.board-grid > div{			/*all the divs inside the board-grid - the bricks */
-	padding: 2vw;
+	padding: 2.5vw;
 	grid-auto-rows: 1fr;
 	border: darkgray 2px solid;	/*displays the form of the div*/
 	border-radius: 50%;
 	}
 
 .col_1 {
-	background-color: lightgreen;
+	background-color: white;
 
 }
 
 .col_2 {
-	background-color: lightgrey;
+	background-color: white;
 
 }
 
 .col_3 {
-	background-color: lightgreen;
+	background-color: white;
 }
 
 .col_4 {
-	background-color: lightgrey;
+	background-color: white;
 }
 
 .col_5 {
-	background-color: lightgreen;
+	background-color: white;
 }
 
 .col_6 {
-	background-color: lightgrey;
+	background-color: white;
 }	
 
 .col_7 {
-	background-color: lightgreen;
+	background-color: white;
 }
 
 .bg_red {
