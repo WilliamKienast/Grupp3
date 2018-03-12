@@ -120,6 +120,7 @@ col_7_array =[0,0,0,0,0,0]
 
 //FUNCTION adding the Bricks
 //When clicking the corresponding column it fills the correct EmptyBrickSpot
+//col 1
 $(document).ready(function(){
  $(".col_1").click(function(){
  	if (col_1_array[5] == 0) {
