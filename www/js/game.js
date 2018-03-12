@@ -1,4 +1,6 @@
+//Intital Values//
 var playerTurnValue = 1;
+var OnlyOneWin = false;
 
 //creates a function TurnGodess.changeturn(); which changes turnvalue=playersturn.
 class TurnGod {
@@ -230,22 +232,6 @@ $(document).ready(function(){
  });
 });
 
-
-
-//setting PlayerTurnValue into the correct Array & swapping playerturn
-//& doing this if the last array isnt filled array[5] == 0
-
-//Array 1 and col 1
-/*$(document).ready(function(){
- $(".col_1").click(function(){
- 	if (col_1_array[5] == 0) {
-  		col_1_array[number_of_clicks_col_1-1] = playerTurnValue;
-  	  	TurnGodess.ChangeTurn();
-  	}
- });
-});
-*/
-
 $(document).ready(function(){
  $(".col_1").click(function(){
   if (cols[0][5] == 0) {
@@ -338,53 +324,77 @@ $(document).ready(function(){
 //FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLUMNS & DIAGONALS)//
 class HasAnyoneWon {
   check4InaRow() {
-    for (var v = 0; v < 7; v++) {
-      for (var h = 0; h < 4; h++) {
-          if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
-           alert("Player 1 Wins");
-          } else if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == -4) {
-           alert("Player 2 Wins");
-          }
-      }
-    }
-  }
+  		if (OnlyOneWin == false) {
+		    for (var v = 0; v < 7; v++) {
+		      for (var h = 0; h < 4; h++) {
+		          if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
+		           alert("Player 1 Wins");
+		           OnlyOneWin = true;
+		           break;
+		          } else if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == -4) {
+		           alert("Player 2 Wins");
+		           OnlyOneWin = true;
+		           break;
+		          }
+		      }
+		    }
+		  }
+		 }
 
   check4InaColumn() {
-    for (var c = 0; c < 7; c++) {
-          for (var i = 0; i < 3; i++) {
-             if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == 4) {
-                alert("Player 1 Wins");
-             } else if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == -4) {
-                alert("Player 2 Wins");
-             }
-          }
-        }
-    }
+  		if (OnlyOneWin == false) {
+		    for (var c = 0; c < 7; c++) {
+		          for (var i = 0; i < 3; i++) {
+		             if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == 4) {
+		                alert("Player 1 Wins");
+		                OnlyOneWin = true;
+		                break;
+		             } else if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == -4) {
+		                alert("Player 2 Wins");
+		                OnlyOneWin = true;
+		                break;
+		             }
+		          }
+		        }
+		    }
+		 }
 
 
-    check4InaLeftDiagonal() {                       //Doing this diagonal \ <-- bottom to top
-          for (var r = 0; r < 4; r++) {
-            for (var x = 3; x < 6; x++) {           
-                       if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == 4) {
-                  alert("Player 1 Wins");
-                } else if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == -4) {
-                  alert("Player 2 Wins");
-                }
-            }
-          }
-      }
+    check4InaLeftDiagonal() {
+    	if (OnlyOneWin == false) {                     	  //Doing this diagonal \ <-- bottom to top
+		          for (var r = 0; r < 4; r++) {
+		            for (var x = 3; x < 6; x++) {           
+		                       if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == 4) {
+		                  alert("Player 1 Wins");
+		                  OnlyOneWin = true;
+		                  break;
+		                } else if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == -4) {
+		                  alert("Player 2 Wins");
+		                  OnlyOneWin = true;
+		                  break;
+		                }
+		            }
+		          }
+		      }
+		 }
 
-    check4InaRightDiagonal() {                       //Doing this diagonal / <-- bottom to top
-          for (var r = 0; r < 4; r++) {
-            for (var x = 0; x < 4; x++) {           
-                       if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == 4) {
-                  alert("Player 1 Wins");
-                } else if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == -4) {
-                  alert("Player 2 Wins");
-                }
-            }
-          }
-      }
+    check4InaRightDiagonal() {   
+    			if (OnlyOneWin == false) {                    //Doing this diagonal / <-- bottom to top
+			          for (var r = 0; r < 4; r++) {
+			            for (var x = 0; x < 4; x++) {           
+			                       if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == 4) {
+			                  alert("Player 1 Wins");
+			                  OnlyOneWin = true;
+			                  break;
+			                } else if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == -4) {
+			                  alert("Player 2 Wins");
+			                  OnlyOneWin = true;
+			                  break;
+			                }
+			            }
+			          }
+			      }
+			   }
 
 
            checkIfAnyoneHasWon() {
@@ -416,125 +426,9 @@ class Reset {
           ];
           window["number_of_clicks_col_"+ i] = 0;
           playerTurnValue = 1;
+          OnlyOneWin = false;
         }
     }
   }
 
   let Reaper = new Reset();
-
-/*		
-
-class blabla {
-	checkForInaRow() {
-		col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-		col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-		col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-		col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-	}
-
-
-/*
-player1=1 (red)
-player2=-1 (yellow)
-
-playerturn value= 1 (red) starts
-
-//the board contains 7 col's with 7 arrays.
-Col_1 = []
-
-When click the Col_1 // on the board
-number_of_clicks_col_1 = number_of_clicks_col_1 + 1
-//check if col is full
-then if number_of_clicks_col_1 = 6
-alert col is full/or do nothing...throw? Maybe doesn't matter 
-since the checking 4-in-a-row-function only check the 
-legal arrays values?
-
-//adding the playerturn value into the array at the correct
-//position within the array
-array col_1[number_of_clicks_col_1-1] = [playerturn value]
-//example
-player1 turn
-click once array = col_1 [1]		number_of_clicks_col_1 1
-click twice array = col_1 [1,1]		number_of_clicks_col_1 2
-click three array = col_1 [1,1,1]	number_of_clicks_col_1 3
-
-//Now a function for checking if you got 4 in a row.
-//checking row 1 (horizontal row)
-col_1 [i] + col_2[i] + col_3[i] + col_4[i] = 4 or -4
-col_2 [i] + col_3[i] + col_4[i] + col_5[i] = 4 or -4
-col_3 [i] + col_4[i] + col_5[i] + col_6[i] = 4 or -4
-col_4 [i] + col_5[i] + col_6[i] + col_7[i] = 4 or -4
-
-//checking row 2 (horizontal row) the +1 value determine row (horisontal)
-col_1 [i+1] + col_2[i+1] + col_3[i+1] + col_4[i+1] = 4 or -4
-col_2 [i+1] + col_3[i+1] + col_4[i+1] + col_5[i+1] = 4 or -4
-col_3 [i+1] + col_4[i+1] + col_5[i+1] + col_6[i+1] = 4 or -4
-col_4 [i+1] + col_5[i+1] + col_6[i+1] + col_7[i+1] = 4 or -4
-
-//checking col 1 (vertical row)
-col_1 [i] + col_1[i+1] + col_1[i+2] + col_1[i+3] = 4 or -4
-col_1 [i+1] + col_1[i+2] + col_1[i+3] + col_1[i+4] = 4 or -4
-col_1 [i+2] + col_1[i+3] + col_1[i+4] + col_1[i+5] = 4 or -4
-
-//checking col 2 (vertical row)
-col_2 [i] + col_2[i+1] + col_2[i+2] + col_2[i+3] = 4 or -4
-col_2 [i+1] + col_2[i+2] + col_2[i+3] + col_2[i+4] = 4 or -4
-col_2 [i+2] + col_2[i+3] + col_2[i+4] + col_2[i+5] = 4 or -4
-
-//checking sned-right row 1 - row4
-col_1 [i] + col_2[i+1] + col_3[i+2] + col_3[i+3] = 4 or -4
-col_2 [i] + col_3[i+1] + col_4[i+2] + col_5[i+3] = 4 or -4
-col_3 [i] + col_4[i+1] + col_5[i+2] + col_6[i+3] = 4 or -4
-col_4 [i] + col_5[i+1] + col_6[i+2] + col_7[i+3] = 4 or -4
-
-//checking sned-right row 2 to row 5
-col_1 [i+1] + col_2[i+2] + col_3[i+3] + col_3[i+4] = 4 or -4
-col_2 [i+1] + col_3[i+2] + col_4[i+3] + col_5[i+4] = 4 or -4
-col_3 [i+1] + col_4[i+2] + col_5[i+3] + col_6[i+4] = 4 or -4
-col_4 [i+1] + col_5[i+2] + col_6[i+3] + col_7[i+4] = 4 or -4
-
-//checking sned-right row 3 - row 6
-col_1 [i+2] + col_2[i+3] + col_3[i+4] + col_3[i+5] = 4 or -4
-col_2 [i+2] + col_3[i+3] + col_4[i+4] + col_5[i+5] = 4 or -4
-col_3 [i+2] + col_4[i+3] + col_5[i+4] + col_6[i+5] = 4 or -4
-col_4 [i+2] + col_5[i+3] + col_6[i+4] + col_7[i+5] = 4 or -4
-
-//checking sned-left col 4 - col 1 (row 1-4)
-col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-
-//checking sned-left col 4 - col 1 (row 2-5)
-col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-
-//Now a function to change playerturn
-if playerturn value = 1 then playerturn value = -1
-	else playerturn value = 1
-
-class blabla {
-	checkForInaRow() {
-		col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-		col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-		col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-		col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-	}
-
-	checkForInaRDiangomle() {
-
-	}
-
-	checkEverything() {
-		this.checkForInaRow();
-		this.checkForInaRDiangomle();
-	}
-}
-
-
-let bbbb = new blabla();
-bbbb.checkEverything();
-*/
