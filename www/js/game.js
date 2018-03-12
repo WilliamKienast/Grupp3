@@ -109,21 +109,13 @@ $(document).ready(function(){
  });
 });
 
-//setting the Virtual board with Arrays//
-col_1_array =[0,0,0,0,0,0]
-col_2_array =[0,0,0,0,0,0]
-col_3_array =[0,0,0,0,0,0]
-col_4_array =[0,0,0,0,0,0]
-col_5_array =[0,0,0,0,0,0]
-col_6_array =[0,0,0,0,0,0]
-col_7_array =[0,0,0,0,0,0]
 
 //FUNCTION adding the Bricks
 //When clicking the corresponding column it fills the correct EmptyBrickSpot
 //col 1
 $(document).ready(function(){
  $(".col_1").click(function(){
- 	if (col_1_array[5] == 0) {
+ 	if (cols[0][5] == 0) {
  		if ($(".col1row"+number_of_clicks_col_1).hasClass("bg_red") ||
  			$(".col1row"+number_of_clicks_col_1).hasClass("bg_yellow")) {
  			} else {
@@ -140,7 +132,7 @@ $(document).ready(function(){
 //col 2
 $(document).ready(function(){
  $(".col_2").click(function(){
- 	if (col_2_array[5] == 0) {
+ 	if (cols[1][5] == 0) {
  		if ($(".col2row"+number_of_clicks_col_2).hasClass("bg_red") ||
  			$(".col2row"+number_of_clicks_col_2).hasClass("bg_yellow")) {
  			} else {
@@ -157,7 +149,7 @@ $(document).ready(function(){
 //col 3
 $(document).ready(function(){
  $(".col_3").click(function(){
- 	if (col_3_array[5] == 0) {
+ 	if (cols[2][5] == 0) {
  		if ($(".col3row"+number_of_clicks_col_3).hasClass("bg_red") ||
  			$(".col3row"+number_of_clicks_col_3).hasClass("bg_yellow")) {
  			} else {
@@ -174,7 +166,7 @@ $(document).ready(function(){
 //col 4
 $(document).ready(function(){
  $(".col_4").click(function(){
- 	if (col_4_array[5] == 0) {
+ 	if (cols[3][5] == 0) {
  		if ($(".col4row"+number_of_clicks_col_4).hasClass("bg_red") ||
  			$(".col4row"+number_of_clicks_col_4).hasClass("bg_yellow")) {
  			} else {
@@ -191,7 +183,7 @@ $(document).ready(function(){
 //col 5
 $(document).ready(function(){
  $(".col_5").click(function(){
- 	if (col_5_array[5] == 0) {
+ 	if (cols[4][5] == 0) {
  		if ($(".col5row"+number_of_clicks_col_5).hasClass("bg_red") ||
  			$(".col5row"+number_of_clicks_col_5).hasClass("bg_yellow")) {
  			} else {
@@ -208,7 +200,7 @@ $(document).ready(function(){
 //col 6
 $(document).ready(function(){
  $(".col_6").click(function(){
- 	if (col_6_array[5] == 0) {
+ 	if (cols[5][5] == 0) {
  		if ($(".col6row"+number_of_clicks_col_6).hasClass("bg_red") ||
  			$(".col6row"+number_of_clicks_col_6).hasClass("bg_yellow")) {
  			} else {
@@ -225,7 +217,7 @@ $(document).ready(function(){
 //col 7
 $(document).ready(function(){
  $(".col_7").click(function(){
- 	if (col_7_array[5] == 0) {
+ 	if (cols[6][5] == 0) {
  		if ($(".col7row"+number_of_clicks_col_7).hasClass("bg_red") ||
  			$(".col7row"+number_of_clicks_col_7).hasClass("bg_yellow")) {
  			} else {
@@ -242,10 +234,10 @@ $(document).ready(function(){
 
 
 //setting PlayerTurnValue into the correct Array & swapping playerturn
-//& setting maximum array limit to 6
+//& doing this if the last array isnt filled array[5] == 0
 
 //Array 1 and col 1
-$(document).ready(function(){
+/*$(document).ready(function(){
  $(".col_1").click(function(){
  	if (col_1_array[5] == 0) {
   		col_1_array[number_of_clicks_col_1-1] = playerTurnValue;
@@ -253,13 +245,26 @@ $(document).ready(function(){
   	}
  });
 });
+*/
+
+$(document).ready(function(){
+ $(".col_1").click(function(){
+  if (cols[0][5] == 0) {
+      cols[0][number_of_clicks_col_1-1] = playerTurnValue;
+        TurnGodess.ChangeTurn();
+        Judge.checkIfAnyoneHasWon();
+    }
+ });
+});
+
 
 //Array 2 and col 2
 $(document).ready(function(){
  $(".col_2").click(function(){
- 	if (col_2_array[5] == 0) {
-  	col_2_array[number_of_clicks_col_2-1] = playerTurnValue;
+ 	if (cols[1][5] == 0) {
+  	cols[1][number_of_clicks_col_2-1] = playerTurnValue;
   	TurnGodess.ChangeTurn();
+    Judge.checkIfAnyoneHasWon();
   	}
  });
 });
@@ -267,9 +272,10 @@ $(document).ready(function(){
 //Array 3 and col 3
 $(document).ready(function(){
  $(".col_3").click(function(){
- 	if (col_3_array[5] == 0) {
-  	col_3_array[number_of_clicks_col_3-1] = playerTurnValue;
+ 	if (cols[2][5] == 0) {
+  	cols[2][number_of_clicks_col_3-1] = playerTurnValue;
   	TurnGodess.ChangeTurn();
+    Judge.checkIfAnyoneHasWon();
   	}
  });
 });
@@ -277,9 +283,10 @@ $(document).ready(function(){
 //Array 4 and col 4
 $(document).ready(function(){
  $(".col_4").click(function(){
- 	if (col_4_array[5] == 0) {
-  	col_4_array[number_of_clicks_col_4-1] = playerTurnValue;
+ 	if (cols[3][5] == 0) {
+  	cols[3][number_of_clicks_col_4-1] = playerTurnValue;
   	TurnGodess.ChangeTurn();
+    Judge.checkIfAnyoneHasWon();
   	}
  });
 });
@@ -287,9 +294,10 @@ $(document).ready(function(){
 //Array 5 and col 5
 $(document).ready(function(){
  $(".col_5").click(function(){
- 	if (col_5_array[5] == 0) {
-  	col_5_array[number_of_clicks_col_5-1] = playerTurnValue;
+ 	if (cols[4][5] == 0) {
+  	cols[4][number_of_clicks_col_5-1] = playerTurnValue;
   	TurnGodess.ChangeTurn();
+    Judge.checkIfAnyoneHasWon();
   	}
  });
 });
@@ -297,9 +305,10 @@ $(document).ready(function(){
 //Array 6 and col 6
 $(document).ready(function(){
  $(".col_6").click(function(){
- 	if (col_6_array[5] == 0) {
-  	col_6_array[number_of_clicks_col_6-1] = playerTurnValue;
+ 	if (cols[5][5] == 0) {
+  	cols[5][number_of_clicks_col_6-1] = playerTurnValue;
   	TurnGodess.ChangeTurn();
+    Judge.checkIfAnyoneHasWon();
   	}
  });
 });
@@ -307,38 +316,66 @@ $(document).ready(function(){
 //Array 7 and col 7
 $(document).ready(function(){
  $(".col_7").click(function(){
- 	if (col_7_array[5] == 0) {
-  	col_7_array[number_of_clicks_col_7-1] = playerTurnValue;
+ 	if (cols[6][5] == 0) {
+  	cols[6][number_of_clicks_col_7-1] = playerTurnValue;
   	TurnGodess.ChangeTurn();
+    Judge.checkIfAnyoneHasWon();
   	}
  });
 });
 
+//setting the Virtual board with Arrays//
 
+  cols = [
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0]
+  ];
 
+//FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLUMNS & DIAGONALS)//
+class HasAnyoneWon {
+  check4InaRow() {
+    for (var v = 0; v < 3; v++) {
+      for (var h = 0; h < 4; h++) {
+          if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
+           alert("Player 1 Wins");
+          } else if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == -4) {
+           alert("Player 2 Wins");
+          }
+      }
+    }
+  }
 
+  check4InaColumn() {
+    for (var c = 0; c < 7; c++) {
+          for (var i = 0; i < 3; i++) {
+             if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == 4) {
+                alert("Player 1 Wins");
+             } else if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == -4) {
+                alert("Player 2 Wins");
+             }
+          }
+        }
+    }
 
+    checkIfAnyoneHasWon() {
+      this.check4InaRow();
+      this.check4InaColumn();
+    }
+   
 
-
-
-//a function that fills the correct array/brick on the visual board when triggered by a click withtin a column//
-/*
-class FillTheCorrectBlank {
-	PaintTheBlank() {
-		if (playerTurnValue == 1) {
-  				$(this).addClass("bg_red");
-  				return "adding red"
-  			} else {
-  				$(this).addClass("bg_yellow");
-  				return "adding yellow"
-  			}
-	}
 }
-let Painter1 = new FillTheCorrectBlank()
-*/
+
+let Judge = new HasAnyoneWon();
+
 //klassnamn: StorBokstavIBörjan
 //variabelnamn: litenBokstavIBörjan
 //funktionsnamn: litenBokstavIBörjan
+
 
 
 /*		
