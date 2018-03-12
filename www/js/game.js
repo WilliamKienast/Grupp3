@@ -327,19 +327,19 @@ $(document).ready(function(){
 //setting the Virtual board with Arrays//
 
   cols = [
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0]
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0]
   ];
 
 //FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLUMNS & DIAGONALS)//
 class HasAnyoneWon {
   check4InaRow() {
-    for (var v = 0; v < 3; v++) {
+    for (var v = 0; v < 7; v++) {
       for (var h = 0; h < 4; h++) {
           if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
            alert("Player 1 Wins");
@@ -362,13 +362,39 @@ class HasAnyoneWon {
         }
     }
 
-    checkIfAnyoneHasWon() {
-      this.check4InaRow();
-      this.check4InaColumn();
-    }
-   
 
-}
+    check4InaLeftDiagonal() {                       //Doing this diagonal \ <-- bottom to top
+          for (var r = 0; r < 4; r++) {
+            for (var x = 3; x < 6; x++) {           
+                       if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == 4) {
+                  alert("Player 1 Wins");
+                } else if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == -4) {
+                  alert("Player 2 Wins");
+                }
+            }
+          }
+      }
+
+    check4InaRightDiagonal() {                       //Doing this diagonal / <-- bottom to top
+          for (var r = 0; r < 4; r++) {
+            for (var x = 0; x < 4; x++) {           
+                       if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == 4) {
+                  alert("Player 1 Wins");
+                } else if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == -4) {
+                  alert("Player 2 Wins");
+                }
+            }
+          }
+      }
+
+
+           checkIfAnyoneHasWon() {
+            this.check4InaRightDiagonal();
+            this.check4InaLeftDiagonal();
+            this.check4InaRow();
+            this.check4InaColumn();
+          }
+  }
 
 let Judge = new HasAnyoneWon();
 
