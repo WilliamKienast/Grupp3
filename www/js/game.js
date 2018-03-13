@@ -343,8 +343,10 @@ class HasAnyoneWon {
       for (var h = 0; h < 4; h++) {
           if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
            alert("Player 1 Wins");
+            Reaper.Restart();
           } else if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == -4) {
            alert("Player 2 Wins");
+           Reaper.Restart();
           }
       }
     }
@@ -355,8 +357,10 @@ class HasAnyoneWon {
           for (var i = 0; i < 3; i++) {
              if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == 4) {
                 alert("Player 1 Wins");
+                 Reaper.Restart();
              } else if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == -4) {
                 alert("Player 2 Wins");
+                 Reaper.Restart();
              }
           }
         }
@@ -368,8 +372,10 @@ class HasAnyoneWon {
             for (var x = 3; x < 6; x++) {           
                        if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == 4) {
                   alert("Player 1 Wins");
+                   Reaper.Restart();
                 } else if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == -4) {
                   alert("Player 2 Wins");
+                   Reaper.Restart();
                 }
             }
           }
@@ -380,8 +386,10 @@ class HasAnyoneWon {
             for (var x = 0; x < 4; x++) {           
                        if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == 4) {
                   alert("Player 1 Wins");
+                   Reaper.Restart();
                 } else if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == -4) {
                   alert("Player 2 Wins");
+                   Reaper.Restart();
                 }
             }
           }
@@ -397,6 +405,29 @@ class HasAnyoneWon {
   }
 
 let Judge = new HasAnyoneWon();
+class Reset {
+    Restart() {
+        for (var i = 1; i < 8; i++) {
+          $('.col_'+i).removeClass("bg_yellow bg_red");
+          cols = [
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0],
+          [0,0,0,0,0,0]
+          ];
+          window["number_of_clickscol"+ i] = 0;
+          playerTurnValue = 1;
+        //  OnlyOneWin = false;
+         // IamABot = false;
+          console.log("reset");
+        }
+    }
+  }
+
+  let Reaper = new Reset();
 
 //klassnamn: StorBokstavIBörjan
 //variabelnamn: litenBokstavIBörjan
