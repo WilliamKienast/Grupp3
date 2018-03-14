@@ -1,4 +1,4 @@
-player1=1 (red)
+ player1=1 (red)
 player2=-1 (yellow)
 playerturn value= 1 (red) starts
 
