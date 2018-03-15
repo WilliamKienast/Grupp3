@@ -422,7 +422,9 @@ class Reset {
           playerTurnValue = 1;
         //  OnlyOneWin = false;
          // IamABot = false;
-          console.log("reset");
+          location.reload();
+          console.log("reseted");
+
         }
     }
   }
