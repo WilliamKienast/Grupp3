@@ -1,16 +1,44 @@
-var playerTurnValue = 1;
+$(start);
+
+function start(){
+  TurnGodess.ChangeTurn();
+  TurnShower.ShowWhosTurn();
+}
+
+
+
+
+//Intital Values//
+var playerTurnValue = -1;				//it changes at start.
+var OnlyOneWin = false;
+var number_of_clicks_col_1 = 0;
+var number_of_clicks_col_2 = 0;
+var number_of_clicks_col_3 = 0;
+var number_of_clicks_col_4 = 0;
+var number_of_clicks_col_5 = 0;
+var number_of_clicks_col_6 = 0;
+var number_of_clicks_col_7 = 0;
+var IamABot = false;
+var Player1Turn;
+var Player2Turn;
 
 //creates a function TurnGodess.changeturn(); which changes turnvalue=playersturn.
 class TurnGod {
 	ChangeTurn() {
 			if (playerTurnValue == 1) {
+				$("#TurnColor").html("Player nr 2's Turn");
 				playerTurnValue = -1;
-				$("#TurnValue").html("Turnvalue: " + playerTurnValue);
-				console.log("TurnGodess bows to your will, setting turn to " +playerTurnValue);
+				Player2Turn = true;
+				Player1Turn = false;
+				$("#TurnColor").addClass("bg_yellow");
+				$("#TurnColor").removeClass("bg_red");
 			} else {
+				$("#TurnColor").html("Player nr 1's Turn");
 				playerTurnValue = 1;
-				$("#TurnValue").html("Turnvalue: " + playerTurnValue);
-				console.log("TurnGodess bows to your will, setting turn to " +playerTurnValue);
+				Player2Turn = false;
+				Player1Turn = true;
+				$("#TurnColor").addClass("bg_red");
+				$("#TurnColor").removeClass("bg_yellow");
 		}
 	}
 }
@@ -34,14 +62,14 @@ let TurnShower = new show_whos_turn()
 
 //clickcounter for column 1 if sats making the maximum available clicks = 6
 var number_of_clicks_col_1 = 0;
-$(document).ready(function(){
- $(".col_1").click(function(){
- 	if (number_of_clicks_col_1 < 6) {
- 		number_of_clicks_col_1 = number_of_clicks_col_1 + 1;
-  		console.log("number of clicks of col1 = " + number_of_clicks_col_1);
-  }
- });
-});
+		$(document).ready(function(){
+		 $(".col_1").click(function(){
+		 	if (number_of_clicks_col_1 < 6 ) {				
+		 		number_of_clicks_col_1 = number_of_clicks_col_1 + 1;
+		  		console.log("number of clicks of col1 = " + number_of_clicks_col_1);
+		  }
+		 });
+		});
 
 //clickcounter for column 2
 var number_of_clicks_col_2 = 0;
@@ -112,10 +140,9 @@ $(document).ready(function(){
 
 //FUNCTION adding the Bricks
 //When clicking the corresponding column it fills the correct EmptyBrickSpot
-//col 1
 $(document).ready(function(){
  $(".col_1").click(function(){
- 	if (cols[0][5] == 0) {
+ 	 if (cols[0][5] == 0) {
  		if ($(".col1row"+number_of_clicks_col_1).hasClass("bg_red") ||
  			$(".col1row"+number_of_clicks_col_1).hasClass("bg_yellow")) {
  			} else {
@@ -125,7 +152,7 @@ $(document).ready(function(){
  						$(".col1row"+number_of_clicks_col_1).addClass("bg_yellow");
  					}		
  			}
-  		}  
+  		} 
  });
 });
 
@@ -231,22 +258,9 @@ $(document).ready(function(){
  });
 });
 
-
-
-//setting PlayerTurnValue into the correct Array & swapping playerturn
-//& doing this if the last array isnt filled array[5] == 0
-
-//Array 1 and col 1
-/*$(document).ready(function(){
- $(".col_1").click(function(){
- 	if (col_1_array[5] == 0) {
-  		col_1_array[number_of_clicks_col_1-1] = playerTurnValue;
-  	  	TurnGodess.ChangeTurn();
-  	}
- });
-});
-*/
-
+////////////////////////////////////////////////////////////////////////////////
+//Chen clicking Changes the TurnValue and Color and Check if someone has won///
+//////////////////////////////////////////////////////////////////////////////
 $(document).ready(function(){
  $(".col_1").click(function(){
   if (cols[0][5] == 0) {
@@ -339,64 +353,86 @@ $(document).ready(function(){
 //FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLUMNS & DIAGONALS)//
 class HasAnyoneWon {
   check4InaRow() {
-    for (var v = 0; v < 7; v++) {
-      for (var h = 0; h < 4; h++) {
-          if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
-           alert("Player 1 Wins");
-            Reaper.Restart();
-          } else if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == -4) {
-           alert("Player 2 Wins");
-           Reaper.Restart();
-          }
-      }
-    }
-  }
+  		if (OnlyOneWin == false) {
+		    for (var v = 0; v < 7; v++) {
+		      for (var h = 0; h < 4; h++) {
+		          if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == 4) {
+		           alert("Player 1 Wins");
+		           OnlyOneWin = true;
+		           break;
+		          } else if (cols[h][0+v] + cols[h+1][0+v] + cols[h+2][0+v] + cols[h+3][0+v] == -4) {
+		           alert("Player 2 Wins");
+		           OnlyOneWin = true;
+		           break;
+		          }
+		      }
+		    }
+		  }
+		 }
 
   check4InaColumn() {
-    for (var c = 0; c < 7; c++) {
-          for (var i = 0; i < 3; i++) {
-             if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == 4) {
-                alert("Player 1 Wins");
-                 Reaper.Restart();
-             } else if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == -4) {
-                alert("Player 2 Wins");
-                 Reaper.Restart();
-             }
-          }
-        }
-    }
+  		if (OnlyOneWin == false) {
+		    for (var c = 0; c < 7; c++) {
+		          for (var i = 0; i < 3; i++) {
+		             if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == 4) {
+		                alert("Player 1 Wins");
+		                OnlyOneWin = true;
+		                break;
+		             } else if (cols[0+c][i] + cols[0+c][i+1] + cols[0+c][i+2] + cols[0+c][i+3] == -4) {
+		                alert("Player 2 Wins");
+		                OnlyOneWin = true;
+		                break;
+		             }
+		          }
+		        }
+		    }
+		 }
 
 
-    check4InaLeftDiagonal() {                       //Doing this diagonal \ <-- bottom to top
-          for (var r = 0; r < 4; r++) {
-            for (var x = 3; x < 6; x++) {           
-                       if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == 4) {
-                  alert("Player 1 Wins");
-                   Reaper.Restart();
-                } else if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == -4) {
-                  alert("Player 2 Wins");
-                   Reaper.Restart();
-                }
-            }
-          }
-      }
+    check4InaLeftDiagonal() {
+    	if (OnlyOneWin == false) {                     	  //Doing this diagonal \ <-- bottom to top
+		          for (var r = 0; r < 4; r++) {
+		            for (var x = 3; x < 6; x++) {           
+		                       if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == 4) {
+		                  alert("Player 1 Wins");
+		                  OnlyOneWin = true;
+		                  break;
+		                } else if (cols[0+r][x] + cols[1+r][x-1] + cols[2+r][x-2] + cols[3+r][x-3] == -4) {
+		                  alert("Player 2 Wins");
+		                  OnlyOneWin = true;
+		                  break;
+		                }
+		            }
+		          }
+		      }
+		 }
 
-    check4InaRightDiagonal() {                       //Doing this diagonal / <-- bottom to top
-          for (var r = 0; r < 4; r++) {
-            for (var x = 0; x < 4; x++) {           
-                       if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == 4) {
-                  alert("Player 1 Wins");
-                   Reaper.Restart();
-                } else if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == -4) {
-                  alert("Player 2 Wins");
-                   Reaper.Restart();
-                }
-            }
-          }
-      }
+    check4InaRightDiagonal() {   
+    			if (OnlyOneWin == false) {                    //Doing this diagonal / <-- bottom to top
+			          for (var r = 0; r < 4; r++) {
+			            for (var x = 0; x < 4; x++) {           
+			                       if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == 4) {
+			                  alert("Player 1 Wins");
+			                  OnlyOneWin = true;
+			                  break;
+			                } else if (cols[0+r][x] + cols[1+r][x+1] + cols[2+r][x+2] + cols[3+r][x+3] == -4) {
+			                  alert("Player 2 Wins");
+			                  OnlyOneWin = true;
+			                  break;
+			                }
+			            }
+			          }
+			      }
+			   }
 
+	checkForADraw() {
+		if (number_of_clicks_col_1+number_of_clicks_col_2+number_of_clicks_col_3+number_of_clicks_col_4+number_of_clicks_col_5+number_of_clicks_col_6+number_of_clicks_col_7 == 42 && OnlyOneWin == false) {
+			alert("It's draw!");
+		}
+	}
 
            checkIfAnyoneHasWon() {
+           	this.checkForADraw();
             this.check4InaRightDiagonal();
             this.check4InaLeftDiagonal();
             this.check4InaRow();
@@ -405,6 +441,11 @@ class HasAnyoneWon {
   }
 
 let Judge = new HasAnyoneWon();
+
+//klassnamn: StorBokstavIBörjan
+//variabelnamn: litenBokstavIBörjan
+//funktionsnamn: litenBokstavIBörjan
+
 class Reset {
     Restart() {
         for (var i = 1; i < 8; i++) {
@@ -418,138 +459,60 @@ class Reset {
           [0,0,0,0,0,0],
           [0,0,0,0,0,0]
           ];
-          window["number_of_clickscol"+ i] = 0;
-          playerTurnValue = 1;
-        //  OnlyOneWin = false;
-         // IamABot = false;
-          location.reload();
-          console.log("reseted");
+          window["number_of_clicks_col_"+ i] = 0;
+          playerTurnValue = -1;
+          TurnGodess.ChangeTurn();
+          OnlyOneWin = false;
+ 		  VictoryCol1 = false;
+ 		  VictoryCol2 = false;
+ 		  VictoryCol3 = false;
+ 		  VictoryCol4 = false;
+ 		  VictoryCol5 = false;
+ 		  VictoryCol6 = false;
+ 		  VictoryCol7 = false;
 
+ 		  Col1VictoryForPlayer1 = false;
+		  Col2VictoryForPlayer1 = false;
+		  Col3VictoryForPlayer1 = false;
+ 		  Col4VictoryForPlayer1 = false;
+ 		  Col5VictoryForPlayer1 = false;
+ 		  Col6VictoryForPlayer1 = false;
+ 		  Col7VictoryForPlayer1 = false;
+
+ 		  Col1VictoryForPlayer2 = false;
+ 		  Col2VictoryForPlayer2 = false;
+ 		  Col3VictoryForPlayer2 = false;
+ 		  Col4VictoryForPlayer2 = false;
+ 		  Col5VictoryForPlayer2 = false;
+ 		  Col6VictoryForPlayer2 = false;
+		  Col7VictoryForPlayer2 = false;
+
+
+ 		  TheBotKnowsIfPlayer1CanWin = false;
+ 		  TheBotKnowsIfPlayer2CanWin = false;
         }
     }
   }
 
   let Reaper = new Reset();
 
-//klassnamn: StorBokstavIBörjan
-//variabelnamn: litenBokstavIBörjan
-//funktionsnamn: litenBokstavIBörjan
 
 
 
-/*		
-
-class blabla {
-	checkForInaRow() {
-		col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-		col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-		col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-		col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-	}
-
-
-/*
-player1=1 (red)
-player2=-1 (yellow)
-
-playerturn value= 1 (red) starts
-
-//the board contains 7 col's with 7 arrays.
-Col_1 = []
-
-When click the Col_1 // on the board
-number_of_clicks_col_1 = number_of_clicks_col_1 + 1
-//check if col is full
-then if number_of_clicks_col_1 = 6
-alert col is full/or do nothing...throw? Maybe doesn't matter 
-since the checking 4-in-a-row-function only check the 
-legal arrays values?
-
-//adding the playerturn value into the array at the correct
-//position within the array
-array col_1[number_of_clicks_col_1-1] = [playerturn value]
-//example
-player1 turn
-click once array = col_1 [1]		number_of_clicks_col_1 1
-click twice array = col_1 [1,1]		number_of_clicks_col_1 2
-click three array = col_1 [1,1,1]	number_of_clicks_col_1 3
-
-//Now a function for checking if you got 4 in a row.
-//checking row 1 (horizontal row)
-col_1 [i] + col_2[i] + col_3[i] + col_4[i] = 4 or -4
-col_2 [i] + col_3[i] + col_4[i] + col_5[i] = 4 or -4
-col_3 [i] + col_4[i] + col_5[i] + col_6[i] = 4 or -4
-col_4 [i] + col_5[i] + col_6[i] + col_7[i] = 4 or -4
-
-//checking row 2 (horizontal row) the +1 value determine row (horisontal)
-col_1 [i+1] + col_2[i+1] + col_3[i+1] + col_4[i+1] = 4 or -4
-col_2 [i+1] + col_3[i+1] + col_4[i+1] + col_5[i+1] = 4 or -4
-col_3 [i+1] + col_4[i+1] + col_5[i+1] + col_6[i+1] = 4 or -4
-col_4 [i+1] + col_5[i+1] + col_6[i+1] + col_7[i+1] = 4 or -4
-
-//checking col 1 (vertical row)
-col_1 [i] + col_1[i+1] + col_1[i+2] + col_1[i+3] = 4 or -4
-col_1 [i+1] + col_1[i+2] + col_1[i+3] + col_1[i+4] = 4 or -4
-col_1 [i+2] + col_1[i+3] + col_1[i+4] + col_1[i+5] = 4 or -4
-
-//checking col 2 (vertical row)
-col_2 [i] + col_2[i+1] + col_2[i+2] + col_2[i+3] = 4 or -4
-col_2 [i+1] + col_2[i+2] + col_2[i+3] + col_2[i+4] = 4 or -4
-col_2 [i+2] + col_2[i+3] + col_2[i+4] + col_2[i+5] = 4 or -4
-
-//checking sned-right row 1 - row4
-col_1 [i] + col_2[i+1] + col_3[i+2] + col_3[i+3] = 4 or -4
-col_2 [i] + col_3[i+1] + col_4[i+2] + col_5[i+3] = 4 or -4
-col_3 [i] + col_4[i+1] + col_5[i+2] + col_6[i+3] = 4 or -4
-col_4 [i] + col_5[i+1] + col_6[i+2] + col_7[i+3] = 4 or -4
-
-//checking sned-right row 2 to row 5
-col_1 [i+1] + col_2[i+2] + col_3[i+3] + col_3[i+4] = 4 or -4
-col_2 [i+1] + col_3[i+2] + col_4[i+3] + col_5[i+4] = 4 or -4
-col_3 [i+1] + col_4[i+2] + col_5[i+3] + col_6[i+4] = 4 or -4
-col_4 [i+1] + col_5[i+2] + col_6[i+3] + col_7[i+4] = 4 or -4
-
-//checking sned-right row 3 - row 6
-col_1 [i+2] + col_2[i+3] + col_3[i+4] + col_3[i+5] = 4 or -4
-col_2 [i+2] + col_3[i+3] + col_4[i+4] + col_5[i+5] = 4 or -4
-col_3 [i+2] + col_4[i+3] + col_5[i+4] + col_6[i+5] = 4 or -4
-col_4 [i+2] + col_5[i+3] + col_6[i+4] + col_7[i+5] = 4 or -4
-
-//checking sned-left col 4 - col 1 (row 1-4)
-col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-
-//checking sned-left col 4 - col 1 (row 2-5)
-col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-
-//Now a function to change playerturn
-if playerturn value = 1 then playerturn value = -1
-	else playerturn value = 1
-
-class blabla {
-	checkForInaRow() {
-		col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
-		col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
-		col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
-		col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
-	}
-
-	checkForInaRDiangomle() {
-
-	}
-
-	checkEverything() {
-		this.checkForInaRow();
-		this.checkForInaRDiangomle();
-	}
+var Player1 = true;
+var Computer = true;    						//Temp value when doing code!
+class TheBotIsPlayer {
+		Swap(){
+			if (Player1 == true) {
+			Player1 = false;
+			Computer = true;
+			console.log("player1 is now the Computer(false) and player2(true) is now Human")
+			} else if (Computer == true) {
+			Player1 = true;
+			Computer = false;
+			console.log("player2 is now the Computer(false) and player1(true) is now Human")
+			}
+		}
 }
+let PlayerComputerSwap = new TheBotIsPlayer();
 
-
-let bbbb = new blabla();
-bbbb.checkEverything();
-*/

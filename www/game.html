@@ -16,100 +16,102 @@
     <script src="./js/main.js"></script>
     <script src="./js/sticky-footer.js"></script>
     <script src="./js/game.js"></script>
+    <script src="./js/bot-ai.js"></script>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/w3.css">
 
     <title>CONNECT4</title>
     </head>
-
     <body>
     <header>
       <div class="text-center w-33% ">
-          <img src="imgs/connect4.png" class="rounded" alt="Responsive image">
+          <img src="imgs/connect4.png" class="rounded" alt="...">
           </div>
 
-        <div class="d-flex justify-content-center">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="index.html">HOME</a>
-              <a class="nav-item nav-link active" href="game.html" >GAME<span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link" href="spelregler.html">RULES</a>
-              <a class="nav-item nav-link" href="highscore.html">HIGHSCORE</a>
-            </div>
-          </div>
-        </nav>
-        </div>
-        </header>
+<div class="d-flex justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="index.html">HOME</a>
+      <a class="nav-item nav-link active" href="game.html">GAME<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="spelregler.html">RULES</a>
+      <a class="nav-item nav-link" href="highscore.html">HIGHSCORE</a>
+    </div>
+  </div>
+</nav>
+</div>
 
-            <main>
-              <div class="d-flex justify-content-center m-5 btn btn-dark d-block">
-              <onclick="TurnGodess.ChangeTurn(), TurnShower.ShowWhosTurn();">Change Turn</onclick="TurnGodess.ChangeTurn(),>
-              <div><p id="itIsTurn"></p></div>
-              <div><p id="TurnValue"></p></div>
-              </div>
+ <main>
+
+<button onclick="TurnGodess.ChangeTurn(), TurnShower.ShowWhosTurn();">Change Turn</button>
+<button onclick="Reaper.Restart()";>Restart</button>
+<button onclick="RandomBot.PlaceAbrickAnywhere()";>AIclick</button>
+<button onclick="PlayerComputerSwap.Swap()";>PlayerComputerSwap</button>
+<button onclick="Oracle.CheckForAnyGoodSpotsOnTheBoard()";>AI Place A good Spot</button>
 
 
-      <div class="game-board-container d-flex justify-content-center mb-5 ">
-        <div class="board-grid" >
-          <!-- Row 6 -->
-          <div class="w3-hover-opacity col_1  col1row6"></div>
-          <div class="w3-hover-opacity col_2 col2row6"></div>
-          <div class="w3-hover-opacity col_3 col3row6"></div>
-          <div class="w3-hover-opacity col_4 col4row6"></div>
-          <div class="w3-hover-opacity col_5 col5row6"></div>
-          <div class="w3-hover-opacity col_6 col6row6"></div>
-          <div class="w3-hover-opacity col_7 col7row6"></div>
-          <!-- Row 5 -->
-          <div class="w3-hover-opacity col_1 col1row5"></div>
-          <div class="w3-hover-opacity col_2 col2row5"></div>
-          <div class="w3-hover-opacity col_3 col3row5"></div>
-          <div class="w3-hover-opacity col_4 col4row5"></div>
-          <div class="w3-hover-opacity col_5 col5row5"></div>
-          <div class="w3-hover-opacity col_6 col6row5"></div>
-          <div class="w3-hover-opacity col_7 col7row5"></div>
-          <!-- Row 4 -->
-          <div class="w3-hover-opacity col_1 col1row4"></div>
-          <div class="w3-hover-opacity col_2 col2row4"></div>
-          <div class="w3-hover-opacity col_3 col3row4"></div>
-          <div class="w3-hover-opacity col_4 col4row4"></div>
-          <div class="w3-hover-opacity col_5 col5row4"></div>
-          <div class="w3-hover-opacity col_6 col6row4"></div>
-          <div class="w3-hover-opacity col_7 col7row4"></div>
-          <!-- Row 3 -->
-          <div class="w3-hover-opacity col_1 col1row3"></div>
-          <div class="w3-hover-opacity col_2 col2row3"></div>
-          <div class="w3-hover-opacity col_3 col3row3"></div>
-          <div class="w3-hover-opacity col_4 col4row3"></div>
-          <div class="w3-hover-opacity col_5 col5row3"></div>
-          <div class="w3-hover-opacity col_6 col6row3"></div>
-          <div class="w3-hover-opacity col_7 col7row3"></div>
-          <!-- Row 2 -->
-          <div class="w3-hover-opacity col_1 col1row2"></div>
-          <div class="w3-hover-opacity col_2 col2row2"></div>
-          <div class="w3-hover-opacity col_3 col3row2"></div>
-          <div class="w3-hover-opacity col_4 col4row2"></div>
-          <div class="w3-hover-opacity col_5 col5row2"></div>
-          <div class="w3-hover-opacity col_6 col6row2"></div>
-          <div class="w3-hover-opacity col_7 col7row2"></div>
-          <!-- Row 1 -->
-          <div class="w3-hover-opacity col_1 col1row1"></div>
-          <div class="w3-hover-opacity col_2 col2row1"></div>
-          <div class="w3-hover-opacity col_3 col3row1"></div>
-          <div class="w3-hover-opacity col_4 col4row1"></div>
-          <div class="w3-hover-opacity col_5 col5row1"></div>
-          <div class="w3-hover-opacity col_6 col6row1"></div>
-          <div class="w3-hover-opacity col_7 col7row1"></div>
+<body>
+<div class="game-board-container container-fluid">
+  <div>
+    <div id="TurnColor"></div>
+    <div id="TurnValue"></div>
+  </div>
+  <div class="board-grid">
+    <!-- Row 6 -->
+    <div class="w3-hover-opacity col_1 col1row6"></div>
+    <div class="w3-hover-opacity col_2 col2row6"></div>
+    <div class="w3-hover-opacity col_3 col3row6"></div>
+    <div class="w3-hover-opacity col_4 col4row6"></div>
+    <div class="w3-hover-opacity col_5 col5row6"></div>
+    <div class="w3-hover-opacity col_6 col6row6"></div>
+    <div class="w3-hover-opacity col_7 col7row6"></div>
+    <!-- Row 5 -->
+    <div class="w3-hover-opacity col_1 col1row5"></div>
+    <div class="w3-hover-opacity col_2 col2row5"></div>
+    <div class="w3-hover-opacity col_3 col3row5"></div>
+    <div class="w3-hover-opacity col_4 col4row5"></div>
+    <div class="w3-hover-opacity col_5 col5row5"></div>
+    <div class="w3-hover-opacity col_6 col6row5"></div>
+    <div class="w3-hover-opacity col_7 col7row5"></div>
+    <!-- Row 4 -->
+    <div class="w3-hover-opacity col_1 col1row4"></div>
+    <div class="w3-hover-opacity col_2 col2row4"></div>
+    <div class="w3-hover-opacity col_3 col3row4"></div>
+    <div class="w3-hover-opacity col_4 col4row4"></div>
+    <div class="w3-hover-opacity col_5 col5row4"></div>
+    <div class="w3-hover-opacity col_6 col6row4"></div>
+    <div class="w3-hover-opacity col_7 col7row4"></div>
+    <!-- Row 3 -->
+    <div class="w3-hover-opacity col_1 col1row3"></div>
+    <div class="w3-hover-opacity col_2 col2row3"></div>
+    <div class="w3-hover-opacity col_3 col3row3"></div>
+    <div class="w3-hover-opacity col_4 col4row3"></div>
+    <div class="w3-hover-opacity col_5 col5row3"></div>
+    <div class="w3-hover-opacity col_6 col6row3"></div>
+    <div class="w3-hover-opacity col_7 col7row3"></div>
+    <!-- Row 2 -->
+    <div class="w3-hover-opacity col_1 col1row2"></div>
+    <div class="w3-hover-opacity col_2 col2row2"></div>
+    <div class="w3-hover-opacity col_3 col3row2"></div>
+    <div class="w3-hover-opacity col_4 col4row2"></div>
+    <div class="w3-hover-opacity col_5 col5row2"></div>
+    <div class="w3-hover-opacity col_6 col6row2"></div>
+    <div class="w3-hover-opacity col_7 col7row2"></div>
+    <!-- Row 1 -->
+    <div class="w3-hover-opacity col_1 col1row1"></div>
+    <div class="w3-hover-opacity col_2 col2row1"></div>
+    <div class="w3-hover-opacity col_3 col3row1"></div>
+    <div class="w3-hover-opacity col_4 col4row1"></div>
+    <div class="w3-hover-opacity col_5 col5row1"></div>
+    <div class="w3-hover-opacity col_6 col6row1"></div>
+    <div class="w3-hover-opacity col_7 col7row1"></div>
 
-        </div>
-      </div>
-      <br>
-      <button id="startaOm"> Starta om </button>
-            
-      </main>
+  </div>
+</div>
+            </main>
    
          <footer class="container-fluid bg-dark text-white mt-4">
 
@@ -135,8 +137,8 @@
           <div class="col-12 col-sm-4 text-sm-center mt-3 mt-sm-0">
             <div class="d-inline-block text-left ml-5 ml-sm-0">
               <h4>Social media</h4>
-              <a class="m-0" href="https://www.facebook.com/">  Facebook: facebook/connect4</a>
-              <a class="m-0" href="https://twitter.com/?lang=sv"><p>Twitter: @connect4</p></a>
+              <p class="m-0">Facebook: facebook/connect4</p>
+              <p class="m-0">Twitter: @connect4</p>
             </div>
           </div>
       
