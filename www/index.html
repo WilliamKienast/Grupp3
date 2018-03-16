@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Application specific CSS -->
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- JavaScript libraries -->
     <script src="./jsonflex.js"></script>
@@ -20,7 +20,7 @@
 
     <title>CONNECT4</title>
     </head>
-    <body>
+    <body class="body-color">
     <header>
       <div class="text-center w-33% ">
           <img src="imgs/connect4.png" class="rounded" alt="...">
@@ -42,24 +42,31 @@
 </nav>
 </div>
 
-            <main  class = container-fluid>
-              <div class = row>
-                <div class = " col-md-8 col-sm-8 mt-2 border border primary" >
-                  <h2><strong>Welcome to the Four in a row game</strong></h2>
+            <main > 
+
+            <div class = "container">
+              <div class = "row">
+                <div class = " col-md-8 col-sm-8 mt-2 border" >
+                 <h2 class = "text-info text-center"><strong>Welcome to the Four in a row game</strong>
+                 <br><br>
+                 <p class =" text-secondary text-left">Connect Four (also known as Captain's Mistress, Four Up, Plot Four, Find Four, Four in a Row, Four in a Line)</p>
+
+                 </h2>
 
                 </div>
                   <div class = " col-md-4 col-sm-4 ">
-                    <img class = "img-fluid"  src= "imgs/four.jpg" alt =" responsive image" style="height:25% width:25% ">
+                    <img class = "img-fluid"  src= "imgs/4inarow.jpg" alt =" responsive image" style="height:25% width:25% ">
                     
                   </div>
               </div> 
-              <div class = row>
+            </div>  
+              <div class = "row">
               	<div class = "col-md-12 col-sm-12 ">
-              		<h3> Other Games</h3>
+              		<h3 class ="text-secondary bg primary text-center"> You may also like this  </h3>
               	</div>
               </div>	
-
-                <div class = row >
+               
+                <div class = "row" >
                   <div class = "col-md-4 col-sm-4 mt-3 ">
                     <img class = "img.fluid" src ="imgs/chess.jpg" alt = " responsive image " style="height:80%; width:50% ">
                     <a href = "https://www.chess.com/play/computer" > <br>chess game </a>
@@ -75,6 +82,7 @@
                   </div>
 
                 </div> 
+              
                
 
 
@@ -113,8 +121,7 @@
       
       </footer>
 
-    <!-- Optional JavaScript -->
-   
+    <!-- Optional JavaScript -->   
   </body>
 </html>
 
