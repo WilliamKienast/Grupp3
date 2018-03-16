@@ -1,7 +1,5 @@
 class HiScores {
    
-      
-
 
     constructor(){
         this.limitRows = 10;
