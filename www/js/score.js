@@ -1,5 +1,15 @@
 class HiScores {
-   
+
+   function compare(a, b) {
+  if (a is less than b by some ordering criterion) {
+    return -1;
+  }
+  if (a is greater than b by the ordering criterion) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+}
 
     constructor(){
         this.limitRows = 10;
@@ -40,11 +50,11 @@ class HiScores {
        
 
 
-var mainList = document.getElementById("navp");
+var mainList = document.getElementById("");
 
 for(var i=0;i<myList.length;i++){
          var item = myList[i];
-         var elem = document.createElement("li");
+         var elem = document.createElement("");
          elem.value=item[0];
          elem.innerHTML=item[1];
 
