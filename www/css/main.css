@@ -165,14 +165,19 @@ padding: 0 0 0 0px;
 h3
 {
 	font-size: 30px;
+	color: white;
 
 }
 
-.body-color{
 
-	background-color: black;
+
+.para1
+{
+	color: black;
+	font-size: 16px;
+
+
 }
-
 
 
 >>>>>>> Stashed changes
