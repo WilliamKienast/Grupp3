@@ -84,6 +84,7 @@ input[type=checkbox] {
 display:none;
 }
  
+<<<<<<< Updated upstream
 input#thing1[type=checkbox] + label
 {
 background-image: url("imgs/avatar1");
@@ -197,4 +198,12 @@ height: 70px;
 width: 70px;
 display:inline-block;
 padding: 0 0 0 0px;
+=======
+ 
+}
+.text-secondary
+{
+	font-size: 12px;
+
+>>>>>>> Stashed changes
 }
