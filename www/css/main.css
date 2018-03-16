@@ -75,12 +75,7 @@
 	background-color: yellow;
 }
 
-h2
-{
- color:	#008B8B;
- text-align: center;
 
-}
 
 /*Det här ändrar AVATAR bilderna */
 
@@ -167,9 +162,17 @@ padding: 0 0 0 0px;
 =======
  
 }
-.text-secondary
+h3
 {
-	font-size: 12px;
+	font-size: 30px;
+
+}
+
+.body-color{
+
+	background-color: black;
+}
+
+
 
 >>>>>>> Stashed changes
-}
