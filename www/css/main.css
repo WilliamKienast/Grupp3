@@ -79,6 +79,126 @@ h2
 {
  color:	#008B8B;
  text-align: center;
+
+}
+
+/*Det här ändrar AVATAR bilderna */
+
+input[type=checkbox] {
+display:none;
+}
  
- 
+input#thing1[type=checkbox] + label
+{
+background-image: url("imgs/avatar1");
+border-color: white;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing2[type=checkbox] + label
+{
+background-image: url("imgs/avatar2");
+border-color: white;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing3[type=checkbox] + label
+{
+background-image: url("imgs/avatar3");
+border-color: white;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing4[type=checkbox] + label
+{
+background-image: url("imgs/avatar4");
+border-color: white;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing5[type=checkbox] + label
+{
+background-image: url("imgs/avatar5");
+border-color: white;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing6[type=checkbox] + label
+{
+background-image: url("imgs/avatar6");
+border-color: white;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing1[type=checkbox]:checked + label
+{
+border-color: purple;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing2[type=checkbox]:checked + label
+{
+border-color: purple;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing3[type=checkbox]:checked + label
+{
+border-color: purple;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing4[type=checkbox]:checked + label
+{
+border-color: purple;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing5[type=checkbox]:checked + label
+{
+border-color: purple;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing6[type=checkbox]:checked + label
+{
+border-color: purple;
+border-style: solid;
+height: 70px;
+width: 70px;
+display:inline-block;
+padding: 0 0 0 0px;
 }
