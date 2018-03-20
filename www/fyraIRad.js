@@ -1,3 +1,17 @@
+let 		VirtualBoard =
+			[
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			];
+
+let 		NumberOfClicks = [0,0,0,0,0,0,0]
+
+
+
 class Fyrairad {
 	constructor(selector){
 		this.rader = 6;
@@ -24,6 +38,20 @@ class Fyrairad {
 		this.player = "player-1";
 		this.scoreP1 = 0;
 		this.scoreP2 = 0;
+		//RESET the values of VirutalBoard and number of clicks when restarting//
+		VirtualBoard =
+			[
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			[0,0,0,0,0,0,0],
+  			];
+
+  		NumberOfClicks = [0,0,0,0,0,0,0]
+
+
 		//vi Loppar igenom varje rad och skapar en Div till varje rad
 		for (let rad = 0; rad < this.rader; rad++) {
 			const enrad = $('<div>').addClass('rad');
@@ -214,3 +242,40 @@ class Fyrairad {
 			}
 		
 	}
+
+
+;
+
+//funktioner funkar men..blir knas när man trycker på starta om varför?? //
+$(document).ready(function() {
+    $('.col').click(function(){
+            let clickedCol = $(this);
+            if ($(this).hasClass("player-1")) {
+            	null;
+            } else if ($(this).hasClass("player-2")) {
+            	null;
+            } else {
+
+		            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col
+		           // let dataColAlternative2 = clickedCol.attr('data-col');
+		            if (dataCol == 0 && NumberOfClicks[0] < 6) {
+			            	NumberOfClicks[0] = NumberOfClicks[0] + 1;
+			           	} else if (dataCol == 1 && NumberOfClicks[1] < 6) {
+			            	NumberOfClicks[1] = NumberOfClicks[1] + 1;
+			            } else if (dataCol == 2 && NumberOfClicks[2] < 6) {
+			            	NumberOfClicks[2] = NumberOfClicks[2] + 1;
+			            } else if  (dataCol == 3 && NumberOfClicks[3] < 6) {
+			            	NumberOfClicks[3] = NumberOfClicks[3] + 1;
+			            } else if (dataCol == 4 && NumberOfClicks[4] < 6) {
+			            	NumberOfClicks[4] = NumberOfClicks[4] + 1;
+			            } else if (dataCol == 5 && NumberOfClicks[5] < 6) {
+			            	NumberOfClicks[5] = NumberOfClicks[5] + 1;
+			            } else if (dataCol == 6 && NumberOfClicks[6] < 6) {
+			            	NumberOfClicks[6] = NumberOfClicks[6] + 1;
+			           	}
+			           	console.log(NumberOfClicks)
+			        }
+	         
+
+   	});
+});
