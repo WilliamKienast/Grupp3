@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-//Intital Values//
-var playerTurnValue = 1;
-var OnlyOneWin = false;
-=======
 $(start);
 
 function start(){
@@ -26,7 +21,6 @@ var number_of_clicks_col_7 = 0;
 var IamABot = false;
 var Player1Turn;
 var Player2Turn;
->>>>>>> master
 
 //creates a function TurnGodess.changeturn(); which changes turnvalue=playersturn.
 class TurnGod {
@@ -264,12 +258,9 @@ $(document).ready(function(){
  });
 });
 
-<<<<<<< HEAD
-=======
 ////////////////////////////////////////////////////////////////////////////////
 //Chen clicking Changes the TurnValue and Color and Check if someone has won///
 //////////////////////////////////////////////////////////////////////////////
->>>>>>> master
 $(document).ready(function(){
  $(".col_1").click(function(){
   if (cols[0][5] == 0) {
@@ -434,14 +425,11 @@ class HasAnyoneWon {
 			      }
 			   }
 
-<<<<<<< HEAD
-=======
 	checkForADraw() {
 		if (number_of_clicks_col_1+number_of_clicks_col_2+number_of_clicks_col_3+number_of_clicks_col_4+number_of_clicks_col_5+number_of_clicks_col_6+number_of_clicks_col_7 == 42 && OnlyOneWin == false) {
 			alert("It's draw!");
 		}
 	}
->>>>>>> master
 
            checkIfAnyoneHasWon() {
            	this.checkForADraw();
@@ -472,10 +460,6 @@ class Reset {
           [0,0,0,0,0,0]
           ];
           window["number_of_clicks_col_"+ i] = 0;
-<<<<<<< HEAD
-          playerTurnValue = 1;
-          OnlyOneWin = false;
-=======
           playerTurnValue = -1;
           TurnGodess.ChangeTurn();
           OnlyOneWin = false;
@@ -506,14 +490,10 @@ class Reset {
 
  		  TheBotKnowsIfPlayer1CanWin = false;
  		  TheBotKnowsIfPlayer2CanWin = false;
->>>>>>> master
         }
     }
   }
 
-<<<<<<< HEAD
-  let Reaper = new Reset();
-=======
   let Reaper = new Reset();
 
 
@@ -536,4 +516,3 @@ class TheBotIsPlayer {
 }
 let PlayerComputerSwap = new TheBotIsPlayer();
 
->>>>>>> master

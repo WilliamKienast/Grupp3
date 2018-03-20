@@ -1,0 +1,192 @@
+
+.game-board-container {					/*container */
+	background-color: green;
+	/*background-image: url(4iradboard.png);
+	background-size: cover;*/
+	width: 40vw;
+	height: 34vw;
+	margin: 0 auto;
+	padding-top: 0.5%;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-bottom: 1%;
+	border-radius: 1%;
+}
+
+.board-grid { 					/*container of bricks*/
+	max-width: 100%;			
+	min-height: 100%;		
+	display: grid;
+	grid-gap: 0.5em;
+	grid-template-columns: repeat(7, 1fr);
+	grid-auto-columns: 1fr;		/*gör inget hmm*/
+	background-color: MidnightBlue;
+	
+	}
+
+	.board-grid > div{			/*all the divs inside the board-grid - the bricks */
+	padding: 2vw;
+	grid-auto-rows: 1fr;
+	border: white 2px solid;	/*displays the form of the div*/
+	border-radius: 100%;
+	}
+
+.col_1 {
+	background-color: lightgrey;
+	margin:5px;
+
+}
+
+.col_2 {
+	background-color: lightgrey;
+	margin:5px;
+}
+
+.col_3 {
+	background-color: lightgrey;
+	margin:5px;
+}
+
+.col_4 {
+	background-color: lightgrey;
+	margin:5px;
+}
+
+.col_5 {
+	background-color: lightgrey;
+	margin:5px;
+}
+
+.col_6 {
+	background-color: lightgrey;
+	margin:5px;
+}	
+
+.col_7 {
+	background-color: lightgrey;
+	margin:5px;
+}
+
+.bg_red {
+	background-color: red;
+}
+
+.bg_yellow {
+	background-color: yellow;
+}
+
+
+
+/*Det här ändrar AVATAR bilderna */
+
+input[type=checkbox] {
+display:none;
+}
+ 
+<<<<<<< Updated upstream
+input#thing1[type=checkbox] + label
+{
+background-image: url("http://lorempixel.com/50/50/");
+border-color: white;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing2[type=checkbox] + label
+{
+background-image: url("http://lorempixel.com/g/50/50/");
+border-color: white;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing3[type=checkbox] + label
+{
+background-image: url("http://lorempixel.com/50/50/sports/1/");
+border-color: white;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing4[type=checkbox] + label
+{
+background-image: url("http://lorempixel.com/50/50/sports/");
+border-color: white;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing1[type=checkbox]:checked + label
+{
+border-color: red;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing2[type=checkbox]:checked + label
+{
+border-color: red;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing3[type=checkbox]:checked + label
+{
+border-color: red;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input#thing4[type=checkbox]:checked + label
+{
+border-color: red;
+border-style: solid;
+height: 50px;
+width: 50px;
+display:inline-block;
+padding: 0 0 0 0px;
+=======
+ 
+}
+h3
+{
+	font-size: 30px;
+	color: white;
+
+}
+
+
+
+.para1
+{
+	color: black;
+	font-size: 16px;
+
+
+}
+
+.navbar {
+	border-radius: 25px;
+	margin-top:50px;
+}
+
+img
+{
+	border-radius:8px;
+}
+
+>>>>>>> Stashed changes

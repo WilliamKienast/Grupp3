@@ -1,4 +1,4 @@
-player1=1 (red)
+ player1=1 (red)
 player2=-1 (yellow)
 playerturn value= 1 (red) starts
 
@@ -8,7 +8,7 @@ Col_1 = []
 When click the Col_1 // on the board
 number_of_clicks_col_1 = number_of_clicks_col_1 + 1
 //check if col is full
-then if number_of_clicks_col_1 = 6 
+then if number_of_clicks_col_1 = 6
 alert col is full/or do nothing...throw? Maybe doesn't matter 
 since the checking 4-in-a-row-function only check the 
 legal arrays values?
@@ -78,3 +78,25 @@ col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
 //Now a function to change playerturn
 if playerturn value = 1 then playerturn value = -1
 	else playerturn value = 1
+
+class blabla {
+	checkForInaRow() {
+		col_4[i] + col_3[i+1] + col_2[i+2] + col_1[i+3] = 4 or -4
+		col_5[i] + col_4[i+1] + col_3[i+2] + col_2[i+3] = 4 or -4
+		col_6[i] + col_5[i+1] + col_4[i+2] + col_3[i+3] = 4 or -4
+		col_7[i] + col_6[i+1] + col_5[i+2] + col_4[i+3] = 4 or -4
+	}
+
+	checkForInaRDiangomle() {
+
+	}
+
+	checkEverything() {
+		this.checkForInaRow();
+		this.checkForInaRDiangomle();
+	}
+}
+
+
+let bbbb = new blabla();
+bbbb.checkEverything();
