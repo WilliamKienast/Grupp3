@@ -1,9 +1,12 @@
 class HiScores {
 
+playerData.forEach( function get(data, player) {
+    // player = player id
+    // data = Player object containing info about that player
+});
 
 var playerName;
 var playerScore;
-var gameResult = {};
 var highscoreList = [];
 
 function HiScoreList() {
@@ -30,13 +33,6 @@ function HiScoreList() {
     // body...
 document.getElementById("player1").innerHTML=
 "player1"+player1.score+"";
-
-
-
-
-
-
-
 
     constructor(){
         this.limitRows = 10;
@@ -69,12 +65,10 @@ document.getElementById("player1").innerHTML=
         // fine - almost done, but now we need to save the list to file/memory...
     }
 
-
     render(){
         // write a loop that goes through this.data and creates html
         // that we can display...
         
-
 
 class HighScore
 
