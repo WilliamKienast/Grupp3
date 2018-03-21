@@ -11,7 +11,6 @@ let 		VirtualBoard =
 let 		NumberOfClicks = [0,0,0,0,0,0,0]
 
 
-
 class Fyrairad {
 	constructor(selector){
 		this.rader = 6;
@@ -57,7 +56,7 @@ class Fyrairad {
 			const enrad = $('<div>').addClass('rad');
 			//Och inne i varje rad skapar vi 7 olika columner
 			for (let col = 0; col < this.cols; col++) {
-				const encol = $('<div>').addClass("col tom")
+				const encol = $('<div>').addClass("col tom").addClass("ThisIsCol"+col+"Rad"+rad)			//Gives each placement/circle a unique class
 				//attr står för addattribute()
 				.attr("data-col", col).attr("data-rad", rad);
 				
@@ -117,6 +116,8 @@ class Fyrairad {
 
 			const col = $(this).data("col");
 			const rad = $(this).data("rad");
+			let PlayerTurnValue;
+		
 
 			//I en column finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
 			//Det vill säga ifall ngn fyllt up en "bricka" Då kommer den markera ovanför den "brickan"
@@ -124,7 +125,15 @@ class Fyrairad {
 			sistaTommaCellen.removeClass(`tom hover-$(that.player}`);
 			sistaTommaCellen.addClass(that.player);
 			sistaTommaCellen.data("spelare", that.player);
+			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
+			if(that.player == "player-1"){
+				PlayerTurnValue = 1;
+			} else {
+				PlayerTurnValue = -1;
+			}
 
+			VirtualBoard[rad][col] = PlayerTurnValue;
+			console.log(VirtualBoard);
 
 			const vinnare = that.kollEfterVinnare(
 				sistaTommaCellen.data("rad"),
@@ -246,6 +255,7 @@ class Fyrairad {
 
 ;
 
+//FOR AI/ Click Counter
 //funktioner funkar men..blir knas när man trycker på starta om varför?? //
 $(document).ready(function() {
     $('.col').click(function(){
@@ -256,7 +266,7 @@ $(document).ready(function() {
             	null;
             } else {
 
-		            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col
+		            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
 		           // let dataColAlternative2 = clickedCol.attr('data-col');
 		            if (dataCol == 0 && NumberOfClicks[0] < 6) {
 			            	NumberOfClicks[0] = NumberOfClicks[0] + 1;
@@ -275,7 +285,6 @@ $(document).ready(function() {
 			           	}
 			           	console.log(NumberOfClicks)
 			        }
-	         
-
    	});
 });
+
