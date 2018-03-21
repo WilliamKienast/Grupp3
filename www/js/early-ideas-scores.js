@@ -74,7 +74,6 @@ document.getElementById("player1").innerHTML=
         // write a loop that goes through this.data and creates html
         // that we can display...
         
-    
 
 
 class HighScore
