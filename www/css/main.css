@@ -1,3 +1,10 @@
+body{
+text-align: center;
+}
+
+
+
+
 .img-fluid {
 border-radius: 15px;
 border-style: solid;
@@ -58,4 +65,16 @@ border-color: white;
 
 @keyframes rotateRight{
     100%{ transform:rotate(360deg); }
+}
+#startaOm {
+	width: 337.5px;
+	height: 50px;
+	background-color: #4f8ff7;
+	border-top-left-radius: 40px;
+}
+#starta0m {
+	width: 337.5px;
+	height: 50px;
+	background-color: #4f8ff7;
+	border-top-right-radius: 40px;
 }
