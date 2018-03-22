@@ -13,11 +13,10 @@ class HighScore {
 
 constructor(){
         this.limitRows = 10;
-       // retrieve highscore list from file/memory
-       // but the list would have this form
+      
         this.data = [
-            {playerName: "1", moves: 4, date: "2018-02-02"},
-            {playerName: "2", moves: 8, date: "2018-03-02"}
+            {playerName: "poury", moves: 4, date: "2018-02-02"},
+            {playerName: "player2", moves: 8, date: "2018-03-02"}
         ];
     }
 
@@ -29,6 +28,26 @@ constructor(){
         // save json to file
         JSON._save('hi-scores', this.data);
     }
+
+
+     addScore(playerName, moves){
+        // check if the new score is good enough and add it if so add it
+        let currentDate = new Date() + '';
+        this.data.push({playerName: playerName, moves: moves, date: currentDate});
+        // sort list
+        this.data.sort(function(a,b){
+            if(a.moves > b.moves){
+                return 1;
+            }
+            i(a.moves < b.moves){
+                return -1;
+            }
+            // same number of moves? so who should have the highest position
+            // older or newer score? (for now let the newest one have a higher position)
+            return a.date > b.date ? -1: 1;
+        });
+        // cut off bottom of list
+        this.data = this.data.slice(0, this.limitRows);
 
     render(){
         // render html representing the this.data list
@@ -51,11 +70,29 @@ constructor(){
         $('main').html(x);
     }
 
-}
-
-
 // Move this to another class later...
 let highScoreList = new HighScore();
+}
+
+// Constructor function for player objects//
+ 
+    var player = function player(name,score,moves) {
+    this.name=name;
+    this.score=score;
+    this.moves=moves;
+};
+
+    //creat player object// 
+
+    var  player1 new player ("poury",15,20);
+
+    // body...
+document.getElementById("player-1").innerHTML=
+"player1"+player1.score+"";
+
+
+
+
 
 
 ////////////////////////////////////////////////////////////////
