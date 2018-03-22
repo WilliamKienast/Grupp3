@@ -54,7 +54,7 @@ document.getElementById("player-1").innerHTML=
             if(a.moves > b.moves){
                 return 1;
             }
-            i(a.moves < b.moves){
+            if(a.moves < b.moves){
                 return -1;
             }
             // same number of moves? so who should have the highest position
@@ -98,7 +98,7 @@ class HighScore
         // nicely on screen
     }
 
-    JSON.classes();
+    JSON.classes(player,HiScores);
 
 
 }

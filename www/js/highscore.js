@@ -13,39 +13,25 @@ class HighScore {
         this.render();
     }
 
-    addWinner(player){
-        this.data.push({
-            "playername": player.name,
-            "score": playerScore,
-            "moves": 20
-        });
-        // add player object to this.data
-        // sort this.data
-        // slice this data to a certain length (10?)
-
-        // save json to file
-        JSON._save('highscores', this.data);
-    }
-
-
-    addScore(playerName, moves){
+    addScore(player){
         // check if the new score is good enough and add it if so add it
-        let currentDate = new Date() + '';
-        this.data.push({playerName: playerName, moves: moves, date: currentDate});
+        this.data.push({playerName: player.name, score: player.score});
         // sort list
         this.data.sort(function(a,b){
-            if(a.moves > b.moves){
+            if(a.score > b.score){
                 return 1;
             }
-            if(a.moves < b.moves){
+            if(a.score < b.score){
                 return -1;
             }
-            // same number of moves? so who should have the highest position
-            // older or newer score? (for now let the newest one have a higher position)
-            return a.date > b.date ? -1: 1;
+            // if it's the same score then just return the newest one
+            return 1;
         });
         // cut off bottom of list
         this.data = this.data.slice(0, this.limitRows);
+
+        // save json to file
+        JSON._save('highscores', this.data);
     }
 
     render(){
@@ -54,12 +40,18 @@ class HighScore {
 
         // Declare the variable x and let it have the value '' (empty string)
         let x = '';
+
+        x += '<div class="row text-white">' +
+                '<div class="col-6"><h4>Names</h4></div>' +
+                '<div class="col-6">Scores</div>' +
+             '</div>';
+
         // Loop through this.data (an array of objects)
         for(let player of this.data){
            // So now the variable player is an object with the properties name and score
 
            // Add new html to the string x
-           x += '<div class="row">' +
+           x += '<div class="row text-white">' +
              '<div class="col-6">' + player.playername + '</div>' +
              '<div class="col-6">' + player.score +'</div>' +
              '</div>';

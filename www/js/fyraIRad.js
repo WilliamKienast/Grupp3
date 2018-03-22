@@ -175,6 +175,9 @@ class Fyrairad {
 		kollEfterVinnare(rad, col){
 			const that = this;
 
+			// If someone has won, then save the new highscore
+			highScore.addScore(this.player);
+
 
 			//få cell
 			function fåCell(i, j) {

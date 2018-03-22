@@ -1,9 +1,8 @@
 [
 	{
 		"playername": "Poury",
-		"score": 15,
-		"moves": 20
+		"score": 15
 	},
-	{"playername": "Thomas", "score": 10,"moves":30},
-	{"playername": "Cecilia","score": 4,"moves":40}
+	{"playername": "Thomas", "score": 10},
+	{"playername": "Cecilia","score": 4}
 ]
