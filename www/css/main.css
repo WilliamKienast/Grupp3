@@ -51,19 +51,18 @@ border-color: white;
 	margin:5px;
 }
 
-.hover-player1 {
+.hover-player-1 {
 	background-color: #ff1493;
 	opacity: 0.6;
 }
-.hover-player2 {
+.hover-player-2 {
 	background-color: blue;
 	opacity: 0.6;
 }
-.col.player1 {
+.col.player-1 {
 	background-color: #ff1493;
 }
-
-.col.player2 {
+.col.player-2 {
 	background-color: blue;
 }
 /*När man har sin mus på en tom cell så kommer musen bli en pointer*/
