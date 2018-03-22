@@ -11,6 +11,7 @@ let 		VirtualBoard =
 let 		NumberOfClicks = [0,0,0,0,0,0,0]
 
 
+
 class Fyrairad {
 	constructor(selector){
 		this.rader = 6;
@@ -122,7 +123,7 @@ class Fyrairad {
 			//I en column finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
 			//Det vill säga ifall ngn fyllt up en "bricka" Då kommer den markera ovanför den "brickan"
 			const sistaTommaCellen = hittaSistaTommaCellen(col);
-			sistaTommaCellen.removeClass(`tom hover-$(that.player}`);
+			sistaTommaCellen.removeClass(`tom hover-${that.player}`);
 			sistaTommaCellen.addClass(that.player);
 			sistaTommaCellen.data("spelare", that.player);
 			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
@@ -211,7 +212,7 @@ class Fyrairad {
 			}
 			//kolla vin diagonalt ifrån Bott vänster till Topp höger
 			function kollaDiagonaltBVtillTH() {
-				return kollaVin({i: 1, j: -1}, {i: 1,j: 1})
+				return kollaVin({i: 1, j: -1}, {i: -1,j: 1})
 			}
 			//kolla vin diagonalt ifrån Topp vänster till Bott höger
 			function kollaDiagonaltTVtillBH() {
@@ -219,7 +220,7 @@ class Fyrairad {
 			}
 				//kolla vin diagonalt ifrån Bott höger till Topp vänster
 			function kollaDiagonaltBHtillTV() {
-				return kollaVin({i: -1, j: 1}, {i: -1,j: -1})
+				return kollaVin({i: -1, j: 1}, {i: 1,j: -1})
 			}
 			//kolla vin diagonalt ifrån Topp höger till Bott vänster
 			function kollaDiagonaltTHtillBV() {
@@ -238,7 +239,7 @@ class Fyrairad {
 			return kollaVerticalt() ||
 			 kollaHorizontelt() ||
 			 kollaDiagonaltTVtillBH() ||
-			 kollaDiagonaltBVtillTH() ||
+			 kollaDiagonaltBVtillTH() 
 			 kollaDiagonaltTHtillBV() ||
 			 kollaDiagonaltBHtillTV();
 			}
