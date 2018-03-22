@@ -1,22 +1,10 @@
 class player {
-	constructor(){
+	constructor(name, score, color, number){
 		this.name = name;
 		this.score = score;
 		this.color = color;
-	
-	}
-}
+		this.number = number;
 
-
-class player1 {
-	constructor(){
-	this.PlayerTurnValue = 1;
-	}
-}
-
-class player2 {
-	constructor(){
-	this.PlayerTurnValue = -1;
 	}
 }
 
