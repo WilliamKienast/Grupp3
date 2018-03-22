@@ -23,13 +23,12 @@
   text-decoration: none;
 }
 
-
-
 .button-link {
   background: none;
   border: 3px solid;
   font: inherit;
   line-height: 1;
   margin: 0.5em;
-  padding: 1em 5em;
+  padding: 1em 4em;
+  text-decoration: none;
 }

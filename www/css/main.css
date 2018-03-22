@@ -69,9 +69,7 @@ border-color: white;
 .col.tom {
 	cursor: crosshair;
 }
-#startaOm {
-	margin-top: 5px;
-}
+
 
 { 
     transform-origin:50% 50%;
@@ -84,18 +82,7 @@ border-color: white;
 @keyframes rotateRight{
     100%{ transform:rotate(360deg); }
 }
-#startaOm {
-	width: 230px;
-	height: 50px;
-	background-color: #4f8ff7;
-	
-	border-top-right-radius: 40px;
-}
-#bToHome {
-	width: 230px;
-	height: 50px;
-	background-color: #4f8ff7;
-	border-top-left-radius: 40px;
+
 	
 }
 /*phone standing*/
@@ -112,18 +99,7 @@ border-color: white;
 	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
 	margin:5px;
     }
-    #startaOm {
-	width: 155px;
-	height: 50px;
-	background-color: #4f8ff7;
-	
-	border-top-right-radius: 40px;
-	}
-	#bToHome {
-		width: 155px;
-		height: 50px;
-		background-color: #4f8ff7;
-		border-top-left-radius: 40px;
+ 
 		
 	}
 	.hover-player-1 {
@@ -147,20 +123,7 @@ border-color: white;
 	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
 	margin:2px;
     }
-    #startaOm {
-	width: 140px;
-	height: 33px;
-	background-color: #4f8ff7;
-	border-top-right-radius: 40px;
-	
-	}
-	#bToHome {
-		width: 140px;
-		height: 33px;
-		background-color: #4f8ff7;
-		border-top-left-radius: 40px;
-		
-	}
+  
 	.hover-player-1 {
 	
 	}
