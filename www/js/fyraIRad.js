@@ -149,8 +149,7 @@ class Fyrairad {
 				alert('Spelet är över. ' + spelare + ' has Get gud!');
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
-				return;
-				highscore.addScore(this.player);
+				// highScore.addScore(that.player);
 			}
 <<<<<<< Updated upstream
 =======
@@ -179,10 +178,6 @@ class Fyrairad {
 		//kollar efter en vinnare
 		kollEfterVinnare(rad, col){
 			const that = this;
-
-			// If someone has won, then save the new highscore
-			//highScore.addScore(this.player);
-
 
 			//få cell
 			function fåCell(i, j) {
