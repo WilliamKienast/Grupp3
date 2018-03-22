@@ -8,38 +8,31 @@ class HighScore {
 
     async readJsonData(){
         this.data = await JSON._load('highscores');
+
         // for now call render here
         this.render();
     }
 
-    addWinner(player){
-        // add player object to this.data
-        // sort this.data
-        // slice this data to a certain length (10?)
+    addScore(player){
+        // check if the new score is good enough and add it if so add it
+        this.data.push({playerName: player.name, score: player.score});
+        // sort list
+        this.data.sort(function(a,b){
+            if(a.score > b.score){
+                return 1;
+            }
+            if(a.score < b.score){
+                return -1;
+            }
+            // if it's the same score then just return the newest one
+            return 1;
+        });
+        // cut off bottom of list
+        this.data = this.data.slice(0, this.limitRows);
 
         // save json to file
         JSON._save('highscores', this.data);
     }
-
-
-     addScore(playerName, moves){
-        // check if the new score is good enough and add it if so add it
-        let currentDate = new Date() + '';
-        this.data.push({playerName: playerName, moves: moves, date: currentDate});
-        // sort list
-        this.data.sort(function(a,b){
-            if(a.moves > b.moves){
-                return 1;
-            }
-            i(a.moves < b.moves){
-                return -1;
-            }
-            // same number of moves? so who should have the highest position
-            // older or newer score? (for now let the newest one have a higher position)
-            return a.date > b.date ? -1: 1;
-        });
-        // cut off bottom of list
-        this.data = this.data.slice(0, this.limitRows);
 
     render(){
         // render html representing the this.data list
@@ -47,13 +40,19 @@ class HighScore {
 
         // Declare the variable x and let it have the value '' (empty string)
         let x = '';
+
+        x += '<div class="row text-white">' +
+                '<div class="col-6"><h4>Names</h4></div>' +
+                '<div class="col-6">Scores</div>' +
+             '</div>';
+
         // Loop through this.data (an array of objects)
         for(let player of this.data){
            // So now the variable player is an object with the properties name and score
 
            // Add new html to the string x
-           x += '<div class="row">' +
-             '<div class="col-6">' + player.name + '</div>' +
+           x += '<div class="row text-white">' +
+             '<div class="col-6">' + player.playername + '</div>' +
              '<div class="col-6">' + player.score +'</div>' +
              '</div>';
         }
@@ -62,67 +61,9 @@ class HighScore {
         $('main').html(x);
     }
 
-// Move this to another class later...
-let highScoreList = new HighScore();
 }
 
-// Constructor function for player objects//
- 
-    var player = function player(name,score,moves) {
-    this.name=name;
-    this.score=score;
-    this.moves=moves;
-};
+// Move this to another class later...
+let highScore = new HighScore();
 
-    //creat player object// 
-
-    var  player1 new player ("poury",15,20);
-
-    // body...
-document.getElementById("player-1").innerHTML=
-"player1"+player1.score+"";
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////
-
-constructor(){
-        this.limitRows = 10;
-       // retrieve highscore list from file/memory
-       // but the list would have this form
-        this.data = [
-            {playerName: "1", moves: 4, date: "2018-02-02"},
-            {playerName: "2", moves: 8, date: "2018-03-02"}
-        ];
-    }
-
-    addScore(playerName, moves){
-        // check if the new score is good enough and add it if so add it
-        let currentDate = new Date() + '';
-        this.data.push({playerName: playerName, moves: moves, date: currentDate});
-        // sort list
-        this.data.sort(function(a,b){
-            if(a.moves > b.moves){
-                return 1;
-            }
-            i(a.moves < b.moves){
-                return -1;
-            }
-            // same number of moves? so who should have the highest position
-            // older or newer score? (for now let the newest one have a higher position)
-            return a.date > b.date ? -1: 1;
-        });
-        // cut off bottom of list
-        this.data = this.data.slice(0, this.limitRows);
-        // fine - almost done, but now we need to save the list to file/memory...
-    }
-
-    render(){
-        // write a loop that goes through this.data and creates html
-        // that we can display...
-        
-
-
+// $("#player-1").html("player1"+player1.score+"");
