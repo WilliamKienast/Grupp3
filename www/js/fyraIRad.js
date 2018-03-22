@@ -9,6 +9,7 @@ let 		VirtualBoard =
   			];
 
 let 		NumberOfClicks = [0,0,0,0,0,0,0]
+let RandomTrigger = true;
 
 
 
@@ -16,7 +17,9 @@ class Fyrairad {
 	constructor(selector){
 		this.rader = 6;
 		this.cols = 7;
-		this.player = "player-1";
+		this.player1 = new player("per", 0, "blue", 1);
+		this.player2 = new player("Eva", 0, "pink", 2);
+		this.player = this.player1;
 		this.selector = selector;
 		this.speletSlut = false;
 		this.onSpelaresDrag = function() {};
@@ -35,9 +38,6 @@ class Fyrairad {
 		board.empty();
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
 		this.speletSlut = false;
-		this.player = "player-1";
-		this.scoreP1 = 0;
-		this.scoreP2 = 0;
 		//RESET the values of VirutalBoard and number of clicks when restarting//
 		VirtualBoard =
 			[
@@ -97,7 +97,7 @@ class Fyrairad {
 			const col = $(this).data('col');
 			//Vissar en markering över den sista tomma "brickan" alltså den längst ner i columen
 			const sistaTommaCellen = hittaSistaTommaCellen(col);
-			sistaTommaCellen.addClass(`hover-${that.player}`);
+			sistaTommaCellen.addClass(`hover-player${that.player.number}`);
 
 			
 		});
@@ -105,7 +105,7 @@ class Fyrairad {
 		//denna funktion gör så att man bara ser vilken colum man är på för tillfället och tar bort
 		//dom man tidigare varit på
 		board.on("mouseleave", ".col", function() {
-			$(".col").removeClass(`hover-${that.player}`);
+			$(".col").removeClass(`hover-player${that.player.number}`);
 		});
 
 		//skapar en "bricka" som sätt längst ner på columen, ifall det redan e en bricka längst ner sätts den
@@ -117,23 +117,24 @@ class Fyrairad {
 			const col = $(this).data("col");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
+			RandomTrigger = true;
 		
 		
 
 			//I en column finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
 			//Det vill säga ifall ngn fyllt up en "bricka" Då kommer den markera ovanför den "brickan"
 			const sistaTommaCellen = hittaSistaTommaCellen(col);
-			sistaTommaCellen.removeClass(`tom hover-${that.player}`);
-			sistaTommaCellen.addClass(that.player);
+			sistaTommaCellen.removeClass(`tom hover-player${that.player.number}`);
+			sistaTommaCellen.addClass('player'+that.player.number);
 			sistaTommaCellen.data("spelare", that.player);
 			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
-			if(that.player == "player-1"){
+			if(that.player.number == 1){
 				PlayerTurnValue = 1;
 			} else {
 				PlayerTurnValue = -1;
 			}
 
-			VirtualBoard[rad][col] = PlayerTurnValue;
+			VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
 			console.log(VirtualBoard);
 
 			const vinnare = that.kollEfterVinnare(
@@ -151,11 +152,12 @@ class Fyrairad {
 				$(".col.tom").removeClass("tom");
 				// highScore.addScore(that.player);
 			}
+			highScore.addScore(this.player);
 
 			//bytter spelare
-			that.player = (that.player === "player-1") ? "player-2" : "player-1";
+			that.player = (that.player === that.player1) ? that.player2 : that.player1;
 			//för att räkna score
-			if(that.player == "player-2"){
+			if(that.player == that.player2){
 				that.scoreP2++;
 			} else {
 				that.scoreP1++;
@@ -258,32 +260,35 @@ class Fyrairad {
 //funktioner funkar men..blir knas när man trycker på starta om varför?? //
 $(document).ready(function() {
     $('.col').click(function(){
-            let clickedCol = $(this);
-            if ($(this).hasClass("player-1")) {
-            	null;
-            } else if ($(this).hasClass("player-2")) {
-            	null;
-            } else {
+		console.log('click happened')
 
-		            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
-		           // let dataColAlternative2 = clickedCol.attr('data-col');
-		            if (dataCol == 0 && NumberOfClicks[0] < 6) {
-			            	NumberOfClicks[0] = NumberOfClicks[0] + 1;
-			           	} else if (dataCol == 1 && NumberOfClicks[1] < 6) {
-			            	NumberOfClicks[1] = NumberOfClicks[1] + 1;
-			            } else if (dataCol == 2 && NumberOfClicks[2] < 6) {
-			            	NumberOfClicks[2] = NumberOfClicks[2] + 1;
-			            } else if  (dataCol == 3 && NumberOfClicks[3] < 6) {
-			            	NumberOfClicks[3] = NumberOfClicks[3] + 1;
-			            } else if (dataCol == 4 && NumberOfClicks[4] < 6) {
-			            	NumberOfClicks[4] = NumberOfClicks[4] + 1;
-			            } else if (dataCol == 5 && NumberOfClicks[5] < 6) {
-			            	NumberOfClicks[5] = NumberOfClicks[5] + 1;
-			            } else if (dataCol == 6 && NumberOfClicks[6] < 6) {
-			            	NumberOfClicks[6] = NumberOfClicks[6] + 1;
-			           	}
-			           	console.log(NumberOfClicks)
-			        }
+        let clickedCol = $(this);
+        if ($(this).hasClass('player1')) {
+           	console.log('player1')
+        } else if ($(this).hasClass('player2')) {
+           	console.log('player2')
+        } else {
+
+            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
+           // let dataColAlternative2 = clickedCol.attr('data-col');
+            if (dataCol == 0 && NumberOfClicks[0] < 6) {
+            	NumberOfClicks[0] = NumberOfClicks[0] + 1;
+           	} else if (dataCol == 1 && NumberOfClicks[1] < 6) {
+            	NumberOfClicks[1] = NumberOfClicks[1] + 1;
+            } else if (dataCol == 2 && NumberOfClicks[2] < 6) {
+            	NumberOfClicks[2] = NumberOfClicks[2] + 1;
+            } else if  (dataCol == 3 && NumberOfClicks[3] < 6) {
+            	NumberOfClicks[3] = NumberOfClicks[3] + 1;
+            } else if (dataCol == 4 && NumberOfClicks[4] < 6) {
+            	NumberOfClicks[4] = NumberOfClicks[4] + 1;
+            } else if (dataCol == 5 && NumberOfClicks[5] < 6) {
+            	NumberOfClicks[5] = NumberOfClicks[5] + 1;
+            } else if (dataCol == 6 && NumberOfClicks[6] < 6) {
+            	NumberOfClicks[6] = NumberOfClicks[6] + 1;
+           	}
+
+           	console.log(NumberOfClicks)
+        }
    	});
 });
 
