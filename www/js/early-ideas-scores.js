@@ -20,18 +20,19 @@ function HiScoreList() {
     $('#score1').text(highscoreList[0].player + " - score: "+ highscoreList[0].score);
 };
 // Constructor function for player objects//
-    
-    function player(name,score,moves) {
+ 
+    var player = function player(name,score,moves) {
     this.name=name;
     this.score=score;
     this.moves=moves;
+};
 
     //creat player object// 
-}
+
     var  player1 new player ("poury",15,20);
 
     // body...
-document.getElementById("player1").innerHTML=
+document.getElementById("player-1").innerHTML=
 "player1"+player1.score+"";
 
     constructor(){
