@@ -31,6 +31,15 @@ body {
   text-align: center;
 }
 
+.spelbild {
+    position: relative;
+    width: 250%;
+    color: rgba(0,0,0, .8);
+    right: 584px;
+    line-height: 1.5;
+    margin: 50px auto;
+
+}
 
 .card {
   position: relative;
