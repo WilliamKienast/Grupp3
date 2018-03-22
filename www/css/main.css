@@ -1,7 +1,9 @@
 body{
 text-align: center;
 }
-
+header{
+	margin-bottom: 10px;
+}
 
 
 
@@ -21,8 +23,8 @@ border-color: white;
 }
 
 .col {
-	width: 80px;
-	height: 80px;
+	width: 50px;
+	height: 50px;
 	/*Gör så att våra col inte samlas imitten */
 	display: inline-block;
 	/* Skapar en spel form som ser ut som 4 i rad med alla cirklar */
@@ -30,7 +32,7 @@ border-color: white;
 	/*Gör så att det blir cirklar*/
 	
 	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
-	margin:8px;
+	margin:5px;
 }
 
 .hover-player-1 {
@@ -67,13 +69,13 @@ border-color: white;
     100%{ transform:rotate(360deg); }
 }
 #startaOm {
-	width: 337.5px;
+	width: 230px;
 	height: 50px;
 	background-color: #4f8ff7;
 	border-top-left-radius: 40px;
 }
 #starta0m {
-	width: 337.5px;
+	width: 230px;
 	height: 50px;
 	background-color: #4f8ff7;
 	border-top-right-radius: 40px;

@@ -1,23 +1,15 @@
 class HighScore {
 
     constructor(){
+        this.limitRows = 10;
         // Read hiscores from json file into this.data 
         this.readJsonData();
     }
 
     async readJsonData(){
-        this.data = await JSON._load('hi-scores');
+        this.data = await JSON._load('highscores');
         // for now call render here
         this.render();
-    }
-
-constructor(){
-        this.limitRows = 10;
-      
-        this.data = [
-            {playerName: "poury", moves: 4, date: "2018-02-02"},
-            {playerName: "player2", moves: 8, date: "2018-03-02"}
-        ];
     }
 
     addWinner(player){
@@ -26,7 +18,7 @@ constructor(){
         // slice this data to a certain length (10?)
 
         // save json to file
-        JSON._save('hi-scores', this.data);
+        JSON._save('highscores', this.data);
     }
 
 
