@@ -152,6 +152,7 @@ class Fyrairad {
 				$(".col.tom").removeClass("tom");
 				return;
 			}
+			highScore.addScore(this.player);
 
 
 			//bytter spelare
