@@ -151,11 +151,6 @@ class Fyrairad {
 				$(".col.tom").removeClass("tom");
 				// highScore.addScore(that.player);
 			}
-<<<<<<< Updated upstream
-=======
-			
->>>>>>> Stashed changes
-
 
 			//bytter spelare
 			that.player = (that.player === "player-1") ? "player-2" : "player-1";
