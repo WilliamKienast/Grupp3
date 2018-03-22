@@ -88,7 +88,6 @@ class Fyrairad {
 			return null;
 		}
 
-	
 		//när man tar musen över en col så läser den här coden utav vart man är någon stans
 		//och visar vart man kan lägga sin "bricka"
 		board.on('mouseenter', '.col.tom', function() {
@@ -118,6 +117,7 @@ class Fyrairad {
 			const col = $(this).data("col");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
+		
 		
 
 			//I en column finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
