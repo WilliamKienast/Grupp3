@@ -7,7 +7,7 @@ class HighScore {
     }
 
     async readJsonData(){
-        this.data = await JSON._load('hi-scores');
+        this.data = await JSON._load('highscores');
         // for now call render here
         this.render();
     }
@@ -18,7 +18,7 @@ class HighScore {
         // slice this data to a certain length (10?)
 
         // save json to file
-        JSON._save('hi-scores', this.data);
+        JSON._save('highscores', this.data);
     }
 
 
