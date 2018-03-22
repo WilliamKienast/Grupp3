@@ -43,7 +43,7 @@ class HighScore {
 
         x += '<div class="row text-white">' +
                 '<div class="col-6"><h4>Names</h4></div>' +
-                '<div class="col-6">Scores</div>' +
+                '<div class="col-6"><h4>Scores</h4></div>' +
              '</div>';
 
         // Loop through this.data (an array of objects)

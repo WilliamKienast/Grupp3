@@ -150,7 +150,12 @@ class Fyrairad {
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
 				return;
+				highscore.addScore(this.player);
 			}
+<<<<<<< Updated upstream
+=======
+			
+>>>>>>> Stashed changes
 
 
 			//bytter spelare

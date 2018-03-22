@@ -1,7 +1,7 @@
 
 
 console.log("Exec botAi.cfg")
-let PlacementMade = false;
+let BotPlacementMade = false;
 
 
 //AI RANDOM - BOT//
@@ -42,11 +42,11 @@ class FortuneTeller  {
 
 			Player1VictoryCheck() {
 				for (var i=0; i < 7; i++) {
-						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 1;
+						VirtualBoard[ 5-NumberOfClicks[0+i] ] [ [0+i] ] = 1;
 						Bot.Scan();
 						if (TheBotKnowsIfPlayer1CanWin == true) {
 							$('.ThisIsCol'+i+"Rad0").trigger('click')
-							PlacementMade = true
+							BotPlacementMade = true
 							$('.ThisIsCol0Rad0').trigger("mouseleave");
 							return;
 						}
@@ -55,13 +55,13 @@ class FortuneTeller  {
 			}
 
 			Player2VictoryCheck() {
-			if (PlacementMade == false) {
+			if (BotPlacementMade == false) {
 						for (var i=0; i < 7; i++) {
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = -1;
 								Bot.Scan();
 								if (TheBotKnowsIfPlayer2CanWin == true) {
 									$('.ThisIsCol'+i+"Rad0").trigger('click')
-									PlacementMade = true
+									BotPlacementMade = true
 									$('.ThisIsCol0Rad0').trigger("mouseleave");
 									return;
 								}
@@ -71,7 +71,7 @@ class FortuneTeller  {
 			}
 			
 			Player2VictoryCheck2ndDraw() {
-				if (PlacementMade == false) {
+				if (BotPlacementMade == false) {
 							for (var i=0; i < 7; i++) {
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = -1;									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that col
 									Bot.Scan();
@@ -87,7 +87,7 @@ class FortuneTeller  {
 			}
 
 			DoYourTurn () {
-				PlacementMade = false;
+				BotPlacementMade = false;
 				this.Player1VictoryCheck();
 				this.Player2VictoryCheck();
 				this.Player2VictoryCheck2ndDraw();
@@ -203,7 +203,7 @@ class HasAnyoneWon {
 		
 				Oracle.DoYourTurn();
 
-				if (PlacementMade == false) {
+				if (BotPlacementMade == false) {
 						RandomTrigger = false;				//When clicking on the main board RandomTrigger = true;
 
 						let RandomNumber;
@@ -222,7 +222,7 @@ class HasAnyoneWon {
 										$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseenter");		//fixar så att skuggan brickan försvinner
 										$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseleave");
 										RandomNumber = Math.floor((Math.random() * 7));
-										PlacementMade == true;
+										BotPlacementMade == true;
 
 										
 						}		
