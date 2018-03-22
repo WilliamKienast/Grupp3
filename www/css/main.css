@@ -1,10 +1,26 @@
 body{
 text-align: center;
+  background-color: #777;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
+  padding-top: 0px;
 }
 header{
 	margin-bottom: 10px;
 }
 
+
+#p1{
+	color:#ff1493;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+}
+#p2{
+	color:blue;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+}
 
 
 .img-fluid {
@@ -23,8 +39,8 @@ border-color: white;
 }
 
 .col {
-	width: 50px;
-	height: 50px;
+	width: 80px;
+	height: 80px;
 	/*Gör så att våra col inte samlas imitten */
 	display: inline-block;
 	/* Skapar en spel form som ser ut som 4 i rad med alla cirklar */
@@ -72,12 +88,83 @@ border-color: white;
 	width: 230px;
 	height: 50px;
 	background-color: #4f8ff7;
-	border-top-left-radius: 40px;
+	
+	border-top-right-radius: 40px;
 }
-#starta0m {
+#bToHome {
 	width: 230px;
 	height: 50px;
 	background-color: #4f8ff7;
-	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	
 }
-
+/*phone standing*/
+@media screen and (max-width: 400px) {
+    .col {
+	width: 37px;
+	height: 37px;
+	/*Gör så att våra col inte samlas imitten */
+	display: inline-block;
+	/* Skapar en spel form som ser ut som 4 i rad med alla cirklar */
+	background-color: black;
+	/*Gör så att det blir cirklar*/
+	
+	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
+	margin:5px;
+    }
+    #startaOm {
+	width: 155px;
+	height: 50px;
+	background-color: #4f8ff7;
+	
+	border-top-right-radius: 40px;
+	}
+	#bToHome {
+		width: 155px;
+		height: 50px;
+		background-color: #4f8ff7;
+		border-top-left-radius: 40px;
+		
+	}
+	.hover-player-1 {
+	
+	}
+	.hover-player-2 {
+		
+	}
+}
+/* Phone tilted*/
+@media screen and (max-width: 700px) {
+    .col {
+	width: 37px;
+	height: 32px;
+	/*Gör så att våra col inte samlas imitten */
+	display: inline-block;
+	/* Skapar en spel form som ser ut som 4 i rad med alla cirklar */
+	background-color: black;
+	/*Gör så att det blir cirklar*/
+	
+	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
+	margin:2px;
+    }
+    #startaOm {
+	width: 140px;
+	height: 33px;
+	background-color: #4f8ff7;
+	border-top-right-radius: 40px;
+	
+	}
+	#bToHome {
+		width: 140px;
+		height: 33px;
+		background-color: #4f8ff7;
+		border-top-left-radius: 40px;
+		
+	}
+	.hover-player-1 {
+	
+	}
+	.hover-player-2 {
+		
+	}
+}
