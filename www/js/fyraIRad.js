@@ -17,7 +17,7 @@ class Fyrairad {
 	constructor(selector){
 		this.rader = 6;
 		this.cols = 7;
-		this.player1 = new player("per", 0, "blue", 1);
+		this.player1 = new player("lode from json file per", 0, "blue", 1);
 		this.player2 = new player("Eva", 0, "pink", 2);
 		this.player = this.player1;
 		this.selector = selector;
@@ -27,8 +27,6 @@ class Fyrairad {
 		this.spelare2Score = function() {};
 		this.createGrid();
 		this.setUpEvent();
-		this.scoreP1 = 0;
-		this.scoreP2 = 0;
 	}
 
 	createGrid() {
@@ -133,9 +131,9 @@ class Fyrairad {
 			} else {
 				PlayerTurnValue = -1;
 			}
+			that.player.score++;
 
 			VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
-			console.log(VirtualBoard);
 
 			const vinnare = that.kollEfterVinnare(
 				sistaTommaCellen.data("rad"),
@@ -150,18 +148,11 @@ class Fyrairad {
 				alert('Spelet är över. ' + spelare + ' has Get gud!');
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
-				// highScore.addScore(that.player);
+				highScore.addScore(that.player);
 			}
-			highScore.addScore(this.player);
 
 			//bytter spelare
 			that.player = (that.player === that.player1) ? that.player2 : that.player1;
-			//för att räkna score
-			if(that.player == that.player2){
-				that.scoreP2++;
-			} else {
-				that.scoreP1++;
-			}
 			//för att räkna score
 			that.spelare1Score();
 			that.spelare2Score();

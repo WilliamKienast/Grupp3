@@ -15,7 +15,7 @@ class HighScore {
 
     addScore(player){
         // check if the new score is good enough and add it if so add it
-        this.data.push({playerName: player.name, score: player.score});
+        this.data.push({playername: player.name, score: player.score});
         // sort list
         this.data.sort(function(a,b){
             if(a.score > b.score){
@@ -27,6 +27,8 @@ class HighScore {
             // if it's the same score then just return the newest one
             return 1;
         });
+
+        console.log('new playerlist', this.data)
         // cut off bottom of list
         this.data = this.data.slice(0, this.limitRows);
 
