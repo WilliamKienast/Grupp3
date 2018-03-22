@@ -176,7 +176,7 @@ class Fyrairad {
 			const that = this;
 
 			// If someone has won, then save the new highscore
-			highScore.addScore(this.player);
+			//highScore.addScore(this.player);
 
 
 			//få cell
