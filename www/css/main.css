@@ -88,15 +88,16 @@ border-color: white;
 #startaOm {
 	width: 230px;
 	height: 50px;
-	background-color: #4f8ff7;
-	
+	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
+	color: white;
 	border-top-right-radius: 40px;
 }
 #bToHome {
 	width: 230px;
 	height: 50px;
-	background-color: #4f8ff7;
+	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 	border-top-left-radius: 40px;
+	color:white;
 	
 }
 /*phone standing*/
@@ -116,14 +117,16 @@ border-color: white;
     #startaOm {
 	width: 155px;
 	height: 50px;
-	background-color: #4f8ff7;
+	color:white;
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 	
 	border-top-right-radius: 40px;
 	}
 	#bToHome {
 		width: 155px;
 		height: 50px;
-		background-color: #4f8ff7;
+		color:white;
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 		border-top-left-radius: 40px;
 		
 	}
@@ -152,14 +155,16 @@ border-color: white;
     #startaOm {
 	width: 140px;
 	height: 33px;
-	background-color: #4f8ff7;
+	color:white;
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 	border-top-right-radius: 40px;
 	
 	}
 	#bToHome {
 		width: 140px;
 		height: 33px;
-		background-color: #4f8ff7;
+		color:white;
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 		border-top-left-radius: 40px;
 		
 	}

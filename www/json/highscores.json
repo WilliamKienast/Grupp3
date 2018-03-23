@@ -1,22 +1,42 @@
 [
   {
+    "playername": "lode from json file per",
+    "score": 4
+  },
+  {
+    "playername": "lode from json file per",
+    "score": 4
+  },
+  {
+    "playername": "lode from json file per",
+    "score": 4
+  },
+  {
+    "playername": "Eva",
+    "score": 4
+  },
+  {
+    "playername": "lode from json file per",
+    "score": 4
+  },
+  {
+    "playername": "lode from json file per",
+    "score": 6
+  },
+  {
+    "playername": "Eva",
+    "score": 6
+  },
+  {
+    "playername": "lode from json file per",
+    "score": 7
+  },
+  {
     "playername": "per",
     "score": 8
   },
   {
     "playername": "per",
     "score": 10
-  },
-  {
-    "playername": "Thomas",
-    "score": 10
-  },
-  {
-    "playername": "Poury",
-    "score": 15
-  },
-  {
-    "playername": "Cecilia",
-    "score": 40
   }
 ]
