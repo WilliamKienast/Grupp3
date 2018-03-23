@@ -3,8 +3,8 @@ $(document).ready(function() {
 		let p1Name = ("p1").val() 
 		let p2Name = ("p2").val()
 
-let p1Bot = ("#bot1").is(':checked')
-let p2Bot = ("#bot2").is(':checked')
+let p1Bot = ("#human1").is(':checked')
+let p2Bot = ("#human2").is(':checked')
 
 		let p1 = {
 			name: p1name,
