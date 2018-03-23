@@ -8,27 +8,41 @@ let 		VirtualBoard =
   			[0,0,0,0,0,0,0],
   			];
 
-let 		NumberOfClicks = [0,0,0,0,0,0,0]
+let 		NumberOfClicks = [null,null,null,null,null,null,null]
 let RandomTrigger = true;
 
 
 
 class Fyrairad {
 	constructor(selector){
+		this.load(selector);
+	}
+
+	async load(selector) {
 		this.rader = 6;
 		this.cols = 7;
-		this.player1 = new player("per", 0, "blue", 1);
-		this.player2 = new player("Eva", 0, "pink", 2);
+		let jsonPlayers = await JSON._load('registration');
+		this.player1 = new player(jsonPlayers[0].name, 0, "blue", 1);
+		this.player2 = new player(jsonPlayers[1].name, 0, "pink", 2);
+        $("#p1").text(this.player1.name + ' Score: ');
+        $("#p2").text(this.player2.name + ' Score: ');
+		
 		this.player = this.player1;
 		this.selector = selector;
 		this.speletSlut = false;
-		this.onSpelaresDrag = function() {};
-		this.spelare1Score = function() {};
-		this.spelare2Score = function() {};
 		this.createGrid();
 		this.setUpEvent();
-		this.scoreP1 = 0;
-		this.scoreP2 = 0;
+	}
+
+	onSpelaresDrag() {
+		$("#spelare").text(this.player.name);
+	}
+
+	spelare1Score() {
+        $("#scoreP1").text(this.player1.score);
+	}
+	spelare2Score() {
+        $("#scoreP2").text(this.player2.score);
 	}
 
 	createGrid() {
@@ -36,8 +50,11 @@ class Fyrairad {
 		const board = $(this.selector);
 		//gör så att hela griden töms
 		board.empty();
+
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
 		this.speletSlut = false;
+		this.player1.score = 0;
+		this.player2.score = 0;
 		//RESET the values of VirutalBoard and number of clicks when restarting//
 		VirtualBoard =
 			[
@@ -49,7 +66,7 @@ class Fyrairad {
   			[0,0,0,0,0,0,0],
   			];
 
-  		NumberOfClicks = [0,0,0,0,0,0,0]
+  		NumberOfClicks = [null,null,null,null,null,null,null]
 
 
 		//vi Loppar igenom varje rad och skapar en Div till varje rad
@@ -117,7 +134,7 @@ class Fyrairad {
 			const col = $(this).data("col");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
-			RandomTrigger = true;
+
 		
 		
 
@@ -133,15 +150,15 @@ class Fyrairad {
 			} else {
 				PlayerTurnValue = -1;
 			}
+			that.player.score++;
 
 			VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
-			console.log(VirtualBoard);
 
 			const vinnare = that.kollEfterVinnare(
 				sistaTommaCellen.data("rad"),
 				sistaTommaCellen.data("col")
 				)
-			vinnare
+			
 			if (vinnare){
 				//gör så att spelet sluta när man vunnit
 				that.speletSlut = true;
@@ -150,18 +167,11 @@ class Fyrairad {
 				alert('Spelet är över. ' + spelare + ' has Get gud!');
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
-				return;
+				highScore.addScore(that.player);
 			}
-
 
 			//bytter spelare
 			that.player = (that.player === that.player1) ? that.player2 : that.player1;
-			//för att räkna score
-			if(that.player == that.player2){
-				that.scoreP2++;
-			} else {
-				that.scoreP1++;
-			}
 			//för att räkna score
 			that.spelare1Score();
 			that.spelare2Score();
@@ -175,10 +185,6 @@ class Fyrairad {
 		//kollar efter en vinnare
 		kollEfterVinnare(rad, col){
 			const that = this;
-
-			// If someone has won, then save the new highscore
-			//highScore.addScore(this.player);
-
 
 			//få cell
 			function fåCell(i, j) {
