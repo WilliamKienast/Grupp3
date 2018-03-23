@@ -15,10 +15,18 @@ let RandomTrigger = true;
 
 class Fyrairad {
 	constructor(selector){
+		this.load(selector);
+	}
+
+	async load(selector) {
 		this.rader = 6;
 		this.cols = 7;
-		this.player1 = new player("name load", 0, "blue", 1);
-		this.player2 = new player("The name2 from the json file", 0, "pink", 2);
+		let jsonPlayers = await JSON._load('registration');
+		this.player1 = new player(jsonPlayers[0].name, 0, "blue", 1);
+		this.player2 = new player(jsonPlayers[1].name, 0, "pink", 2);
+        $("#p1").text(this.player1.name + ' Score: ');
+        $("#p2").text(this.player2.name + ' Score: ');
+		
 		this.player = this.player1;
 		this.selector = selector;
 		this.speletSlut = false;
