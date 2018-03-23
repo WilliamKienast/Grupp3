@@ -17,16 +17,24 @@ class Fyrairad {
 	constructor(selector){
 		this.rader = 6;
 		this.cols = 7;
-		this.player1 = new player("lode from json file per", 0, "blue", 1);
-		this.player2 = new player("Eva", 0, "pink", 2);
+		this.player1 = new player("name load", 0, "blue", 1);
+		this.player2 = new player("The name2 from the json file", 0, "pink", 2);
 		this.player = this.player1;
 		this.selector = selector;
 		this.speletSlut = false;
-		this.onSpelaresDrag = function() {};
-		this.spelare1Score = function() {};
-		this.spelare2Score = function() {};
 		this.createGrid();
 		this.setUpEvent();
+	}
+
+	onSpelaresDrag() {
+		$("#spelare").text(this.player.name);
+	}
+
+	spelare1Score() {
+        $("#scoreP1").text(this.player1.score);
+	}
+	spelare2Score() {
+        $("#scoreP2").text(this.player2.score);
 	}
 
 	createGrid() {
