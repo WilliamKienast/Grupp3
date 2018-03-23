@@ -60,18 +60,39 @@
             <p class="h4 text-center py-4">Choose player and enter name</p>
 
             <!-- Material input text -->
-            <div class="md-form">
-                <i class="fa fa-user prefix grey-text"></i>
-                <input type="name" id="materialFormPlayer1" class="form-control">
-                <label for="materialFormPlayer1" class="font-weight-light">Player one</label>
-            </div>
+          <form>
+      <div class="row">
+            <label for="materialFormPlayer1" class="font-weight-light">Player one</label>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2" id="p1" placeholder="Write your name here">
+    </div>
+    <div class="custom-control custom-radio">
+  <input type="radio" id="human1" name="customRadio" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio1">Human</label>
+</div>
+<div class="custom-control custom-radio">
+  <input type="radio" id="bot1" name="customRadio" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio2">Bot</label>
+</div>
+            
 
+    <div class="custom-control custom-radio">
+  <input type="radio" id="human1" name="customRadio" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio1">Human</label>
+</div>
+<div class="custom-control custom-radio">
+  <input type="radio" id="bot1" name="customRadio" class="custom-control-input">
+  <label class="custom-control-label" for="customRadio2">Bot</label>
+</div>
             <!-- Material input email -->
-            <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="name" id="materialFormPlayer2" class="form-control">
-                <label for="materialFormPlayer2" class="font-weight-light">Player two</label>
-            </div>
+            <label for="materialFormPlayer1" class="font-weight-light">Player two</label>
+              <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2" id="p2" placeholder="Write your name here">
+    </div>
 
             <div class="text-center py-4 mt-3">
           
