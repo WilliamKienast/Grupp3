@@ -42,8 +42,11 @@ class Fyrairad {
 		const board = $(this.selector);
 		//gör så att hela griden töms
 		board.empty();
+
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
 		this.speletSlut = false;
+		this.player1.score = 0;
+		this.player2.score = 0;
 		//RESET the values of VirutalBoard and number of clicks when restarting//
 		VirtualBoard =
 			[
@@ -124,6 +127,7 @@ class Fyrairad {
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
 			RandomTrigger = true;
+
 		
 		
 
