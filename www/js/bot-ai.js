@@ -2,6 +2,9 @@
 
 console.log("Exec botAi.cfg")
 let BotPlacementMade = false;
+BadPlacements = [null,null,null,null,null,null,null];
+
+
 
 
 //AI RANDOM - BOT//
@@ -98,6 +101,7 @@ class FortuneTeller  {
 			}
 
 			DoYourMagic () {
+				BadPlacements = [null,null,null,null,null,null,null];
 				BotPlacementMade = false;
 				this.Player1VictoryCheck();
 				this.Player2VictoryCheck();
@@ -192,64 +196,105 @@ class Scanner {
 		}
 	}
 
-           Scan() {
-           	this.checkForADraw();
-            this.check4InaRightDiagonal();
-            this.check4InaLeftDiagonal();
-            this.check4InaRow();
-            this.check4InaColumn();
-          }
+   Scan() {
+   	this.checkForADraw();
+    this.check4InaRightDiagonal();
+    this.check4InaLeftDiagonal();
+    this.check4InaRow();
+    this.check4InaColumn();
+  }
 
 
-          	PlaceAbrick() {
+  	PlaceAbrick() {
 		
-				Oracle.DoYourMagic();
-				let TempClick;
-				let RandomNumber;
-				RandomNumber = Math.floor((Math.random() * 7));
+		Oracle.DoYourMagic();
 
-				if (BotPlacementMade == false) {
-						RandomTrigger = false;				//When clicking on the main board RandomTrigger = true;
 
-						if ( (NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2] + NumberOfClicks[3] + NumberOfClicks[4] + NumberOfClicks[5] + NumberOfClicks[6]) < 42) {				//Stop the endless loop of 
-								while (RandomTrigger == false) {
-							//	while (BadPlacements.includes(RandomNumber) || EXIT < 1000) {
-								//			RandomNumber = Math.floor((Math.random() * 7) + 1);
-								//			EXIT = EXIT + 1
-								//			if (EXIT == 999) {											//GÖr att man efter att loopat 999 ggr och det endast finns BadPlacements kvar.
-								//				$('.ThisIsCol'+(RandomNumber)).trigger('click')			//Att man klickar på en dålig column. En BadPlacements kommer aldrig kunna vara den
-								//				break;													//Den sista brickan i en column eftersom badplacements alltid gället "the 2nd Draw"
-								//			}															//Från nuvarande tur.
-								//		}
+		if (BotPlacementMade == false) {
+			// 1. Check if we can't place ANYWHERE
+			let numEmpty = $('.col.tom').length;
+			if(numEmpty == 0){
+				alert("all places are full trigger restart fucntion?");
+				return;
+			}
 
-												$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger('click');
-												BotPlacementMade = true;
-												TempClick = (NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2] + NumberOfClicks[3] + NumberOfClicks[4] + NumberOfClicks[5] + NumberOfClicks[6]);
-												$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseenter");		//fixar så att skuggan brickan försvinner
-												$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseleave");
-												RandomNumber = Math.floor((Math.random() * 7));
-												
 
-												
-								}
-						} else {
-							alert("all places are full trigger restart fucntion?");
-						}
+			// 2. Check how many cols are NOT BAD and NOT FULL
+			let goodPlacements = [];
+			for (let i = 0; i < BadPlacements.length; ++i) {
+				if (BadPlacements[i] == null && NumberOfClicks[i] < 6) {
+					goodPlacements.push(i);
 				}
+			}
+
+			let availableCols = $('#fyraIRad .rad:first-child .col.tom');
+
+			// 3. If there are ONLY BAD places left, choose 1 of them randomly
+			if (goodPlacements.length == 0) {
+				let randomColIndex = Math.floor(Math.random() * availableCols.length);
+				$( availableCols[randomColIndex] ).click().trigger("mouseleave");
+				return;
+			}
+
+			// 4. Choose a random good placement
+			let randomColIndex = Math.floor(Math.random() * goodPlacements.length);
+			let rndCol = goodPlacements[randomColIndex];
+
+			$('.ThisIsCol'+(rndCol)+"Rad0").trigger('click').trigger("mouseleave");
+
+		}
+
+
 				
 
+		// let TempClick;
+		// let RandomNumber;
+		// RandomNumber = Math.floor((Math.random() * 7));
+		// let EXIT = 0;
+		// if (BotPlacementMade == false) {
+		// 		RandomTrigger = false;				//When clicking on the main board RandomTrigger = true;
 
+		// 		if ( (NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2] + NumberOfClicks[3] + NumberOfClicks[4] + NumberOfClicks[5] + NumberOfClicks[6]) < 42) {				//Stop the endless loop of 
+		// 				while (RandomTrigger == false) {
+		// 					console.log('aaaa', BadPlacements, RandomNumber);
+		// 				while (BadPlacements.includes(RandomNumber) && EXIT < 1000) {
+		// 							RandomNumber = Math.floor((Math.random() * 7));
+		// 							console.log("HEJ JAG AR INNE I LOOP EXIT", RandomNumber)
+		// 							EXIT = EXIT + 1;
+		// 							if (EXIT > 500) {
+		// 								EXIT = 1001;											//GÖr att man efter att loopat 999 ggr och det endast finns BadPlacements kvar.
+		// 								$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger('click');
+		// 								$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseleave");
+		// 								console.log("HEJ JAG AR INNE I LOOP EXIT")
+		// 								BotPlacementMade = true;			//Att man klickar på en dålig column. En BadPlacements kommer aldrig kunna vara den
+		// 								break;												//Den sista brickan i en column eftersom badplacements alltid gället "the 2nd Draw"
+		// 							}															//Från nuvarande tur.
+		// 						}
 
+		// 								if (BotPlacementMade == false) {
+		// 									if ($('.ThisIsCol'+(RandomNumber)+"Rad0").hasClass('tom')) {
+		// 										$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger('click');
+		// 										BotPlacementMade = true;
+		// 										RandomTrigger = true;
+		// 									}
+		// 									$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseleave");
+		// 									RandomNumber = Math.floor((Math.random() * 7));
+		// 									console.log("HEJ JAG AR INNE I LOOP RANDOM NUMBER")
+		// 								}
+								
+																				
+		// 						}
+		// 		} else {
+		// 			alert("all places are full trigger restart fucntion?");
+		// 		}
 	}
-
  }
 
 
 let Bot = new Scanner();
 
 
-//let EXIT = 0;
-//BadPlacements = [0,0,0,0,0,0,0];
+
 
 //if BadPlacements.includes(RandomNumber)
 

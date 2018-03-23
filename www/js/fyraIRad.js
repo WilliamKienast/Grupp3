@@ -134,7 +134,6 @@ class Fyrairad {
 			const col = $(this).data("col");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
-			RandomTrigger = true;
 
 		
 		
