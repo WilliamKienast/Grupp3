@@ -47,39 +47,30 @@
 </header>
 
             <main>
-              <div class="card bg-dark text-white">
-
-    <!-- Card body -->
-          <div class="card-body bg-dark text-white">
-          <h3 class = "text-white">Get In Touch With Us</h3>
-
-        <!-- Material form register -->
-        <form>
-            
-                <div class="form-group ">
-
-                  <div class="row ">
-                  <div class="col-md-6">
-                  <label for="firstName">First Name</label>  
-                  <input type="text " class="form-control " placeholder="First name">
-                  </div>
-                  <div class="col-md-6">
-                 <label for="lastName">Last Name</label>  
-                <input type="text" class="form-control" placeholder="Last name">
+              
+                <div class="card bg-dark">
+ 
+                <div class="card-body bg-dark text-white">
+ 
+                <form method="post" name="myemailform" action="form-to-email.php">
+                <h3 class="h3 text-center mb-4">Write to us</h3>
+                <label for="defaultFormContactNameEx" class="grey-text">Name</label>
+                <input type="text" name="name" id="defaultFormContactNameEx" class="form-control">
+                <br>
+                <label for="defaultFormContactEmailEx" class="grey-text">E-mail</label>
+                <input type="text" name="email" id="defaultFormContactEmailEx" class="form-control">
+                <br>
+                <label for="defaultFormContactSubjectEx" class="grey-text">Subject</label>
+                <input type="text" name="subject" id="defaultFormContactSubjectEx" class="form-control">
+                <br>
+                <label for="defaultFormContactMessageEx" class="grey-text">Your message</label>
+                <textarea name="message" id="defaultFormContactMessageEx" class="form-control" rows="3"></textarea>
+                <div class="text-center m-5">
+                <a class="button-link" href="registration.html">PLAY</a></div>
+                <input type="submit" value="Send Form">
+ 
                 </div>
-                </div>
-                
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> <br>
-                <p>Comments</p>
-                <textarea rows="6" cols="50" name="comment" form="usrform" >
-                 Enter text here...</textarea><br><br>      
-                         
-                <button type="submit" class="button-link">SUBMIT</button>
-              </div>
-            </form>
-          </div>
-        </div>
+ 
 
             
             </main>
