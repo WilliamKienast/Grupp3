@@ -2,18 +2,6 @@ $(document).ready(function() {
 	
 	const fyraIRad = new Fyrairad("#fyraIRad")
 
-	fyraIRad.onSpelaresDrag = function() {
-		$("#spelare").text(fyraIRad.player);
-	}
-
-    fyraIRad.spelare1Score = function() {
-        $("#scoreP1").text(fyraIRad.scoreP2);
-    }
-
-    fyraIRad.spelare2Score = function() {
-        $("#scoreP2").text(fyraIRad.scoreP1);
-    }
-
 	$("#startaOm").click(function() {
 		fyraIRad.startaOm();
 	});

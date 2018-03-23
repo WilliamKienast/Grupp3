@@ -15,18 +15,34 @@ let RandomTrigger = true;
 
 class Fyrairad {
 	constructor(selector){
+		this.load(selector);
+	}
+
+	async load(selector) {
 		this.rader = 6;
 		this.cols = 7;
-		this.player1 = new player("lode from json file per", 0, "blue", 1);
-		this.player2 = new player("Eva", 0, "pink", 2);
+		let jsonPlayers = await JSON._load('registration');
+		this.player1 = new player(jsonPlayers[0].name, 0, "blue", 1);
+		this.player2 = new player(jsonPlayers[1].name, 0, "pink", 2);
+        $("#p1").text(this.player1.name + ' Score: ');
+        $("#p2").text(this.player2.name + ' Score: ');
+		
 		this.player = this.player1;
 		this.selector = selector;
 		this.speletSlut = false;
-		this.onSpelaresDrag = function() {};
-		this.spelare1Score = function() {};
-		this.spelare2Score = function() {};
 		this.createGrid();
 		this.setUpEvent();
+	}
+
+	onSpelaresDrag() {
+		$("#spelare").text(this.player.name);
+	}
+
+	spelare1Score() {
+        $("#scoreP1").text(this.player1.score);
+	}
+	spelare2Score() {
+        $("#scoreP2").text(this.player2.score);
 	}
 
 	createGrid() {
@@ -34,8 +50,11 @@ class Fyrairad {
 		const board = $(this.selector);
 		//gör så att hela griden töms
 		board.empty();
+
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
 		this.speletSlut = false;
+		this.player1.score = 0;
+		this.player2.score = 0;
 		//RESET the values of VirutalBoard and number of clicks when restarting//
 		VirtualBoard =
 			[
@@ -116,6 +135,7 @@ class Fyrairad {
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
 			RandomTrigger = true;
+
 		
 		
 
