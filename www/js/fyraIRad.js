@@ -8,7 +8,7 @@ let 		VirtualBoard =
   			[0,0,0,0,0,0,0],
   			];
 
-let 		NumberOfClicks = [0,0,0,0,0,0,0]
+let 		NumberOfClicks = [null,null,null,null,null,null,null]
 let RandomTrigger = true;
 
 
@@ -47,7 +47,7 @@ class Fyrairad {
   			[0,0,0,0,0,0,0],
   			];
 
-  		NumberOfClicks = [0,0,0,0,0,0,0]
+  		NumberOfClicks = [null,null,null,null,null,null,null]
 
 
 		//vi Loppar igenom varje rad och skapar en Div till varje rad
