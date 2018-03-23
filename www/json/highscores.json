@@ -1,10 +1,14 @@
 [
   {
-    "playername": "name load",
+    "playername": "jeppe",
     "score": 4
   },
   {
     "playername": "lode from json file per",
+    "score": 4
+  },
+  {
+    "playername": "name load",
     "score": 4
   },
   {
@@ -28,15 +32,11 @@
     "score": 11
   },
   {
-    "playername": "Poury",
-    "score": 15
+    "playername": "The name2 from the json file",
+    "score": 12
   },
   {
-    "playername": "lode from json file per",
-    "score": 17
-  },
-  {
-    "playername": "Cecilia",
-    "score": 40
+    "playername": "name load",
+    "score": 14
   }
 ]
