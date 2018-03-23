@@ -1,10 +1,27 @@
 [
   {
+<<<<<<< HEAD
     "name": "mmm",
     "isBot": false
   },
   {
     "name": "555",
+=======
+<<<<<<< Updated upstream
+    "name": "Mattias",
     "isBot": false
+  },
+  {
+    "name": "The king",
+>>>>>>> master
+    "isBot": false
+=======
+    "name": "william",
+    "isBot": false
+  },
+  {
+    "name": "bot",
+    "isBot": true
+>>>>>>> Stashed changes
   }
 ]
