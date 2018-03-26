@@ -150,7 +150,12 @@ class Fyrairad {
 			} else {
 				PlayerTurnValue = -1;
 			}
+
 			that.player.score++;
+			//Making a DRAW so if player2
+				if(that.player1.score == 21 && that.player2.score == 21) {
+				alert("It's a DRAW!!");
+			}
 
 			VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
 
