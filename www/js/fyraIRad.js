@@ -168,8 +168,8 @@ class Fyrairad {
 				//gör så att spelet sluta när man vunnit
 				that.speletSlut = true;
 				
-				let spelare = prompt(`${that.player} Vad heter du?`)
-				alert('Spelet är över. ' + spelare + ' has Get gud!');
+				
+				alert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
 				highScore.addScore(that.player);
