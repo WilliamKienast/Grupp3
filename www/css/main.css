@@ -12,17 +12,23 @@ header{
 }
 
 
-#p1{
+#p1, #scoreP1{
 	color:#ff1493;
 	display: inline-block;
 	font-size: 20px;
 	font-weight: bold;
 }
-#p2{
+#p2 , #scoreP2{
 	color:blue;
 	display: inline-block;
 	font-size: 20px;
 	font-weight: bold;
+}
+#p2 {
+	margin-left: 40px;
+}
+#scoreP1, #scoreP2 {
+	margin-left: 10px;
 }
 
 
@@ -37,9 +43,7 @@ border-color: white;
 	display: inline-block;
 }
 
-#scoreP1 {
-	margin-right: 40px;
-}
+
 
 .col {
 	width: 80px;
