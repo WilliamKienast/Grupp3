@@ -108,13 +108,14 @@ class Fyrairad {
 		//när man tar musen över en col så läser den här coden utav vart man är någon stans
 		//och visar vart man kan lägga sin "bricka"
 		board.on('mouseenter', '.col.tom', function() {
+			if(that.player.isBot){} else {
 			//ifall spelet är slut ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
 			//vi vill hitta den sista tomma cellen i den columen
 			const col = $(this).data('col');
 			//Vissar en markering över den sista tomma "brickan" alltså den längst ner i columen
 			const sistaTommaCellen = hittaSistaTommaCellen(col);
-			sistaTommaCellen.addClass(`hover-player${that.player.number}`);
+			sistaTommaCellen.addClass(`hover-player${that.player.number}`);}
 
 			
 		});
