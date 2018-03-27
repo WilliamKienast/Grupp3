@@ -155,9 +155,11 @@ class Fyrairad {
 
 			that.player.score++;
 			//Making a DRAW so if player2
+			if(that.speletSlut == false)
+			{
 				if(that.player1.score == 21 && that.player2.score == 21) {
 				alert("It's a DRAW!!");
-			}
+			}}
 
 			
 
