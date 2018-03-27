@@ -22,8 +22,8 @@ class Fyrairad {
 		this.rader = 6;
 		this.cols = 7;
 		let jsonPlayers = await JSON._load('registration');
-		this.player1 = new player(jsonPlayers[0].name, 0, "blue", 1);
-		this.player2 = new player(jsonPlayers[1].name, 0, "pink", 2);
+		this.player1 = new player(jsonPlayers[0].name, 0, "blue", 1, jsonPlayers[0].isBot);
+		this.player2 = new player(jsonPlayers[1].name, 0, "pink", 2, jsonPlayers[1].isBot);
         $("#p1").text(this.player1.name + ' Score: ');
         $("#p2").text(this.player2.name + ' Score: ');
 		
@@ -145,7 +145,9 @@ class Fyrairad {
 			sistaTommaCellen.addClass('player'+that.player.number);
 			sistaTommaCellen.data("spelare", that.player);
 			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
-			if(that.player.number == 1){
+			console.log(that.player);
+
+			if(that.player.number == 1){						
 				PlayerTurnValue = 1;
 			} else {
 				PlayerTurnValue = -1;
@@ -157,7 +159,10 @@ class Fyrairad {
 				alert("It's a DRAW!!");
 			}
 
+			
+
 			VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
+		
 
 			const vinnare = that.kollEfterVinnare(
 				sistaTommaCellen.data("rad"),
@@ -185,6 +190,20 @@ class Fyrairad {
 			//Vi triggar igång mouseenter igen för att man ska se direkt när en spelare har tryckt
 			//Att den andra får sin "hover" färg och ser att det är sin tur
 			$(this).trigger("mouseenter");
+	
+			let clickedCol = $(this);
+            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
+           // let dataColAlternative2 = clickedCol.attr('data-col');
+
+        
+	        NumberOfClicks[dataCol] = NumberOfClicks[dataCol] + 1;
+           	console.log(NumberOfClicks)
+
+           	if (that.player.isBot == true) {
+           		Bot.PlaceAbrick();
+           	}
+
+
 		});
 	}
 		//kollar efter en vinnare
@@ -273,37 +292,37 @@ class Fyrairad {
 
 //FOR AI/ Click Counter
 //funktioner funkar men..blir knas när man trycker på starta om varför?? //
-$(document).ready(function() {
-    $('.col').click(function(){
-		console.log('click happened')
+// $(document).ready(function() {
+//     $('.col').click(function(){
 
-        let clickedCol = $(this);
-        if ($(this).hasClass('player1')) {
-           	console.log('player1')
-        } else if ($(this).hasClass('player2')) {
-           	console.log('player2')
-        } else {
+//         let clickedCol = $(this);
+//         if ($(this).hasClass('player1')) {
+//            	console.log('player1')
+//         } else if ($(this).hasClass('player2')) {
+//            	console.log('player2')
+//         } else {
 
-            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
-           // let dataColAlternative2 = clickedCol.attr('data-col');
-            if (dataCol == 0 && NumberOfClicks[0] < 6) {
-            	NumberOfClicks[0] = NumberOfClicks[0] + 1;
-           	} else if (dataCol == 1 && NumberOfClicks[1] < 6) {
-            	NumberOfClicks[1] = NumberOfClicks[1] + 1;
-            } else if (dataCol == 2 && NumberOfClicks[2] < 6) {
-            	NumberOfClicks[2] = NumberOfClicks[2] + 1;
-            } else if  (dataCol == 3 && NumberOfClicks[3] < 6) {
-            	NumberOfClicks[3] = NumberOfClicks[3] + 1;
-            } else if (dataCol == 4 && NumberOfClicks[4] < 6) {
-            	NumberOfClicks[4] = NumberOfClicks[4] + 1;
-            } else if (dataCol == 5 && NumberOfClicks[5] < 6) {
-            	NumberOfClicks[5] = NumberOfClicks[5] + 1;
-            } else if (dataCol == 6 && NumberOfClicks[6] < 6) {
-            	NumberOfClicks[6] = NumberOfClicks[6] + 1;
-           	}
+//             let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
+//            // let dataColAlternative2 = clickedCol.attr('data-col');
+//             if (dataCol == 0 && NumberOfClicks[0] < 6) {
+//             	NumberOfClicks[0] = NumberOfClicks[0] + 1;
+//            	} else if (dataCol == 1 && NumberOfClicks[1] < 6) {
+//             	NumberOfClicks[1] = NumberOfClicks[1] + 1;
+//             } else if (dataCol == 2 && NumberOfClicks[2] < 6) {
+//             	NumberOfClicks[2] = NumberOfClicks[2] + 1;
+//             } else if  (dataCol == 3 && NumberOfClicks[3] < 6) {
+//             	NumberOfClicks[3] = NumberOfClicks[3] + 1;
+//             } else if (dataCol == 4 && NumberOfClicks[4] < 6) {
+//             	NumberOfClicks[4] = NumberOfClicks[4] + 1;
+//             } else if (dataCol == 5 && NumberOfClicks[5] < 6) {
+//             	NumberOfClicks[5] = NumberOfClicks[5] + 1;
+//             } else if (dataCol == 6 && NumberOfClicks[6] < 6) {
+//             	NumberOfClicks[6] = NumberOfClicks[6] + 1;
+//            	}
 
-           	console.log(NumberOfClicks)
-        }
-   	});
-});
+//            	console.log(NumberOfClicks)
+         	
+//        		}
+//    	});
+// });
 

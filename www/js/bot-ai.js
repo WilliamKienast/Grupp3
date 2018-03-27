@@ -1,6 +1,6 @@
 
 
-console.log("Exec botAi.cfg")
+console.log("Exec botAi2.cfg")
 let BotPlacementMade = false;
 BadPlacements = [null,null,null,null,null,null,null];
 
