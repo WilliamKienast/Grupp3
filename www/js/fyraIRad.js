@@ -22,8 +22,8 @@ class Fyrairad {
 		this.rader = 6;
 		this.cols = 7;
 		let jsonPlayers = await JSON._load('registration');
-		this.player1 = new player(jsonPlayers[0].name, 0, "blue", 1, jsonPlayers[0].isBot);
-		this.player2 = new player(jsonPlayers[1].name, 0, "pink", 2, jsonPlayers[1].isBot);
+		this.player1 = new player(jsonPlayers[0].name, 0, "pink", 1, jsonPlayers[0].isBot);
+		this.player2 = new player(jsonPlayers[1].name, 0, "blue", 2, jsonPlayers[1].isBot);
         $("#p1").text(this.player1.name + ' Score: ');
         $("#p2").text(this.player2.name + ' Score: ');
 		
@@ -147,11 +147,11 @@ class Fyrairad {
 			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
 			console.log(that.player);
 
-			if(that.player.number == 1){						
-				PlayerTurnValue = 1;
-			} else {
-				PlayerTurnValue = -1;
-			}
+		//	if(that.player.number == 1){						
+		//		PlayerTurnValue = 1;
+		//	} else {
+		//		PlayerTurnValue = -1;
+		//	}
 
 			that.player.score++;
 			//Making a DRAW so if player2
@@ -163,7 +163,7 @@ class Fyrairad {
 
 			
 
-			VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
+			
 		
 
 			const vinnare = that.kollEfterVinnare(
@@ -199,12 +199,19 @@ class Fyrairad {
 
         
 	        NumberOfClicks[dataCol] = NumberOfClicks[dataCol] + 1;
-           	console.log(NumberOfClicks)
+           	//console.log(NumberOfClicks)
+
+           	if (that.player.isBot == true) {
+           		PlayerTurnValue = -1;
+           	} else {
+           		PlayerTurnValue = 1;
+           	}
+
+           	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
 
            	if (that.player.isBot == true) {
            		Bot.PlaceAbrick();
            	}
-
 
 		});
 	}

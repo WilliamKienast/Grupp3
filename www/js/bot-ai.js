@@ -49,10 +49,10 @@ class FortuneTeller  {
 						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 1;
 						Bot.Scan();
 						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
-						if (TheBotKnowsIfPlayer1CanWin == true) {
-							$('.ThisIsCol'+i+"Rad0").trigger('click')
-							console.log("Bot finds Player 1 can win!")
-							BotPlacementMade = true
+						if (TheBotKnowsIfPlayer1CanWin == true && BotPlacementMade == false) {
+							$('.ThisIsCol'+i+"Rad0").trigger('click');
+							console.log("Bot finds Player with Turnvalue 1 can win!");						//BOT IS ALWAYS TURNVALUE 1
+							BotPlacementMade = true;
 							$('.ThisIsCol0Rad0').trigger("mouseleave");
 							TheBotKnowsIfPlayer1CanWin = false;
 						}
@@ -67,10 +67,10 @@ class FortuneTeller  {
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = -1;
 								Bot.Scan();
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
-								if (TheBotKnowsIfPlayer2CanWin == true) {
-									$('.ThisIsCol'+i+"Rad0").trigger('click')
-									console.log("Bot finds Player 2 can win!")
-									BotPlacementMade = true
+								if (TheBotKnowsIfPlayer2CanWin == true && BotPlacementMade == false) {
+									$('.ThisIsCol'+i+"Rad0").trigger('click');
+									console.log("Bot finds Player with Turnvalue -1 can win!");
+									BotPlacementMade = true;
 									$('.ThisIsCol0Rad0').trigger("mouseleave");
 									TheBotKnowsIfPlayer2CanWin = false;
 									
@@ -85,12 +85,12 @@ class FortuneTeller  {
 							for (var i=0; i < 7; i++) {
 								if (4-NumberOfClicks[i] >= 0) {							//THis does so you dont try to add a number outside the col
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = -1;
-									console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that col
+							//		console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that col
 									Bot.Scan();
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = 0;
 									if (TheBotKnowsIfPlayer2CanWin == true) {											//only allows the loop if there a potential win 2nd turn
-										BadPlacements [i] = i
-										console.log("Bot finds that " +i+ "is a bad col due the 2nd draw")
+										BadPlacements [i] = i;
+										console.log("Bot finds that " +i+ "is a bad col due the 2nd draw");
 										//alert("The bot knows player2 wins 2nd turn if u place a brick in col " + i );
 																		//resetting the value so it doesnt affekt next check
 										TheBotKnowsIfPlayer2CanWin = false;												//resetting the memory of the win condition. otherwise the bot would think that any placement after the wincondition is met is a win.
@@ -214,7 +214,6 @@ class Scanner {
 			// 1. Check if we can't place ANYWHERE
 			let numEmpty = $('.col.tom').length;
 			if(numEmpty == 0){
-				alert("all places are full trigger restart fucntion?");
 				return;
 			}
 
