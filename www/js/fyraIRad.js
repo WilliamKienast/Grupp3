@@ -51,8 +51,16 @@ class Fyrairad {
 	}
 
 	delayedAlert(message){
+	if (this.player.isBot == false) {
 		$("#modal-winner .player-name").text(this.player.name);
 		setTimeout(() => $("#modal-winner").modal("show"));
+	} else if (this.player1.isBot == true && this.player2.isBot == true){
+		$("#modal-twobots .player-name").text(this.player.name);
+		setTimeout(() => $("#modal-twobots").modal("show"));
+	} else {
+		setTimeout(() => $("#modal-defeated").modal("show"));
+	}
+
 	}
 	
 	createGrid() {
@@ -186,7 +194,7 @@ class Fyrairad {
 			if(that.speletSlut == false)
 			{
 				if(that.player1.score == 21 && that.player2.score == 21) {
-				that.delayedAlert("It's a DRAW!!");
+				setTimeout(() => $("#modal-draw").modal("show"));
 			}}
 
 			
