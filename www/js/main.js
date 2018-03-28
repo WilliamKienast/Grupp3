@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+    if(!location.href.includes('game.html')){ return; }
+    
 	const fyraIRad = new Fyrairad("#fyraIRad")
 
 	$("#startaOm").click(function() {
