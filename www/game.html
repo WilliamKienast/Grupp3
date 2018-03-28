@@ -6,7 +6,7 @@
 			 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 			<link rel="stylesheet" href="./css/main.css">
 			<link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/effects.css">
+  			<link rel="stylesheet" href="css/effects.css">
 			<script src="./js/libs/jquery.js"></script>
 			<script src="./js/libs/bootstrap.js"></script>
     		<script src="./js/libs/popper.js"></script>
@@ -18,8 +18,6 @@
 			<link rel="stylesheet" href="./css/button.css">-->
 
     		<script src="./jsonflex.js"></script>
-
-    		
 			<script src="./js/main.js"></script>
 			<script src="./js/highscore.js"></script>
 			<script src="./js/player.js"></script>
@@ -28,46 +26,46 @@
 
 			
 		</head>
-		<body>
-			<div class="center">
-				<header>
-						 <div class="d-flex justify-content-center">
-							<a class="button-link" href="index.html">Home</button></a>
-							<a class="button-link" id="startaOm">Restart</button></a>
-					     </div>
-				
-				</header> 	
-		
+			<body>
+				<div class="center">
+					<header>
+							 <div class="d-flex justify-content-center">
+								<a class="button-link" href="index.html">Home</button></a>
+								<a class="button-link" id="startaOm">Restart</button></a>
+						     </div>
+					
+					</header> 	
 			
-				<div id="fyraIRad">
-				</div>
-			</div>
-		<!-- <br> betyder line break, använder den så att starta om kanppen är under spelbordet -->
-		<br>
+				
+					<div id="fyraIRad">
+					</div>
+							
+			
+							
 
 
-		<!-- fake lista som man skapar med js som sen flyttas hit
-			<ul id="navp">
-</ul> -->
-		
-		
-		<div class="container-fluid playerdisplay">
-			<div class="row">
-				<div class="col-12 col-sm-6">
-					<p id="p1">Player-1 Score: </p><p id="scoreP1">0</p>
-				</div>
-				<div class="col-12 col-sm-6">
-					<p id="p2">Player-2 Score: </p><p id="scoreP2">0</p>
-				</div>
-			</div>
-		</div>
+			<!-- fake lista som man skapar med js som sen flyttas hit
+				<ul id="navp">
+	</ul> -->
+			
+			
+					<div class="container-fluid mt-2 playerdisplay">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<p id="p1">Player-1 Score: </p><p id="scoreP1">0</p>
+							</div>
+							<div class="col-12 col-sm-6">
+								<p id="p2">Player-2 Score: </p><p id="scoreP2">0</p>
+							</div>
+						</div>
+					</div>
 
-
+<!-- MODAL WINNER-->
 		<div class="modal fade" id="modal-winner" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title" id="exampleModalLongTitle">Grattis <span class="player-name"></span></h1>
+			        <h1 class="modal-title" id="exampleModalLongTitle">Congratulations <span class="player-name"></span> you have won!<br><img src="./imgs/pokal.jpg"></h1>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -81,7 +79,70 @@
 			    </div>
 			  </div>
 		</div>
-	
+
+<!-- MODAL DRAW -->
+			<div class="modal fade" id="modal-draw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document"> 
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title" id="exampleModalLongTitle">It's a Draw!<img src="./imgs/draw.jpg"></h1>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			       <span class="da.winner"></span>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+		</div>
+
+<!-- MODAL DEFEATED -->
+		<div class="modal fade" id="modal-defeated" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title" id="exampleModalLongTitle"><span class="player-name"></span><img src="./imgs/youloose.png"></h1>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			       <span class="da.winner"></span>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+		</div>
+
+<!-- MODAL TWO BOTS -->
+		<div class="modal fade" id="modal-twobots" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title" id="exampleModalLongTitle">BOT FIGHT! Winner is <span class="player-name"></span>
+			        	<img src="./imgs/botvsbot.jpg"</h1>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			       <span class="da.winner"></span>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+		</div>
+
 	</body>
+		
+			</body>
 		
 </html>
