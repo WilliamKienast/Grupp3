@@ -45,6 +45,10 @@ class Fyrairad {
         $("#scoreP2").text(this.player2.score);
 	}
 
+	delayedAlert(message){
+		setTimeout(() => alert(message), 100);
+	}
+	
 	createGrid() {
 		// tar saker från constructorn och lägger i board
 		const board = $(this.selector);
@@ -139,7 +143,7 @@ class Fyrairad {
 
 		//skapar en "bricka" som sätt längst ner på columen, ifall det redan e en bricka längst ner sätts den
 		//brickan på den andra.
-		board.on("click", ".colu.tom" , function() {
+		board.on("click", ".col.tom" , function() {
 			//Ifall sppelet är slut så ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
 
@@ -170,7 +174,7 @@ class Fyrairad {
 			if(that.speletSlut == false)
 			{
 				if(that.player1.score == 21 && that.player2.score == 21) {
-				alert("It's a DRAW!!");
+				that.delayedAlert("It's a DRAW!!");
 			}}
 
 			
@@ -188,7 +192,7 @@ class Fyrairad {
 				that.speletSlut = true;
 				
 				
-				alert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
+				that.delayedAlert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".colu.tom").removeClass("tom");
 				if(that.player.isBot){
@@ -320,6 +324,9 @@ class Fyrairad {
 				this.onSpelaresDrag();
 				this.spelare1Score();
 				this.spelare2Score();
+				if (this.player.isBot == true) {
+					Bot.PlaceAbrick();
+				}
 			}
 		
 	}
