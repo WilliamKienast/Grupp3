@@ -243,7 +243,7 @@ class Fyrairad {
            	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
 
           	if (that.player.isBot == true) {
-	          	if (player1.isBot == true && player2.isBot == true) {
+	          	if (that.player1.isBot == true && that.player2.isBot == true) {
 	           		Inverter.invertBoard();
 	  			}
            		Bot.PlaceAbrick();
