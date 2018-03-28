@@ -275,8 +275,25 @@ class Scanner {
 
   }
 
+  	PlaceAbrick(){
+  		window.blockPlayerClick = true
+  		console.log("STEP 1")
+  		setTimeout(() => this.PlaceAbrickStep2(), 300);
+  	}
 
-  	PlaceAbrick() {
+
+//function(){
+//	this.PlaceAbrickStep2()
+//}
+//
+//above equals below. arrowsfunctions
+//
+//() => this.PlaceAbrickStep2()
+
+
+  	PlaceAbrickStep2() {
+  		window.blockPlayerClick = false
+  		console.log("STEP 2")
 		Oracle.DoYourMagic();
 
 
