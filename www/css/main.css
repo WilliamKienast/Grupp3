@@ -118,6 +118,14 @@ border-color: white;
 	color:white;
 	
 }
+
+@media screen and (max-width: 320px) {
+.form-check { 
+
+padding-left: 17px;
+
+} 
+
 /*phone standing*/
 @media screen and (max-width: 400px) {
     .colu {
