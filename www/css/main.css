@@ -150,11 +150,13 @@ border-color: white;
 		border-top-left-radius: 40px;
 		
 	}
-	.hover-player-1 {
+	.hover-player1 {
 	background-color: black;
+	opacity: 1;
 	}
-	.hover-player-2 {
-			background-color: black;
+	.hover-player2 {
+	background-color: black;
+	opacity: 1;
 	}
 	
 }
@@ -188,11 +190,13 @@ border-color: white;
 		border-top-left-radius: 40px;
 		
 	}
-	.hover-player-1 {
-		background-color: black;
+	.hover-player1 {
+	background-color: black;
+	opacity: 1;
 	}
-	.hover-player-2 {
-			background-color: black;
+	.hover-player2 {
+	background-color: black;
+	opacity: 1;
 	}
 
 }
