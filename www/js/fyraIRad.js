@@ -62,11 +62,12 @@ class Fyrairad {
 		board.empty();
 
 		//kod för att få det att visa att player 1 är först ut
-				$("#scoreP1").css("font-size", "30px");
-				$("#p1").css("font-size", "30px");
-				$("#scoreP2").css("font-size", "20px");
-				$("#p2").css("font-size", "20px");
-				$("#p2").css("margin-left", "20px");
+				$("#scoreP1").css("font-size", "28px");
+				$("#p1").css("font-size", "28px");
+				$("#p1").css("padding-top", "0px");
+				$("#p2").css("padding-top", "8px");
+				
+
 					
 
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
@@ -161,6 +162,7 @@ class Fyrairad {
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
 
+
 		
 		
 
@@ -214,15 +216,21 @@ class Fyrairad {
 		
 
 				if(that.player == that.player1){
-				$("#scoreP1").css("font-size", "30px");
-				$("#p1").css("font-size", "30px");
+				$("#scoreP1").css("font-size", "28px");
+				$("#p1").css("font-size", "28px");
+				$("#p1").css("padding-top", "0px");
 				$("#scoreP2").css("font-size", "20px");
 				$("#p2").css("font-size", "20px");
+				$("#p2").css("padding-top", "8px");
+				
 					} else {
-				$("#scoreP2").css("font-size", "30px");
-				$("#p2").css("font-size", "30px");
+				$("#scoreP2").css("font-size", "28px");
+				$("#p2").css("font-size", "28px");
+				$("#p2").css("padding-top", "0px");
 				$("#scoreP1").css("font-size", "20px");
 				$("#p1").css("font-size", "20px");
+				$("#p1").css("padding-top", "8px");
+				
 			}
 			//för att räkna score
 			that.spelare1Score();
