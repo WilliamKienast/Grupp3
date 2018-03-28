@@ -32,6 +32,9 @@ class Fyrairad {
 		this.speletSlut = false;
 		this.createGrid();
 		this.setUpEvent();
+		if (this.player.isBot == true) {
+		Bot.PlaceAbrick();
+		}
 	}
 
 	onSpelaresDrag() {
@@ -45,16 +48,26 @@ class Fyrairad {
         $("#scoreP2").text(this.player2.score);
 	}
 
+
 	createGrid() {
 		// tar saker från constructorn och lägger i board
 		const board = $(this.selector);
 		//gör så att hela griden töms
 		board.empty();
 
+		//kod för att få det att visa att player 1 är först ut
+				$("#scoreP1").css("font-size", "30px");
+				$("#p1").css("font-size", "30px");
+				$("#scoreP2").css("font-size", "20px");
+				$("#p2").css("font-size", "20px");
+				$("#p2").css("margin-left", "20px");
+					
+
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
 		this.speletSlut = false;
 		this.player1.score = 0;
 		this.player2.score = 0;
+		this.player = this.player1;
 		//RESET the values of VirutalBoard and number of clicks when restarting//
 		VirtualBoard =
 			[
@@ -88,6 +101,8 @@ class Fyrairad {
 		const board = $(this.selector);
 		//Gör så man får tillgång till this. Man behöver tillgång till this för att kuna bytta spelare
 		const that = this;
+		
+		
 
 		function hittaSistaTommaCellen(col) {
 			//ta alla columenr som har samma attribute data, alltså är på Samma rad lodrätt
@@ -180,11 +195,25 @@ class Fyrairad {
 				alert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
-				highScore.addScore(that.player);
+				if(that.player.isBot){
+
+				} else {
+				highScore.addScore(that.player);}
 			}
 
-			//bytter spelare
-			that.player = (that.player === that.player1) ? that.player2 : that.player1;
+		
+
+				if(that.player == that.player1){
+				$("#scoreP1").css("font-size", "30px");
+				$("#p1").css("font-size", "30px");
+				$("#scoreP2").css("font-size", "20px");
+				$("#p2").css("font-size", "20px");
+					} else {
+				$("#scoreP2").css("font-size", "30px");
+				$("#p2").css("font-size", "30px");
+				$("#scoreP1").css("font-size", "20px");
+				$("#p1").css("font-size", "20px");
+			}
 			//för att räkna score
 			that.spelare1Score();
 			that.spelare2Score();
@@ -203,14 +232,20 @@ class Fyrairad {
            	//console.log(NumberOfClicks)
 
            	if (that.player.isBot == true) {
-           		PlayerTurnValue = -1;
-           	} else {
            		PlayerTurnValue = 1;
+           	} else {
+           		PlayerTurnValue = -1;
            	}
+
+           		//bytter spelare
+			that.player = (that.player === that.player1) ? that.player2 : that.player1;
 
            	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
 
-           	if (that.player.isBot == true) {
+          	if (that.player.isBot == true) {
+	          	if (that.player1.isBot == true && that.player2.isBot == true) {
+	           		Inverter.invertBoard();
+	  			}
            		Bot.PlaceAbrick();
            	}
 
@@ -224,7 +259,7 @@ class Fyrairad {
 			function fåCell(i, j) {
 				return $(`.col[data-rad='${i}'][data-col='${j}']`);
 			}
-
+			//en funktion som gör att man kan kolla åt olika håll
 			function kollaMot(mot) {
 				let total = 0;
 				let i = rad + mot.i;
@@ -248,6 +283,7 @@ class Fyrairad {
 				const total = 1 +
 				kollaMot(motA) +
 				kollaMot(motB);
+				//Spelare med 4 i rad vinner
 				if (total >= 4) {
 					return that.player;
 				} else {
@@ -287,7 +323,7 @@ class Fyrairad {
 			 kollaDiagonaltTHtillBV() ||
 			 kollaDiagonaltBHtillTV();
 			}
-
+			//restart
 			startaOm() {
 				this.createGrid();
 				this.onSpelaresDrag();
@@ -297,8 +333,18 @@ class Fyrairad {
 		
 	}
 
-
-;
+class Invert {
+			
+	      invertBoard() {
+	        	let v = VirtualBoard;
+		  		for(let row = 0; row < v.length; row++){
+		  			for(let col = 0; col < v[row].length; col++){
+		  			v[row][col] = -v[row][col];
+		  			}
+		  		}
+	  		}
+	  	}
+let Inverter = new Invert;
 
 //FOR AI/ Click Counter
 //funktioner funkar men..blir knas när man trycker på starta om varför?? //

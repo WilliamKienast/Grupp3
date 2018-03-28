@@ -29,8 +29,6 @@ header{
 #scoreP1, #scoreP2 {
 	margin-left: 10px;
 }
-
-
 .img-fluid {
 border-radius: 15px;
 border-style: solid;
@@ -184,7 +182,7 @@ border-color: white;
 	.hover-player-2 {
 		
 	}
-<<<<<<< HEAD
+
 }
 
 
@@ -196,10 +194,8 @@ border-color: white;
 	height:80%;
 	width:80%;
 }
-=======
 
 
->>>>>>> Stashed changes
-=======
-}
->>>>>>> master
+
+
+

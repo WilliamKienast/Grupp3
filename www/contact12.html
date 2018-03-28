@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -51,19 +51,21 @@
                 <div class="card bg-dark">
  
                 <div class="card-body bg-dark text-white">
-                <h3 class="h3 text-center mb-4">Write to us</h3>
-    
+                <h3 class="h3 text-center mb-4">Write to us</h3>    
  
                 <form action="MAILTO:swapnasudha.gandhi@gmail.com" method="post" enctype="text/plain">
-                Name:<br>
+                <br>
 
-                <input type="text" name="user"/><br>
-                Email:<br>
-                <input type="email" name="mail"/><br>
+                <label for="defaultFormContactNameEx" class="grey-text">Name</label>
+                <input type="text" name="name" id="defaultFormContactNameEx" class="form-control">
+                <br>
+                <label for="defaultFormContactEmailEx" class="grey-text">E-mail</label>
+                <input type="text" name="email" id="defaultFormContactEmailEx" class="form-control">
+                <br>
                 <label for="defaultFormContactMessageEx" class="grey-text">Your message</label>
                 <textarea name="message" id="defaultFormContactMessageEx" class="form-control" rows="3"></textarea><br>
-                <input type="submit" value="Send"/>
-                <input type="Reset" value="Reset"/>
+                <input type="submit" class = "button-link" value="Send"/>
+                <input type="Reset" class = "button-link" value="Reset"/>
 
                  </form>
                 </div>
