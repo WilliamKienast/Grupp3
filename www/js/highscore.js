@@ -43,7 +43,8 @@ class HighScore {
         // Declare the variable x and let it have the value '' (empty string)
         let x = '';
 
-        x += '<div class="row text-white">' +
+        x +=    '<div class="card bg-dark text-white">' +
+                '<div class="row text-white">' +
                 '<div class="col-6"><h4>Names</h4></div>' +
                 '<div class="col-6"><h4>Scores</h4></div>' +
              '</div>';
