@@ -60,7 +60,6 @@ class Fyrairad {
 				$("#p1").css("font-size", "30px");
 				$("#scoreP2").css("font-size", "20px");
 				$("#p2").css("font-size", "20px");
-				$("#p2").css("margin-left", "20px");
 					
 
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
@@ -150,6 +149,7 @@ class Fyrairad {
 			const colu = $(this).data("colu");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
+			
 
 		
 		
