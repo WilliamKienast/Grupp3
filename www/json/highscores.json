@@ -8,40 +8,8 @@
     "score": 50
   },
   {
-<<<<<<< Updated upstream
-    "playername": "Bot-scrub",
-    "score": 100
-=======
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "Sajin matte",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "pelle",
-    "score": 4
-  },
-  {
-    "playername": "tttttt",
-    "score": 4
-  },
-  {
-    "playername": "Tobias",
-    "score": 4
->>>>>>> Stashed changes
-  }
+    "playername": "Bot-scrub", 
+    "score": 100 
+  } 
 ]
+ \ No newline at end of file 
