@@ -1,42 +1,15 @@
 [
   {
-    "playername": "",
-    "score": 4
+    "playername": "Someone",
+    "score": 20
   },
   {
-    "playername": "tobias",
-    "score": 4
+    "playername": "x2000",
+    "score": 50
   },
   {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "Tobias",
-    "score": 4
-  },
-  {
-    "playername": "tttttt",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "",
-    "score": 4
-  },
-  {
-    "playername": "Sajin matte",
-    "score": 4
-  }
+    "playername": "Bot-scrub", 
+    "score": 100 
+  } 
 ]
+ \ No newline at end of file 

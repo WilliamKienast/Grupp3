@@ -2,6 +2,7 @@ body{
   background-color: #777;
   background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
   padding-top: 0px;
+  overflow-x: hidden;
 }
 header{
 	margin-bottom: 10px;
@@ -125,7 +126,7 @@ border-color: white;
 	/*Gör så att det blir cirklar*/
 	
 	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
-	margin:5px;
+	margin:3px;
     }
     .playerdisplay {
 	background-color: transparent;
