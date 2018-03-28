@@ -1,6 +1,6 @@
 
 
-console.log("Exec botAi.cfg")
+console.log("Exec botAi2.cfg")
 let BotPlacementMade = false;
 BadPlacements = [null,null,null,null,null,null,null];
 
@@ -43,16 +43,17 @@ class FortuneTeller  {
 			//Player 2 is the player
 			//There is a walkaround for this but dont know this value for player function
 
+
 			Player1VictoryCheck() {
 				for (var i=0; i < 7; i++) {
 					if (5-NumberOfClicks[i] >= 0) {	
 						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 1;
 						Bot.Scan();
 						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
-						if (TheBotKnowsIfPlayer1CanWin == true) {
-							$('.ThisIsCol'+i+"Rad0").trigger('click')
-							console.log("Bot finds Player 1 can win!")
-							BotPlacementMade = true
+						if (TheBotKnowsIfPlayer1CanWin == true && BotPlacementMade == false) {
+							$('.ThisIsCol'+i+"Rad0").trigger('click');
+							console.log("Bot finds Player with Turnvalue 1 can win!");						//BOT IS ALWAYS TURNVALUE 1
+							BotPlacementMade = true;
 							$('.ThisIsCol0Rad0').trigger("mouseleave");
 							TheBotKnowsIfPlayer1CanWin = false;
 						}
@@ -67,10 +68,10 @@ class FortuneTeller  {
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = -1;
 								Bot.Scan();
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
-								if (TheBotKnowsIfPlayer2CanWin == true) {
-									$('.ThisIsCol'+i+"Rad0").trigger('click')
-									console.log("Bot finds Player 2 can win!")
-									BotPlacementMade = true
+								if (TheBotKnowsIfPlayer2CanWin == true && BotPlacementMade == false) {
+									$('.ThisIsCol'+i+"Rad0").trigger('click');
+									console.log("Bot finds Player with Turnvalue -1 can win!");
+									BotPlacementMade = true;
 									$('.ThisIsCol0Rad0').trigger("mouseleave");
 									TheBotKnowsIfPlayer2CanWin = false;
 									
@@ -85,12 +86,12 @@ class FortuneTeller  {
 							for (var i=0; i < 7; i++) {
 								if (4-NumberOfClicks[i] >= 0) {							//THis does so you dont try to add a number outside the col
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = -1;
-									console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that col
+							//		console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that col
 									Bot.Scan();
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = 0;
 									if (TheBotKnowsIfPlayer2CanWin == true) {											//only allows the loop if there a potential win 2nd turn
-										BadPlacements [i] = i
-										console.log("Bot finds that " +i+ "is a bad col due the 2nd draw")
+										BadPlacements [i] = i;
+										console.log("Bot finds that " +i+ "is a bad col due the 2nd draw");
 										//alert("The bot knows player2 wins 2nd turn if u place a brick in col " + i );
 																		//resetting the value so it doesnt affekt next check
 										TheBotKnowsIfPlayer2CanWin = false;												//resetting the memory of the win condition. otherwise the bot would think that any placement after the wincondition is met is a win.
@@ -100,12 +101,62 @@ class FortuneTeller  {
 				}
 			}
 
+			OfTwoAGoodStart() {
+				if (BotPlacementMade == false) {
+					if ((NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2]+NumberOfClicks[3]+NumberOfClicks[4]+NumberOfClicks[5]+NumberOfClicks[6]) < 6) {
+						console.log("number of lcikcs < 6")
+							if (NumberOfClicks[3] == null) {
+								$('.ThisIsCol3Rad0').trigger('click');
+								BotPlacementMade = true;
+								console.log("inne i if sats 1");
+							} else if (NumberOfClicks[2] == null) {
+								$('.ThisIsCol2Rad0').trigger('click');
+								BotPlacementMade = true;
+								console.log("inne i if sats 2");
+							} else if (NumberOfClicks[2] == null) {
+								$('.ThisIsCol4Rad0').trigger('click');
+								BotPlacementMade = true;
+								console.log("inne i if sats 3");
+
+							}
+
+					}
+				}
+			}
+
+		//	Player2Sumof3Check() {
+		//	if (BotPlacementMade == false) {
+		//				for (var i=0; i < 7; i++) {
+		//					if (5-NumberOfClicks[i] >= 0) {	
+		//						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = -1;
+		//						Bot.checkForPossible3inARow();
+		//						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
+		//						if (TheBotKnowsOpHasSumofTwo == true && BotPlacementMade == false) {
+		//							console.log("hej");
+		//							$('.ThisIsCol'+i+"Rad0").trigger('click');
+		//							console.log("Bot finds Player with Turnvalue -1 has two in a row");
+		//							BotPlacementMade = true;
+		//							$('.ThisIsCol0Rad0').trigger("mouseleave");
+		//							TheBotKnowsOpHasSumofTwo = false;
+		//							
+		//						}
+		//					}	
+		//				}
+		//			}
+		//	}
+
 			DoYourMagic () {
 				BadPlacements = [null,null,null,null,null,null,null];
 				BotPlacementMade = false;
+				TheBotKnowsIfPlayer1CanWin = false;
+ 				TheBotKnowsIfPlayer2CanWin = false;
+ 				TheBotKnowsOpHasSumofTwo = false;
+				TheBotKnowsItHasSumofTwo = false;
 				this.Player1VictoryCheck();
 				this.Player2VictoryCheck();
 				this.Player2VictoryCheck2ndDraw();
+				this.OfTwoAGoodStart();
+			//	this.Player2Sumof3Check();
 			}
 
 }						
@@ -117,6 +168,8 @@ let Oracle = new FortuneTeller();
 
 let TheBotKnowsIfPlayer1CanWin = false;
 let TheBotKnowsIfPlayer2CanWin = false;
+let TheBotKnowsOpHasSumofTwo = false;
+let TheBotKnowsItHasSumofTwo = false;
 
 //FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLUMNS & DIAGONALS)//
 class Scanner {
@@ -196,12 +249,30 @@ class Scanner {
 		}
 	}
 
+	//  checkForPossible3inARow() {
+	//	    for (var h = 0; h < 6; h++) {				//Kollar höjden
+	//	      for (var l = 0; l < 4; l++) {				//Kollar längden	* * * *
+	//	          if (VirtualBoard[0+h][0+l] + VirtualBoard[h][l+1] + VirtualBoard[h][l+2] + VirtualBoard[h][l+3] == -3) {
+	//	           TheBotKnowsOpHasSumofTwo = true;
+	//	          console.log("SCAN: OP HAS TWO IN A ROW AND EMPTY SPACES NEXT TO IT");
+	//	         } else if (VirtualBoard[0+h][0+l] + VirtualBoard[h][l+1] + VirtualBoard[h][l+2] + VirtualBoard[h][l+3] == 3) {
+	//	           TheBotKnowsItHasSumofTwo = true;
+	//	           console.log("SCAN: BOT HAS TWO IN ROWS AND EMPTY SPACES NEXT TO IT");          
+	//	         }
+	//	      }
+	//	    }
+	//	  }
+		 
+
+
    Scan() {
    	this.checkForADraw();
     this.check4InaRightDiagonal();
     this.check4InaLeftDiagonal();
     this.check4InaRow();
     this.check4InaColumn();
+ //   this.checkForPossible3inARow();
+
   }
 
 
@@ -214,7 +285,6 @@ class Scanner {
 			// 1. Check if we can't place ANYWHERE
 			let numEmpty = $('.col.tom').length;
 			if(numEmpty == 0){
-				alert("all places are full trigger restart fucntion?");
 				return;
 			}
 
