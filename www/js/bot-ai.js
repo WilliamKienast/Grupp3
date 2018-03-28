@@ -12,20 +12,20 @@ BadPlacements = [null,null,null,null,null,null,null];
 class MasterBot {
 	PlaceAbrick() {
 		
-						// FUNCTION SO THAT THE RANDOM NUMBER AINT A BAD SPOT ColXisBad//
+						// FUNCTION SO THAT THE RANDOM NUMBER AINT A BAD SPOT ColuXisBad//
 						
 						RandomNumber = Math.floor((Math.random() * 7) + 1);
 						while (RandomNumber === BadPlacements[0] || RandomNumber === BadPlacements[1] || RandomNumber === BadPlacements[2] || RandomNumber === BadPlacements[3] || RandomNumber === BadPlacements[4]|| RandomNumber === BadPlacements[5] || RandomNumber === BadPlacements[6] || EXIT == 1000) {
 									RandomNumber = Math.floor((Math.random() * 7) + 1);
 									EXIT = EXIT + 1
 									if (EXIT == 999) {											//GÖr att man efter att loopat 999 ggr och det endast finns BadPlacements kvar.
-										$('.ThisIsCol'+(RandomNumber)).trigger('click')			//Att man klickar på en dålig column. En BadPlacements kommer aldrig kunna vara den
-										break;													//Den sista brickan i en column eftersom badplacements alltid gället "the 2nd Draw"
+										$('.ThisIsColu'+(RandomNumber)).trigger('click')			//Att man klickar på en dålig coluumn. En BadPlacements kommer aldrig kunna vara den
+										break;													//Den sista brickan i en coluumn eftersom badplacements alltid gället "the 2nd Draw"
 									}															//Från nuvarande tur.
 								}
 
-									if (cols[RandomNumber-1][5] !== 1 || -1) {
-										$('.ThisIsCol'+(RandomNumber)).trigger('click');
+									if (colus[RandomNumber-1][5] !== 1 || -1) {
+										$('.ThisIsColu'+(RandomNumber)).trigger('click');
 									}
 						
 				}
@@ -51,10 +51,10 @@ class FortuneTeller  {
 						Bot.Scan();
 						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
 						if (TheBotKnowsIfPlayer1CanWin == true && BotPlacementMade == false) {
-							$('.ThisIsCol'+i+"Rad0").trigger('click');
+							$('.ThisIsColu'+i+"Rad0").trigger('click');
 							console.log("Bot finds Player with Turnvalue 1 can win!");						//BOT IS ALWAYS TURNVALUE 1
 							BotPlacementMade = true;
-							$('.ThisIsCol0Rad0').trigger("mouseleave");
+							$('.ThisIsColu0Rad0').trigger("mouseleave");
 							TheBotKnowsIfPlayer1CanWin = false;
 						}
 					}	
@@ -69,10 +69,10 @@ class FortuneTeller  {
 								Bot.Scan();
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
 								if (TheBotKnowsIfPlayer2CanWin == true && BotPlacementMade == false) {
-									$('.ThisIsCol'+i+"Rad0").trigger('click');
+									$('.ThisIsColu'+i+"Rad0").trigger('click');
 									console.log("Bot finds Player with Turnvalue -1 can win!");
 									BotPlacementMade = true;
-									$('.ThisIsCol0Rad0').trigger("mouseleave");
+									$('.ThisIsColu0Rad0').trigger("mouseleave");
 									TheBotKnowsIfPlayer2CanWin = false;
 									
 								}
@@ -84,15 +84,15 @@ class FortuneTeller  {
 			Player2VictoryCheck2ndDraw() {
 				if (BotPlacementMade == false) {
 							for (var i=0; i < 7; i++) {
-								if (4-NumberOfClicks[i] >= 0) {							//THis does so you dont try to add a number outside the col
+								if (4-NumberOfClicks[i] >= 0) {							//THis does so you dont try to add a number outside the colu
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = -1;
-							//		console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that col
+							//		console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that colu
 									Bot.Scan();
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = 0;
 									if (TheBotKnowsIfPlayer2CanWin == true) {											//only allows the loop if there a potential win 2nd turn
 										BadPlacements [i] = i;
-										console.log("Bot finds that " +i+ "is a bad col due the 2nd draw");
-										//alert("The bot knows player2 wins 2nd turn if u place a brick in col " + i );
+										console.log("Bot finds that " +i+ "is a bad colu due the 2nd draw");
+										//alert("The bot knows player2 wins 2nd turn if u place a brick in colu " + i );
 																		//resetting the value so it doesnt affekt next check
 										TheBotKnowsIfPlayer2CanWin = false;												//resetting the memory of the win condition. otherwise the bot would think that any placement after the wincondition is met is a win.
 									}
@@ -106,15 +106,15 @@ class FortuneTeller  {
 					if ((NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2]+NumberOfClicks[3]+NumberOfClicks[4]+NumberOfClicks[5]+NumberOfClicks[6]) < 6) {
 						console.log("number of lcikcs < 6")
 							if (NumberOfClicks[3] == null) {
-								$('.ThisIsCol3Rad0').trigger('click');
+								$('.ThisIsColu3Rad0').trigger('click');
 								BotPlacementMade = true;
 								console.log("inne i if sats 1");
 							} else if (NumberOfClicks[2] == null) {
-								$('.ThisIsCol2Rad0').trigger('click');
+								$('.ThisIsColu2Rad0').trigger('click');
 								BotPlacementMade = true;
 								console.log("inne i if sats 2");
 							} else if (NumberOfClicks[2] == null) {
-								$('.ThisIsCol4Rad0').trigger('click');
+								$('.ThisIsColu4Rad0').trigger('click');
 								BotPlacementMade = true;
 								console.log("inne i if sats 3");
 
@@ -133,10 +133,10 @@ class FortuneTeller  {
 		//						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
 		//						if (TheBotKnowsOpHasSumofTwo == true && BotPlacementMade == false) {
 		//							console.log("hej");
-		//							$('.ThisIsCol'+i+"Rad0").trigger('click');
+		//							$('.ThisIsColu'+i+"Rad0").trigger('click');
 		//							console.log("Bot finds Player with Turnvalue -1 has two in a row");
 		//							BotPlacementMade = true;
-		//							$('.ThisIsCol0Rad0').trigger("mouseleave");
+		//							$('.ThisIsColu0Rad0').trigger("mouseleave");
 		//							TheBotKnowsOpHasSumofTwo = false;
 		//							
 		//						}
@@ -171,7 +171,7 @@ let TheBotKnowsIfPlayer2CanWin = false;
 let TheBotKnowsOpHasSumofTwo = false;
 let TheBotKnowsItHasSumofTwo = false;
 
-//FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLUMNS & DIAGONALS)//
+//FUNCTION: SCANNING THE TABLE AFTER 4-IN-A-ROW (ROWS, COLuUMNS & DIAGONALS)//
 class Scanner {
 
   check4InaRow() {
@@ -189,16 +189,16 @@ class Scanner {
 		  }
 		 
 
-  check4InaColumn() {
+  check4InaColuumn() {
 		    for (var i = 0; i < 7; i++) {
 		          for (var c = 0; c < 3; c++) {
 		             if (VirtualBoard[c][i] + VirtualBoard[c+1][i] + VirtualBoard[c+2][i] + VirtualBoard[c+3][i] == 4) {
 		                TheBotKnowsIfPlayer1CanWin = true;
-		                console.log("SCAN: PLAYER1 HAS WON IN COLS");
+		                console.log("SCAN: PLAYER1 HAS WON IN COLuS");
 		               
 		             } else if (VirtualBoard[c][i] + VirtualBoard[c+1][i] + VirtualBoard[c+2][i] + VirtualBoard[c+3][i] == -4) {
 		                TheBotKnowsIfPlayer2CanWin = true; 
-		                console.log("SCAN: PLAYER2 HAS WON IN COLS"); 
+		                console.log("SCAN: PLAYER2 HAS WON IN COLuS"); 
 		             }
 		          	 }
 		     }
@@ -270,7 +270,7 @@ class Scanner {
     this.check4InaRightDiagonal();
     this.check4InaLeftDiagonal();
     this.check4InaRow();
-    this.check4InaColumn();
+    this.check4InaColuumn();
  //   this.checkForPossible3inARow();
 
   }
@@ -299,13 +299,13 @@ class Scanner {
 
 		if (BotPlacementMade == false) {
 			// 1. Check if we can't place ANYWHERE
-			let numEmpty = $('.col.tom').length;
+			let numEmpty = $('.colu.tom').length;
 			if(numEmpty == 0){
 				return;
 			}
 
 
-			// 2. Check how many cols are NOT BAD and NOT FULL
+			// 2. Check how many colus are NOT BAD and NOT FULL
 			let goodPlacements = [];
 			for (let i = 0; i < BadPlacements.length; ++i) {
 				if (BadPlacements[i] == null && NumberOfClicks[i] < 6) {
@@ -313,20 +313,20 @@ class Scanner {
 				}
 			}
 
-			let availableCols = $('#fyraIRad .rad:first-child .col.tom');
+			let availableColus = $('#fyraIRad .rad:first-child .colu.tom');
 
 			// 3. If there are ONLY BAD places left, choose 1 of them randomly
 			if (goodPlacements.length == 0) {
-				let randomColIndex = Math.floor(Math.random() * availableCols.length);
-				$( availableCols[randomColIndex] ).click().trigger("mouseleave");
+				let randomColuIndex = Math.floor(Math.random() * availableColus.length);
+				$( availableColus[randomColuIndex] ).click().trigger("mouseleave");
 				return;
 			}
 
 			// 4. Choose a random good placement
-			let randomColIndex = Math.floor(Math.random() * goodPlacements.length);
-			let rndCol = goodPlacements[randomColIndex];
+			let randomColuIndex = Math.floor(Math.random() * goodPlacements.length);
+			let rndColu = goodPlacements[randomColuIndex];
 
-			$('.ThisIsCol'+(rndCol)+"Rad0").trigger('click').trigger("mouseleave");
+			$('.ThisIsColu'+(rndColu)+"Rad0").trigger('click').trigger("mouseleave");
 
 		}
 
@@ -349,21 +349,21 @@ class Scanner {
 		// 							EXIT = EXIT + 1;
 		// 							if (EXIT > 500) {
 		// 								EXIT = 1001;											//GÖr att man efter att loopat 999 ggr och det endast finns BadPlacements kvar.
-		// 								$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger('click');
-		// 								$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseleave");
+		// 								$('.ThisIsColu'+(RandomNumber)+"Rad0").trigger('click');
+		// 								$('.ThisIsColu'+(RandomNumber)+"Rad0").trigger("mouseleave");
 		// 								console.log("HEJ JAG AR INNE I LOOP EXIT")
-		// 								BotPlacementMade = true;			//Att man klickar på en dålig column. En BadPlacements kommer aldrig kunna vara den
-		// 								break;												//Den sista brickan i en column eftersom badplacements alltid gället "the 2nd Draw"
+		// 								BotPlacementMade = true;			//Att man klickar på en dålig coluumn. En BadPlacements kommer aldrig kunna vara den
+		// 								break;												//Den sista brickan i en coluumn eftersom badplacements alltid gället "the 2nd Draw"
 		// 							}															//Från nuvarande tur.
 		// 						}
 
 		// 								if (BotPlacementMade == false) {
-		// 									if ($('.ThisIsCol'+(RandomNumber)+"Rad0").hasClass('tom')) {
-		// 										$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger('click');
+		// 									if ($('.ThisIsColu'+(RandomNumber)+"Rad0").hasClass('tom')) {
+		// 										$('.ThisIsColu'+(RandomNumber)+"Rad0").trigger('click');
 		// 										BotPlacementMade = true;
 		// 										RandomTrigger = true;
 		// 									}
-		// 									$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger("mouseleave");
+		// 									$('.ThisIsColu'+(RandomNumber)+"Rad0").trigger("mouseleave");
 		// 									RandomNumber = Math.floor((Math.random() * 7));
 		// 									console.log("HEJ JAG AR INNE I LOOP RANDOM NUMBER")
 		// 								}
@@ -391,5 +391,5 @@ let Bot = new Scanner();
 
 //placementArray.indexOf()
 
-//$('.ThisIsCol'+(RandomNumber)+"Rad0").trigger('click')
+//$('.ThisIsColu'+(RandomNumber)+"Rad0").trigger('click')
 

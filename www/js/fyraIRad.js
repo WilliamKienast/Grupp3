@@ -32,6 +32,11 @@ class Fyrairad {
 		this.speletSlut = false;
 		this.createGrid();
 		this.setUpEvent();
+		if (this.player.isBot == true) {
+			console.log("jag e bot oich kör");
+			Bot.PlaceAbrick();
+		}
+		console.log(this.player.isBot);
 	}
 
 	onSpelaresDrag() {
@@ -46,7 +51,8 @@ class Fyrairad {
 	}
 
 	delayedAlert(message){
-		setTimeout(() => alert(message), 100);
+		$("#modal-winner .player-name").text(this.player.name);
+		setTimeout(() => $("#modal-winner").modal("show"));
 	}
 	
 	createGrid() {
@@ -60,6 +66,7 @@ class Fyrairad {
 				$("#p1").css("font-size", "30px");
 				$("#scoreP2").css("font-size", "20px");
 				$("#p2").css("font-size", "20px");
+				$("#p2").css("margin-left", "20px");
 					
 
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
@@ -84,7 +91,7 @@ class Fyrairad {
 		//vi Loppar igenom varje rad och skapar en Div till varje rad
 		for (let rad = 0; rad < this.rader; rad++) {
 			const enrad = $('<div>').addClass('rad');
-			//Och inne i varje rad skapar vi 7 olika columner
+			//Och inne i varje rad skapar vi 7 olika coluumner
 			for (let colu = 0; colu < this.colus; colu++) {
 				const encolu = $('<div>').addClass("colu tom").addClass("ThisIsColu"+colu+"Rad"+rad)			//Gives each placement/circle a unique class
 				//attr står för addattribute()
@@ -104,7 +111,7 @@ class Fyrairad {
 		
 
 		function hittaSistaTommaCellen(colu) {
-			//ta alla columenr som har samma attribute data, alltså är på Samma rad lodrätt
+			//ta alla coluumenr som har samma attribute data, alltså är på Samma rad lodrätt
 			const cells = $(`.colu[data-colu='${colu}']`);
 			//kollar igenom alla celler baklänges
 			for(let i = cells.length - 1; i>= 0 ; i--) {
@@ -125,36 +132,39 @@ class Fyrairad {
 			if(that.player.isBot){} else {
 			//ifall spelet är slut ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
-			//vi vill hitta den sista tomma cellen i den columen
+			//vi vill hitta den sista tomma cellen i den coluumen
 			const colu = $(this).data('colu');
-			//Vissar en markering över den sista tomma "brickan" alltså den längst ner i columen
+			//Vissar en markering över den sista tomma "brickan" alltså den längst ner i coluumen
 			const sistaTommaCellen = hittaSistaTommaCellen(colu);
 			sistaTommaCellen.addClass(`hover-player${that.player.number}`);}
 
 			
 		});
 
-		//denna funktion gör så att man bara ser vilken colum man är på för tillfället och tar bort
+		//denna funktion gör så att man bara ser vilken coluum man är på för tillfället och tar bort
 		//dom man tidigare varit på
 		board.on("mouseleave", ".colu", function() {
 			$(".colu").removeClass(`hover-player${that.player.number}`);
 		});
 
-		//skapar en "bricka" som sätt längst ner på columen, ifall det redan e en bricka längst ner sätts den
+		//skapar en "bricka" som sätt längst ner på coluumen, ifall det redan e en bricka längst ner sätts den
 		//brickan på den andra.
 		board.on("click", ".colu.tom" , function() {
+
+			// don't allow player to click during bot move
+			if(window.blockPlayerClick){ return; }
+
 			//Ifall sppelet är slut så ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
 
 			const colu = $(this).data("colu");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
-			
 
 		
 		
 
-			//I en column finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
+			//I en coluumn finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
 			//Det vill säga ifall ngn fyllt up en "bricka" Då kommer den markera ovanför den "brickan"
 			const sistaTommaCellen = hittaSistaTommaCellen(colu);
 			sistaTommaCellen.removeClass(`tom hover-player${that.player.number}`);
@@ -201,8 +211,7 @@ class Fyrairad {
 				highScore.addScore(that.player);}
 			}
 
-			//bytter spelare
-			that.player = (that.player === that.player1) ? that.player2 : that.player1;
+		
 
 				if(that.player == that.player1){
 				$("#scoreP1").css("font-size", "30px");
@@ -233,14 +242,20 @@ class Fyrairad {
            	//console.log(NumberOfClicks)
 
            	if (that.player.isBot == true) {
-           		PlayerTurnValue = -1;
-           	} else {
            		PlayerTurnValue = 1;
+           	} else {
+           		PlayerTurnValue = -1;
            	}
+
+           		//bytter spelare
+			that.player = (that.player === that.player1) ? that.player2 : that.player1;
 
            	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("colu")] = PlayerTurnValue;
 
-           	if (that.player.isBot == true) {
+          	if (that.player.isBot == true) {
+	          	if (that.player1.isBot == true && that.player2.isBot == true) {
+	           		Inverter.invertBoard();
+	  			}
            		Bot.PlaceAbrick();
            	}
 
@@ -331,42 +346,15 @@ class Fyrairad {
 		
 	}
 
-
-;
-
-//FOR AI/ Click Counter
-//funktioner funkar men..blir knas när man trycker på starta om varför?? //
-// $(document).ready(function() {
-//     $('.colu').click(function(){
-
-//         let clickedColu = $(this);
-//         if ($(this).hasClass('player1')) {
-//            	console.log('player1')
-//         } else if ($(this).hasClass('player2')) {
-//            	console.log('player2')
-//         } else {
-
-//             let dataColu = clickedColu.data('colu');																//funkar men förstår inte vaför clicked.Colu.data automatiskt hämtar värdet i data-colu=? och inte andra ata värden?
-//            // let dataColuAlternative2 = clickedColu.attr('data-colu');
-//             if (dataColu == 0 && NumberOfClicks[0] < 6) {
-//             	NumberOfClicks[0] = NumberOfClicks[0] + 1;
-//            	} else if (dataColu == 1 && NumberOfClicks[1] < 6) {
-//             	NumberOfClicks[1] = NumberOfClicks[1] + 1;
-//             } else if (dataColu == 2 && NumberOfClicks[2] < 6) {
-//             	NumberOfClicks[2] = NumberOfClicks[2] + 1;
-//             } else if  (dataColu == 3 && NumberOfClicks[3] < 6) {
-//             	NumberOfClicks[3] = NumberOfClicks[3] + 1;
-//             } else if (dataColu == 4 && NumberOfClicks[4] < 6) {
-//             	NumberOfClicks[4] = NumberOfClicks[4] + 1;
-//             } else if (dataColu == 5 && NumberOfClicks[5] < 6) {
-//             	NumberOfClicks[5] = NumberOfClicks[5] + 1;
-//             } else if (dataColu == 6 && NumberOfClicks[6] < 6) {
-//             	NumberOfClicks[6] = NumberOfClicks[6] + 1;
-//            	}
-
-//            	console.log(NumberOfClicks)
-         	
-//        		}
-//    	});
-// });
-
+class Invert {
+			
+	      invertBoard() {
+	        	let v = VirtualBoard;
+		  		for(let row = 0; row < v.length; row++){
+		  			for(let colu = 0; colu < v[row].length; colu++){
+		  			v[row][colu] = -v[row][colu];
+		  			}
+		  		}
+	  		}
+	  	}
+let Inverter = new Invert;
