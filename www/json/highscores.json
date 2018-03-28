@@ -1,7 +1,10 @@
 [
   {
     "playername": "trdegye",
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     "score": 18
   },
   {
@@ -11,5 +14,46 @@
   {
     "playername": "tobias",
     "score": 33
+<<<<<<< Updated upstream
+=======
+
+    
+  },
+  {
+    "playername": "Irene",
+    "score": 4
+  },
+  {
+    "playername": "tobias",
+    "score": 4
+  },
+  {
+    "playername": "tttttt",
+    "score": 4
+  },
+  {
+    "playername": "Tobias",
+    "score": 4
+  },
+  {
+    "playername": "Irene",
+    "score": 4
+  },
+  {
+    "playername": "Tobias",
+    "score": 4
+  },
+  {
+    "playername": "Irene",
+    "score": 4
+  },
+  {
+    "playername": "Tobias",
+    "score": 4
+  },
+  {
+    "playername": "Tobias",
+    "score": 4
+>>>>>>> Stashed changes
   }
 ]
