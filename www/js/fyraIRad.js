@@ -51,10 +51,18 @@ class Fyrairad {
 		//gör så att hela griden töms
 		board.empty();
 
+		//kod för att få det att visa att player 1 är först ut
+				$("#scoreP1").css("font-size", "30px");
+				$("#p1").css("font-size", "30px");
+				$("#scoreP2").css("font-size", "20px");
+				$("#p2").css("font-size", "20px");
+					
+
 		//när man restartar kommer man tbx hit och med this.speletSlut = false; gör så man kan spela igen
 		this.speletSlut = false;
 		this.player1.score = 0;
 		this.player2.score = 0;
+		this.player = this.player1;
 		//RESET the values of VirutalBoard and number of clicks when restarting//
 		VirtualBoard =
 			[
@@ -88,6 +96,8 @@ class Fyrairad {
 		const board = $(this.selector);
 		//Gör så man får tillgång till this. Man behöver tillgång till this för att kuna bytta spelare
 		const that = this;
+		
+		
 
 		function hittaSistaTommaCellen(col) {
 			//ta alla columenr som har samma attribute data, alltså är på Samma rad lodrätt
@@ -185,6 +195,18 @@ class Fyrairad {
 
 			//bytter spelare
 			that.player = (that.player === that.player1) ? that.player2 : that.player1;
+
+				if(that.player == that.player1){
+				$("#scoreP1").css("font-size", "30px");
+				$("#p1").css("font-size", "30px");
+				$("#scoreP2").css("font-size", "20px");
+				$("#p2").css("font-size", "20px");
+					} else {
+				$("#scoreP2").css("font-size", "30px");
+				$("#p2").css("font-size", "30px");
+				$("#scoreP1").css("font-size", "20px");
+				$("#p1").css("font-size", "20px");
+			}
 			//för att räkna score
 			that.spelare1Score();
 			that.spelare2Score();
