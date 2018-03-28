@@ -53,11 +53,23 @@ class Fyrairad {
 	if (this.player.isBot == false) {
 		$("#modal-winner .player-name").text(this.player.name);
 		setTimeout(() => $("#modal-winner").modal("show"));
+		$('#winner-audio').trigger('play');
+        setTimeout(function(){
+            $('#winner-audio').trigger('pause');
+        }, 10000)
 	} else if (this.player1.isBot == true && this.player2.isBot == true){
 		$("#modal-twobots .player-name").text(this.player.name);
 		setTimeout(() => $("#modal-twobots").modal("show"));
+		$('#robot-audio').trigger('play');
+        setTimeout(function(){
+            $('#robot-audio').trigger('pause');
+        }, 10000)
 	} else {
 		setTimeout(() => $("#modal-defeated").modal("show"));
+		$('#loser-audio').trigger('play');
+        setTimeout(function(){
+            $('#loser-audio').trigger('pause');
+        }, 10000)
 	}
 
 	}

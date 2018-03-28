@@ -193,8 +193,9 @@ border-color: white;
 
 }
 
-
-
+.modal-body audio {
+  display: none;
+}
 
 
 .comment{
