@@ -77,12 +77,10 @@ border-color: white;
 }
 .colu.player1 {
 	background-color: #ff1493;
-	transition-duration: 2s;
 }
 
 .colu.player2 {
 	background-color: blue;
-	transition-duration: 2s;
 }
 /*När man har sin mus på en tom cell så kommer musen bli en pointer*/
 .colu.tom {
