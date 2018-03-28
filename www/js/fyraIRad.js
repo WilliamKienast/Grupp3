@@ -223,23 +223,7 @@ class Fyrairad {
 
 		
 
-				if(that.player == that.player1){
-				$("#scoreP1").css("font-size", "28px");
-				$("#p1").css("font-size", "28px");
-				$("#p1").css("padding-top", "0px");
-				$("#scoreP2").css("font-size", "20px");
-				$("#p2").css("font-size", "20px");
-				$("#p2").css("padding-top", "8px");
 				
-					} else {
-				$("#scoreP2").css("font-size", "28px");
-				$("#p2").css("font-size", "28px");
-				$("#p2").css("padding-top", "0px");
-				$("#scoreP1").css("font-size", "20px");
-				$("#p1").css("font-size", "20px");
-				$("#p1").css("padding-top", "8px");
-				
-			}
 			//för att räkna score
 			that.spelare1Score();
 			that.spelare2Score();
@@ -276,7 +260,23 @@ class Fyrairad {
            		Bot.PlaceAbrick();
            	}
 
-
+           	if(that.player == that.player1){
+				$("#scoreP1").css("font-size", "28px");
+				$("#p1").css("font-size", "28px");
+				$("#p1").css("padding-top", "0px");
+				$("#scoreP2").css("font-size", "20px");
+				$("#p2").css("font-size", "20px");
+				$("#p2").css("padding-top", "8px");
+				
+					} else {
+				$("#scoreP2").css("font-size", "28px");
+				$("#p2").css("font-size", "28px");
+				$("#p2").css("padding-top", "0px");
+				$("#scoreP1").css("font-size", "20px");
+				$("#p1").css("font-size", "20px");
+				$("#p1").css("padding-top", "8px");
+				
+			}
 
 		});
 

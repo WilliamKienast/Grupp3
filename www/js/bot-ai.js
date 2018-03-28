@@ -106,15 +106,15 @@ class FortuneTeller  {
 					if ((NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2]+NumberOfClicks[3]+NumberOfClicks[4]+NumberOfClicks[5]+NumberOfClicks[6]) < 6) {
 						console.log("number of lcikcs < 6")
 							if (NumberOfClicks[3] == null) {
-								$('.ThisIsColu3Rad0').trigger('click');
+								$('.ThisIsColu3Rad0').trigger('click').trigger("mouseleave");
 								BotPlacementMade = true;
 								console.log("inne i if sats 1");
 							} else if (NumberOfClicks[2] == null) {
-								$('.ThisIsColu2Rad0').trigger('click');
+								$('.ThisIsColu2Rad0').trigger('click').trigger("mouseleave");
 								BotPlacementMade = true;
 								console.log("inne i if sats 2");
 							} else if (NumberOfClicks[2] == null) {
-								$('.ThisIsColu4Rad0').trigger('click');
+								$('.ThisIsColu4Rad0').trigger('click').trigger("mouseleave");
 								BotPlacementMade = true;
 								console.log("inne i if sats 3");
 
