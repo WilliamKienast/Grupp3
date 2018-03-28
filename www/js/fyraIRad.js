@@ -336,6 +336,9 @@ class Fyrairad {
 				this.onSpelaresDrag();
 				this.spelare1Score();
 				this.spelare2Score();
+				if (this.player.isBot == true) {
+					Bot.PlaceAbrick();
+				}
 			}
 		
 	}
