@@ -191,7 +191,10 @@ class Fyrairad {
 				alert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".col.tom").removeClass("tom");
-				highScore.addScore(that.player);
+				if(that.player.isBot){
+
+				} else {
+				highScore.addScore(that.player);}
 			}
 
 			//bytter spelare
