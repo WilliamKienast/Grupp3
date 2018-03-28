@@ -86,9 +86,6 @@ border-color: white;
 .colu.tom {
 	cursor: crosshair;
 }
-#startaOm {
-	margin-top: 5px;
-}
 
 { 
     transform-origin:50% 50%;
@@ -102,7 +99,6 @@ border-color: white;
     100%{ transform:rotate(360deg); }
 }
 #startaOm {
-	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 	color: white;
 
 }
@@ -137,7 +133,6 @@ border-color: white;
     #startaOm {
 	
 	color:white;
-		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 	
 	
 	}
@@ -176,7 +171,6 @@ border-color: white;
     #startaOm {
 	
 	color:white;
-		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
 		
 	}
 	#bToHome {
