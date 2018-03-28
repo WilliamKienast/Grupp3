@@ -26,7 +26,6 @@ class Fyrairad {
 		this.player2 = new player(jsonPlayers[1].name, 0, "blue", 2, jsonPlayers[1].isBot);
         $("#p1").text(this.player1.name + ' Score: ');
         $("#p2").text(this.player2.name + ' Score: ');
-		
 		this.player = this.player1;
 		this.selector = selector;
 		this.speletSlut = false;
@@ -275,7 +274,10 @@ class Fyrairad {
            		Bot.PlaceAbrick();
            	}
 
+
+
 		});
+
 	}
 		//kollar efter en vinnare
 		kollEfterVinnare(rad, colu){
