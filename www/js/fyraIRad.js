@@ -32,6 +32,9 @@ class Fyrairad {
 		this.speletSlut = false;
 		this.createGrid();
 		this.setUpEvent();
+		if (this.player.isBot == true) {
+		Bot.PlaceAbrick();
+		}
 	}
 
 	onSpelaresDrag() {
@@ -44,6 +47,7 @@ class Fyrairad {
 	spelare2Score() {
         $("#scoreP2").text(this.player2.score);
 	}
+
 
 	createGrid() {
 		// tar saker från constructorn och lägger i board
@@ -197,8 +201,7 @@ class Fyrairad {
 				highScore.addScore(that.player);}
 			}
 
-			//bytter spelare
-			that.player = (that.player === that.player1) ? that.player2 : that.player1;
+		
 
 				if(that.player == that.player1){
 				$("#scoreP1").css("font-size", "30px");
@@ -229,14 +232,20 @@ class Fyrairad {
            	//console.log(NumberOfClicks)
 
            	if (that.player.isBot == true) {
-           		PlayerTurnValue = -1;
-           	} else {
            		PlayerTurnValue = 1;
+           	} else {
+           		PlayerTurnValue = -1;
            	}
+
+           		//bytter spelare
+			that.player = (that.player === that.player1) ? that.player2 : that.player1;
 
            	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
 
-           	if (that.player.isBot == true) {
+          	if (that.player.isBot == true) {
+	          	if (that.player1.isBot == true && that.player2.isBot == true) {
+	           		Inverter.invertBoard();
+	  			}
            		Bot.PlaceAbrick();
            	}
 
@@ -324,8 +333,18 @@ class Fyrairad {
 		
 	}
 
-
-;
+class Invert {
+			
+	      invertBoard() {
+	        	let v = VirtualBoard;
+		  		for(let row = 0; row < v.length; row++){
+		  			for(let col = 0; col < v[row].length; col++){
+		  			v[row][col] = -v[row][col];
+		  			}
+		  		}
+	  		}
+	  	}
+let Inverter = new Invert;
 
 //FOR AI/ Click Counter
 //funktioner funkar men..blir knas när man trycker på starta om varför?? //
