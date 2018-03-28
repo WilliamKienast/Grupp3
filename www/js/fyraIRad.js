@@ -224,7 +224,7 @@ class Fyrairad {
 			function fåCell(i, j) {
 				return $(`.col[data-rad='${i}'][data-col='${j}']`);
 			}
-
+			//en funktion som gör att man kan kolla åt olika håll
 			function kollaMot(mot) {
 				let total = 0;
 				let i = rad + mot.i;
@@ -248,6 +248,7 @@ class Fyrairad {
 				const total = 1 +
 				kollaMot(motA) +
 				kollaMot(motB);
+				//Spelare med 4 i rad vinner
 				if (total >= 4) {
 					return that.player;
 				} else {
@@ -287,7 +288,7 @@ class Fyrairad {
 			 kollaDiagonaltTHtillBV() ||
 			 kollaDiagonaltBHtillTV();
 			}
-
+			//restart
 			startaOm() {
 				this.createGrid();
 				this.onSpelaresDrag();
