@@ -24,6 +24,8 @@ header{
 	font-size: 20px;
 	font-weight: bold;
 }
+
+}
 #scoreP1, #scoreP2 {
 	margin-left: 10px;
 }
@@ -36,6 +38,10 @@ border-color: white;
 #fyraIRad {
 	background-color: #3d3d3d;
 	display: inline-block;
+}
+.regcardbody {
+	padding:0;
+	
 }
 
 
