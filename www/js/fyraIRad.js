@@ -73,6 +73,7 @@ class Fyrairad {
 				$("#p1").css("font-size", "28px");
 				$("#p1").css("padding-top", "0px");
 				$("#p2").css("padding-top", "8px");
+
 				
 
 					
@@ -244,9 +245,7 @@ class Fyrairad {
 			that.spelare2Score();
 			//Säger vems tur det är
 			that.onSpelaresDrag();
-			//Vi triggar igång mouseenter igen för att man ska se direkt när en spelare har tryckt
-			//Att den andra får sin "hover" färg och ser att det är sin tur
-			$(this).trigger("mouseenter");
+			
 	
 			let clickedColu = $(this);
             let dataColu = clickedColu.data('colu');																//funkar men förstår inte vaför clicked.Colu.data automatiskt hämtar värdet i data-colu=? och inte andra ata värden?
@@ -264,6 +263,9 @@ class Fyrairad {
 
            		//bytter spelare
 			that.player = (that.player === that.player1) ? that.player2 : that.player1;
+			//Vi triggar igång mouseenter igen för att man ska se direkt när en spelare har tryckt
+			//Att den andra får sin "hover" färg och ser att det är sin tur
+			$(this).trigger("mouseenter");
 
            	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("colu")] = PlayerTurnValue;
 
@@ -360,6 +362,7 @@ class Fyrairad {
 				if (this.player.isBot == true) {
 					Bot.PlaceAbrick();
 				}
+
 			}
 		
 	}
