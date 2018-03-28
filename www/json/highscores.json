@@ -1,20 +1,42 @@
 [
   {
+    "playername": "bot",
+    "score": 6
+  },
+  {
+    "playername": "asdasdas",
+    "score": 7
+  },
+  {
+    "playername": "asd2222",
+    "score": 9
+  },
+  {
+    "playername": "BOT WIN",
+    "score": 10
+  },
+  {
     "playername": "trdegye",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> master
     "score": 18
   },
   {
     "playername": "Mattias",
-    "score": 4
+    "score": 30
   },
   {
     "playername": "tobias",
     "score": 33
+<<<<<<< Updated upstream
 =======
->>>>>>> Stashed changes
-    "score": 4
+
+    
   },
   {
     "playername": "Irene",
@@ -51,5 +73,6 @@
   {
     "playername": "Tobias",
     "score": 4
+>>>>>>> Stashed changes
   }
 ]
