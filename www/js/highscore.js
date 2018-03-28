@@ -5,7 +5,7 @@ class HighScore {
         // Read hiscores from json file into this.data 
         this.readJsonData();
     }
-
+    
     async readJsonData(){
         this.data = await JSON._load('highscores');
 
@@ -27,7 +27,7 @@ class HighScore {
             // if it's the same score then just return the newest one
             return 1;
         });
-
+          
         console.log('new playerlist', this.data)
         // cut off bottom of list
         this.data = this.data.slice(0, this.limitRows);
@@ -58,6 +58,7 @@ class HighScore {
              '<div class="col-6">' + player.score +'</div>' +
              '</div>';
         }
+
         // Let jQuery grab the main element/tag and replace everything inside it 
         // with the content of x
         $('main').html(x);
