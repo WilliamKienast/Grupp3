@@ -1,5 +1,4 @@
 body{
-text-align: center;
   background-color: #777;
   background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
   padding-top: 0px;
@@ -10,7 +9,16 @@ header{
 .bot {
 	margin-left: 10px;
 }
+.center {
+	text-align: center;
+}
+.playerdisplay {
+	background-color: black;
+}
 
+.playerdisplay div div {
+	text-align:center;
+}
 
 #p1, #scoreP1{
 	color:#ff1493;
@@ -40,7 +48,7 @@ border-color: white;
 
 
 
-.col {
+.colu {
 	width: 80px;
 	height: 80px;
 	/*Gör så att våra col inte samlas imitten */
@@ -55,21 +63,23 @@ border-color: white;
 
 .hover-player1 {
 	background-color: #ff1493;
-	opacity: 0.6;
+	opacity: 0.5;
 }
 .hover-player2 {
 	background-color: blue;
-	opacity: 0.6;
+	opacity: 0.5;
 }
-.col.player1 {
+.colu.player1 {
 	background-color: #ff1493;
+	transition-duration: 2s;
 }
 
-.col.player2 {
+.colu.player2 {
 	background-color: blue;
+	transition-duration: 2s;
 }
 /*När man har sin mus på en tom cell så kommer musen bli en pointer*/
-.col.tom {
+.colu.tom {
 	cursor: crosshair;
 }
 #startaOm {
@@ -104,7 +114,7 @@ border-color: white;
 }
 /*phone standing*/
 @media screen and (max-width: 400px) {
-    .col {
+    .colu {
 	width: 37px;
 	height: 37px;
 	/*Gör så att våra col inte samlas imitten */
@@ -116,6 +126,9 @@ border-color: white;
 	/* Behövs för att fylla ut alla cirklar så att det inte finns vissa tomma mellanrum mellan dom*/
 	margin:5px;
     }
+    .playerdisplay {
+	background-color: transparent;
+	}
     #startaOm {
 	width: 155px;
 	height: 50px;
@@ -142,7 +155,7 @@ border-color: white;
 }
 /* Phone tilted*/
 @media screen and (max-width: 700px) {
-    .col {
+    .colu {
 	width: 37px;
 	height: 32px;
 	/*Gör så att våra col inte samlas imitten */

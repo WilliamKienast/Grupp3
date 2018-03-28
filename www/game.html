@@ -3,12 +3,20 @@
 		<head>
 			<meta charset="utf-8">
 			<title>fyra i rad</title>
-			<script src="./js/libs/jquery.js"></script>
-			<script type="text/javascript" src="./js/bot-ai.js"></script>
 			<link rel="stylesheet" href="./css/main.css">
+			<script src="./js/libs/jquery.js"></script>
+			<script src="./js/libs/bootstrap.js"></script>
+    		<script src="./js/libs/popper.js"></script>
+			<script type="text/javascript" src="./js/bot-ai.js"></script>
+			 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+			
+
 			<!--<link rel="stylesheet" href="./css/effects.css">
 			<link rel="stylesheet" href="./css/button.css">-->
+
     		<script src="./jsonflex.js"></script>
+
+    		
 			<script src="./js/main.js"></script>
 			<script src="./js/highscore.js"></script>
 			<script src="./js/player.js"></script>
@@ -18,17 +26,19 @@
 			
 		</head>
 		<body>
-			<header>
-				<a href="index.html"><button id="bToHome">Home</button></a>
-				<button id="startaOm">Starta om</button>
+			<div class="center">
+				<header>
+					<a href="index.html"><button id="bToHome">Home</button></a>
+					<button id="startaOm">Starta om</button>
+			
+				
+				</header> 	
 		
 			
-	</header> 	
-	
-		
-			<div id="fyraIRad">
+				<div id="fyraIRad">
 
-		</div>
+				</div>
+			</div>
 		<!-- <br> betyder line break, använder den så att starta om kanppen är under spelbordet -->
 		<br>
 
@@ -36,13 +46,19 @@
 		<!-- fake lista som man skapar med js som sen flyttas hit
 			<ul id="navp">
 </ul> -->
-		</body>
 		
-		<div class="scoreboard">
-		<p id="p1">Player-1 Score: </p><p id="scoreP1">0</p>
-		<p id="p2">Player-2 Score: </p><p id="scoreP2">0</p>
+		
+		<div class="container-fluid playerdisplay">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<p id="p1">Player-1 Score: </p><p id="scoreP1">0</p>
+				</div>
+				<div class="col-12 col-sm-6">
+					<p id="p2">Player-2 Score: </p><p id="scoreP2">0</p>
+				</div>
+			</div>
 		</div>
 	
+	</body>
 		
-		
-	</html>
+</html>

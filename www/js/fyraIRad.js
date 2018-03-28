@@ -20,7 +20,7 @@ class Fyrairad {
 
 	async load(selector) {
 		this.rader = 6;
-		this.cols = 7;
+		this.colus = 7;
 		let jsonPlayers = await JSON._load('registration');
 		this.player1 = new player(jsonPlayers[0].name, 0, "pink", 1, jsonPlayers[0].isBot);
 		this.player2 = new player(jsonPlayers[1].name, 0, "blue", 2, jsonPlayers[1].isBot);
@@ -32,9 +32,6 @@ class Fyrairad {
 		this.speletSlut = false;
 		this.createGrid();
 		this.setUpEvent();
-		if (this.player.isBot == true) {
-		Bot.PlaceAbrick();
-		}
 	}
 
 	onSpelaresDrag() {
@@ -47,7 +44,6 @@ class Fyrairad {
 	spelare2Score() {
         $("#scoreP2").text(this.player2.score);
 	}
-
 
 	createGrid() {
 		// tar saker från constructorn och lägger i board
@@ -86,12 +82,12 @@ class Fyrairad {
 		for (let rad = 0; rad < this.rader; rad++) {
 			const enrad = $('<div>').addClass('rad');
 			//Och inne i varje rad skapar vi 7 olika columner
-			for (let col = 0; col < this.cols; col++) {
-				const encol = $('<div>').addClass("col tom").addClass("ThisIsCol"+col+"Rad"+rad)			//Gives each placement/circle a unique class
+			for (let colu = 0; colu < this.colus; colu++) {
+				const encolu = $('<div>').addClass("colu tom").addClass("ThisIsColu"+colu+"Rad"+rad)			//Gives each placement/circle a unique class
 				//attr står för addattribute()
-				.attr("data-col", col).attr("data-rad", rad);
+				.attr("data-colu", colu).attr("data-rad", rad);
 				
-				enrad.append(encol);
+				enrad.append(encolu);
 			}
 			board.append(enrad);
 		}
@@ -104,9 +100,9 @@ class Fyrairad {
 		
 		
 
-		function hittaSistaTommaCellen(col) {
+		function hittaSistaTommaCellen(colu) {
 			//ta alla columenr som har samma attribute data, alltså är på Samma rad lodrätt
-			const cells = $(`.col[data-col='${col}']`);
+			const cells = $(`.colu[data-colu='${colu}']`);
 			//kollar igenom alla celler baklänges
 			for(let i = cells.length - 1; i>= 0 ; i--) {
 				//Man tar cellen man är på för tillfället
@@ -120,16 +116,16 @@ class Fyrairad {
 			return null;
 		}
 
-		//när man tar musen över en col så läser den här coden utav vart man är någon stans
+		//när man tar musen över en colu så läser den här coden utav vart man är någon stans
 		//och visar vart man kan lägga sin "bricka"
-		board.on('mouseenter', '.col.tom', function() {
+		board.on('mouseenter', '.colu.tom', function() {
 			if(that.player.isBot){} else {
 			//ifall spelet är slut ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
 			//vi vill hitta den sista tomma cellen i den columen
-			const col = $(this).data('col');
+			const colu = $(this).data('colu');
 			//Vissar en markering över den sista tomma "brickan" alltså den längst ner i columen
-			const sistaTommaCellen = hittaSistaTommaCellen(col);
+			const sistaTommaCellen = hittaSistaTommaCellen(colu);
 			sistaTommaCellen.addClass(`hover-player${that.player.number}`);}
 
 			
@@ -137,17 +133,17 @@ class Fyrairad {
 
 		//denna funktion gör så att man bara ser vilken colum man är på för tillfället och tar bort
 		//dom man tidigare varit på
-		board.on("mouseleave", ".col", function() {
-			$(".col").removeClass(`hover-player${that.player.number}`);
+		board.on("mouseleave", ".colu", function() {
+			$(".colu").removeClass(`hover-player${that.player.number}`);
 		});
 
 		//skapar en "bricka" som sätt längst ner på columen, ifall det redan e en bricka längst ner sätts den
 		//brickan på den andra.
-		board.on("click", ".col.tom" , function() {
+		board.on("click", ".colu.tom" , function() {
 			//Ifall sppelet är slut så ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
 
-			const col = $(this).data("col");
+			const colu = $(this).data("colu");
 			const rad = $(this).data("rad");
 			let PlayerTurnValue;
 
@@ -156,7 +152,7 @@ class Fyrairad {
 
 			//I en column finns det 6 "celler" eller "brickor" Denna funktion letar efter den sista tomma
 			//Det vill säga ifall ngn fyllt up en "bricka" Då kommer den markera ovanför den "brickan"
-			const sistaTommaCellen = hittaSistaTommaCellen(col);
+			const sistaTommaCellen = hittaSistaTommaCellen(colu);
 			sistaTommaCellen.removeClass(`tom hover-player${that.player.number}`);
 			sistaTommaCellen.addClass('player'+that.player.number);
 			sistaTommaCellen.data("spelare", that.player);
@@ -184,7 +180,7 @@ class Fyrairad {
 
 			const vinnare = that.kollEfterVinnare(
 				sistaTommaCellen.data("rad"),
-				sistaTommaCellen.data("col")
+				sistaTommaCellen.data("colu")
 				)
 			
 			if (vinnare){
@@ -194,14 +190,15 @@ class Fyrairad {
 				
 				alert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
 				//tar bort så att muspekaren inte syns ifall man har vunnit
-				$(".col.tom").removeClass("tom");
+				$(".colu.tom").removeClass("tom");
 				if(that.player.isBot){
 
 				} else {
 				highScore.addScore(that.player);}
 			}
 
-		
+			//bytter spelare
+			that.player = (that.player === that.player1) ? that.player2 : that.player1;
 
 				if(that.player == that.player1){
 				$("#scoreP1").css("font-size", "30px");
@@ -223,52 +220,46 @@ class Fyrairad {
 			//Att den andra får sin "hover" färg och ser att det är sin tur
 			$(this).trigger("mouseenter");
 	
-			let clickedCol = $(this);
-            let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
-           // let dataColAlternative2 = clickedCol.attr('data-col');
+			let clickedColu = $(this);
+            let dataColu = clickedColu.data('colu');																//funkar men förstår inte vaför clicked.Colu.data automatiskt hämtar värdet i data-colu=? och inte andra ata värden?
+           // let dataColuAlternative2 = clickedColu.attr('data-colu');
 
         
-	        NumberOfClicks[dataCol] = NumberOfClicks[dataCol] + 1;
+	        NumberOfClicks[dataColu] = NumberOfClicks[dataColu] + 1;
            	//console.log(NumberOfClicks)
 
            	if (that.player.isBot == true) {
-           		PlayerTurnValue = 1;
-           	} else {
            		PlayerTurnValue = -1;
+           	} else {
+           		PlayerTurnValue = 1;
            	}
 
-           		//bytter spelare
-			that.player = (that.player === that.player1) ? that.player2 : that.player1;
+           	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("colu")] = PlayerTurnValue;
 
-           	VirtualBoard[sistaTommaCellen.data("rad")][sistaTommaCellen.data("col")] = PlayerTurnValue;
-
-          	if (that.player.isBot == true) {
-	          	if (that.player1.isBot == true && that.player2.isBot == true) {
-	           		Inverter.invertBoard();
-	  			}
+           	if (that.player.isBot == true) {
            		Bot.PlaceAbrick();
            	}
 
 		});
 	}
 		//kollar efter en vinnare
-		kollEfterVinnare(rad, col){
+		kollEfterVinnare(rad, colu){
 			const that = this;
 
 			//få cell
 			function fåCell(i, j) {
-				return $(`.col[data-rad='${i}'][data-col='${j}']`);
+				return $(`.colu[data-rad='${i}'][data-colu='${j}']`);
 			}
 			//en funktion som gör att man kan kolla åt olika håll
 			function kollaMot(mot) {
 				let total = 0;
 				let i = rad + mot.i;
-				let j = col + mot.j;
+				let j = colu + mot.j;
 				let next = fåCell(i, j);
 				while (i >= 0 &&
 					i< that.rader &&
 					j >= 0 &&
-					j < that.cols &&
+					j < that.colus &&
 					next.data("spelare") === that.player)
 				{
 					total++;
@@ -333,46 +324,36 @@ class Fyrairad {
 		
 	}
 
-class Invert {
-			
-	      invertBoard() {
-	        	let v = VirtualBoard;
-		  		for(let row = 0; row < v.length; row++){
-		  			for(let col = 0; col < v[row].length; col++){
-		  			v[row][col] = -v[row][col];
-		  			}
-		  		}
-	  		}
-	  	}
-let Inverter = new Invert;
+
+;
 
 //FOR AI/ Click Counter
 //funktioner funkar men..blir knas när man trycker på starta om varför?? //
 // $(document).ready(function() {
-//     $('.col').click(function(){
+//     $('.colu').click(function(){
 
-//         let clickedCol = $(this);
+//         let clickedColu = $(this);
 //         if ($(this).hasClass('player1')) {
 //            	console.log('player1')
 //         } else if ($(this).hasClass('player2')) {
 //            	console.log('player2')
 //         } else {
 
-//             let dataCol = clickedCol.data('col');																//funkar men förstår inte vaför clicked.Col.data automatiskt hämtar värdet i data-col=? och inte andra ata värden?
-//            // let dataColAlternative2 = clickedCol.attr('data-col');
-//             if (dataCol == 0 && NumberOfClicks[0] < 6) {
+//             let dataColu = clickedColu.data('colu');																//funkar men förstår inte vaför clicked.Colu.data automatiskt hämtar värdet i data-colu=? och inte andra ata värden?
+//            // let dataColuAlternative2 = clickedColu.attr('data-colu');
+//             if (dataColu == 0 && NumberOfClicks[0] < 6) {
 //             	NumberOfClicks[0] = NumberOfClicks[0] + 1;
-//            	} else if (dataCol == 1 && NumberOfClicks[1] < 6) {
+//            	} else if (dataColu == 1 && NumberOfClicks[1] < 6) {
 //             	NumberOfClicks[1] = NumberOfClicks[1] + 1;
-//             } else if (dataCol == 2 && NumberOfClicks[2] < 6) {
+//             } else if (dataColu == 2 && NumberOfClicks[2] < 6) {
 //             	NumberOfClicks[2] = NumberOfClicks[2] + 1;
-//             } else if  (dataCol == 3 && NumberOfClicks[3] < 6) {
+//             } else if  (dataColu == 3 && NumberOfClicks[3] < 6) {
 //             	NumberOfClicks[3] = NumberOfClicks[3] + 1;
-//             } else if (dataCol == 4 && NumberOfClicks[4] < 6) {
+//             } else if (dataColu == 4 && NumberOfClicks[4] < 6) {
 //             	NumberOfClicks[4] = NumberOfClicks[4] + 1;
-//             } else if (dataCol == 5 && NumberOfClicks[5] < 6) {
+//             } else if (dataColu == 5 && NumberOfClicks[5] < 6) {
 //             	NumberOfClicks[5] = NumberOfClicks[5] + 1;
-//             } else if (dataCol == 6 && NumberOfClicks[6] < 6) {
+//             } else if (dataColu == 6 && NumberOfClicks[6] < 6) {
 //             	NumberOfClicks[6] = NumberOfClicks[6] + 1;
 //            	}
 
