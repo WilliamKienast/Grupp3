@@ -143,7 +143,7 @@ class Fyrairad {
 
 		//skapar en "bricka" som sätt längst ner på columen, ifall det redan e en bricka längst ner sätts den
 		//brickan på den andra.
-		board.on("click", ".col.tom" , function() {
+		board.on("click", ".colu.tom" , function() {
 			//Ifall sppelet är slut så ge inte något värde ifall man klickar
 			if (that.speletSlut) return;
 
