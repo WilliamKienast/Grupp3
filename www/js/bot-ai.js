@@ -277,7 +277,6 @@ class Scanner {
 
 
   	PlaceAbrick() {
-		
 		Oracle.DoYourMagic();
 
 
