@@ -24,6 +24,22 @@ class Fyrairad {
 		let jsonPlayers = await JSON._load('registration');
 		this.player1 = new player(jsonPlayers[0].name, 0, "pink", 1, jsonPlayers[0].isBot);
 		this.player2 = new player(jsonPlayers[1].name, 0, "blue", 2, jsonPlayers[1].isBot);
+		// if player name is "" aka nothing make player name = player + player number
+		if  (this.player1.name == ""){
+			this.player1.name = "Player 1";
+		} 
+		if (this.player2.name == ""){
+			this.player2.name = "player 2";
+		}
+
+		if( this.player1.isBot){
+			this.player1.name = "Bot 1";
+		}
+		if (this.player2.isBot){
+			this.player2.name = "Bot 2";
+		}
+
+
         $("#p1").text(this.player1.name + ' Score: ');
         $("#p2").text(this.player2.name + ' Score: ');
 		this.player = this.player1;
@@ -32,10 +48,10 @@ class Fyrairad {
 		this.createGrid();
 		this.setUpEvent();
 		if (this.player.isBot == true) {
-		console.log("jag e bot oich kör");
 			Bot.PlaceAbrick();
 		}
-		console.log(this.player.isBot);
+		
+		
 	}
 
 	onSpelaresDrag() {
@@ -197,7 +213,6 @@ class Fyrairad {
 			sistaTommaCellen.addClass('player'+that.player.number);
 			sistaTommaCellen.data("spelare", that.player);
 			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
-			console.log(that.player);
 
 		//	if(that.player.number == 1){						
 		//		PlayerTurnValue = 1;
@@ -253,7 +268,6 @@ class Fyrairad {
 
         
 	        NumberOfClicks[dataColu] = NumberOfClicks[dataColu] + 1;
-           	//console.log(NumberOfClicks)
 
            	if (that.player.isBot == true) {
            		PlayerTurnValue = 1;

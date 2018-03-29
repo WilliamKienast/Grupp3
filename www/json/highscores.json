@@ -1,5 +1,9 @@
 [
   {
+    "playername": "Tobias",
+    "score": 8
+  },
+  {
     "playername": "Someone",
     "score": 20
   },
@@ -8,7 +12,7 @@
     "score": 50
   },
   {
-    "playername": "Bot-scrub", 
-    "score": 100 
-  } 
+    "playername": "Bot-scrub",
+    "score": 100
+  }
 ]
