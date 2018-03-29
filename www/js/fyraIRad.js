@@ -32,10 +32,8 @@ class Fyrairad {
 		this.createGrid();
 		this.setUpEvent();
 		if (this.player.isBot == true) {
-			console.log("jag e bot oich kör");
 			Bot.PlaceAbrick();
 		}
-		console.log(this.player.isBot);
 	}
 
 	onSpelaresDrag() {
@@ -193,7 +191,6 @@ class Fyrairad {
 			sistaTommaCellen.addClass('player'+that.player.number);
 			sistaTommaCellen.data("spelare", that.player);
 			//FOR AI//This adds the correct PlayerTurnvalue into the VirtualBoardArray.
-			console.log(that.player);
 
 		//	if(that.player.number == 1){						
 		//		PlayerTurnValue = 1;
@@ -249,7 +246,6 @@ class Fyrairad {
 
         
 	        NumberOfClicks[dataColu] = NumberOfClicks[dataColu] + 1;
-           	//console.log(NumberOfClicks)
 
            	if (that.player.isBot == true) {
            		PlayerTurnValue = 1;
