@@ -197,8 +197,8 @@ border-color: white;
   display: none;
 }
 
-#brick-audio {
-	display: none;
+.modal-content{
+	width: auto!important;
 }
 
 
