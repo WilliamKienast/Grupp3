@@ -56,6 +56,10 @@ class Fyrairad {
 
 	onSpelaresDrag() {
 		$("#spelare").text(this.player.name);
+			$('#brick-audio').trigger('play');
+        setTimeout(function(){
+            $('#brick-audio').trigger('pause');
+        }, 10000)
 	}
 
 	spelare1Score() {
