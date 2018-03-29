@@ -87,6 +87,10 @@ border-color: white;
 .colu.tom {
 	cursor: crosshair;
 }
+.rubrik {
+	font-size: 18px;
+	font-weight:bold;
+}
 
 { 
     transform-origin:50% 50%;
