@@ -8,10 +8,6 @@ BadPlacements = [null,null,null,null,null,null,null];
 
 class FortuneTeller  {
 
-			//Player 1 is the Bot
-			//Player 2 is the player
-
-
 			Player1VictoryCheck() {
 				for (var i=0; i < 7; i++) {
 					if (5-NumberOfClicks[i] >= 0) {	
@@ -20,7 +16,7 @@ class FortuneTeller  {
 						VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
 						if (TheBotKnowsIfPlayer1CanWin == true && BotPlacementMade == false) {
 							$('.ThisIsColu'+i+"Rad0").trigger('click');
-							console.log("Bot finds Player with Turnvalue 1 can win!");						//BOT IS ALWAYS TURNVALUE 1
+													//ACTIVE BOT SHOULD ALWAYS HAVE TURNVALUE 1 (THE INVERTBOARD FUNCTION DOES THAT)
 							BotPlacementMade = true;
 							$('.ThisIsColu0Rad0').trigger("mouseleave");
 							TheBotKnowsIfPlayer1CanWin = false;
@@ -38,7 +34,7 @@ class FortuneTeller  {
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = 0;
 								if (TheBotKnowsIfPlayer2CanWin == true && BotPlacementMade == false) {
 									$('.ThisIsColu'+i+"Rad0").trigger('click');
-									console.log("Bot finds Player with Turnvalue -1 can win!");
+									
 									BotPlacementMade = true;
 									$('.ThisIsColu0Rad0').trigger("mouseleave");
 									TheBotKnowsIfPlayer2CanWin = false;
@@ -52,17 +48,16 @@ class FortuneTeller  {
 			Player2VictoryCheck2ndDraw() {
 				if (BotPlacementMade == false) {
 							for (var i=0; i < 7; i++) {
-								if (4-NumberOfClicks[i] >= 0) {							//THis does so you dont try to add a number outside the colu
+								//THis does so you dont try to add a number outside the colu
+								if (4-NumberOfClicks[i] >= 0) {							
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = -1;
-							//		console.log("Adding myfakemove and then op bricks and then do scanning for op victory");									//starts on 4-. The Bot need to check row +2 above the numerofclicks in that colu
+								//starts on 4-. The Bot need to check row +2 above the numerofclicks in that colu
 									Bot.Scan();
 									VirtualBoard[ 4-NumberOfClicks[i] ] [ [i] ] = 0;
-									if (TheBotKnowsIfPlayer2CanWin == true) {											//only allows the loop if there a potential win 2nd turn
+									if (TheBotKnowsIfPlayer2CanWin == true) {		
 										BadPlacements [i] = i;
-										console.log("Bot finds that " +i+ "is a bad colu due the 2nd draw");
-										//alert("The bot knows player2 wins 2nd turn if u place a brick in colu " + i );
-																		//resetting the value so it doesnt affekt next check
-										TheBotKnowsIfPlayer2CanWin = false;												//resetting the memory of the win condition. otherwise the bot would think that any placement after the wincondition is met is a win.
+								//resetting the value so it doesnt affekt next check
+										TheBotKnowsIfPlayer2CanWin = false;												
 									}
 								}
 							}
@@ -72,20 +67,15 @@ class FortuneTeller  {
 			OfTwoAGoodStart() {
 				if (BotPlacementMade == false) {
 					if ((NumberOfClicks[0] + NumberOfClicks[1] + NumberOfClicks[2]+NumberOfClicks[3]+NumberOfClicks[4]+NumberOfClicks[5]+NumberOfClicks[6]) < 6) {
-						console.log("number of lcikcs < 6")
 							if (NumberOfClicks[3] == null) {
 								$('.ThisIsColu3Rad0').trigger('click').trigger("mouseleave");
 								BotPlacementMade = true;
-								console.log("inne i if sats 1");
 							} else if (NumberOfClicks[2] == null) {
 								$('.ThisIsColu2Rad0').trigger('click').trigger("mouseleave");
 								BotPlacementMade = true;
-								console.log("inne i if sats 2");
 							} else if (NumberOfClicks[2] == null) {
 								$('.ThisIsColu4Rad0').trigger('click').trigger("mouseleave");
 								BotPlacementMade = true;
-								console.log("inne i if sats 3");
-
 							}
 
 					}
@@ -126,10 +116,8 @@ class Scanner {
 		      for (var l = 0; l < 4; l++) {				//Kollar längden	* * * *
 		          if (VirtualBoard[0+h][0+l] + VirtualBoard[h][l+1] + VirtualBoard[h][l+2] + VirtualBoard[h][l+3] == 4) {
 		           TheBotKnowsIfPlayer1CanWin = true;
-		          console.log("SCAN: PLAYER1 HAS WON IN ROWS");
 		         } else if (VirtualBoard[0+h][0+l] + VirtualBoard[h][l+1] + VirtualBoard[h][l+2] + VirtualBoard[h][l+3] == -4) {
-		           TheBotKnowsIfPlayer2CanWin = true;
-		           console.log("SCAN: PLAYER2 HAS WON IN ROWS");          
+		           TheBotKnowsIfPlayer2CanWin = true;        
 		         }
 		      }
 		    }
@@ -141,13 +129,11 @@ class Scanner {
 		          for (var c = 0; c < 3; c++) {
 		             if (VirtualBoard[c][i] + VirtualBoard[c+1][i] + VirtualBoard[c+2][i] + VirtualBoard[c+3][i] == 4) {
 		                TheBotKnowsIfPlayer1CanWin = true;
-		                console.log("SCAN: PLAYER1 HAS WON IN COLuS");
-		               
 		             } else if (VirtualBoard[c][i] + VirtualBoard[c+1][i] + VirtualBoard[c+2][i] + VirtualBoard[c+3][i] == -4) {
 		                TheBotKnowsIfPlayer2CanWin = true; 
-		                console.log("SCAN: PLAYER2 HAS WON IN COLuS"); 
+
 		             }
-		          	 }
+		           }
 		     }
 	}
 	
@@ -158,12 +144,9 @@ class Scanner {
 		          for (var c = 0; c < 4; c++) {
 		            for (var r = 0; r < 3; r++) {           
 		                  if (VirtualBoard[r][c] + VirtualBoard[r+1][c+1] + VirtualBoard[r+2][c+2] + VirtualBoard[r+3][c+3] == 4) {
-		                  TheBotKnowsIfPlayer1CanWin = true;
-		                  console.log("SCAN: PLAYER1 HAS WON IN LEFT DIAGONAL");
-		                  
+		                  TheBotKnowsIfPlayer1CanWin = true;         
 		                } else if (VirtualBoard[r][c] + VirtualBoard[r+1][c+1] + VirtualBoard[r+2][c+2] + VirtualBoard[r+3][c+3] == -4) {
 		                  TheBotKnowsIfPlayer2CanWin = true;
-		                  console.log("SCAN: PLAYER2 HAS WON IN LEFT DIAGONAL");
 		   
 		              }               
 		           	}
@@ -178,11 +161,9 @@ class Scanner {
 		            for (var r = 0; r < 3; r++) {           
 		                  if (VirtualBoard[r][c+3] + VirtualBoard[r+1][c+2] + VirtualBoard[r+2][c+1] + VirtualBoard[r+3][c+0] == 4) {
 		                  TheBotKnowsIfPlayer1CanWin = true;
-		                  console.log("SCAN: PLAYER1 HAS WON IN RIGHT DIAGONAL");
 		                  
 		                } else if (VirtualBoard[r][c+3] + VirtualBoard[r+1][c+2] + VirtualBoard[r+2][c+1] + VirtualBoard[r+3][c+0] == -4) {
 		                  TheBotKnowsIfPlayer2CanWin = true;
-		                  console.log("SCAN: PLAYER2 HAS WON IN RIGHT DIAGONAL");
 		   
 		              }               
 		           	}
@@ -208,7 +189,6 @@ class Scanner {
 
   	PlaceAbrick(){
   		window.blockPlayerClick = true
-  		console.log("STEP 1")
   		setTimeout(() => this.PlaceAbrickStep2(), 300);
   	}
 
@@ -224,7 +204,6 @@ class Scanner {
 
   	PlaceAbrickStep2() {
   		window.blockPlayerClick = false
-  		console.log("STEP 2")
 		Oracle.DoYourMagic();
 
 
