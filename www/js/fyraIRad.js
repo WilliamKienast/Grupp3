@@ -32,7 +32,7 @@ class Fyrairad {
 		this.createGrid();
 		this.setUpEvent();
 		if (this.player.isBot == true) {
-			console.log("jag e bot oich kör");
+		console.log("jag e bot oich kör");
 			Bot.PlaceAbrick();
 		}
 		console.log(this.player.isBot);
@@ -40,6 +40,10 @@ class Fyrairad {
 
 	onSpelaresDrag() {
 		$("#spelare").text(this.player.name);
+			$('#brick-audio').trigger('play');
+        setTimeout(function(){
+            $('#brick-audio').trigger('pause');
+        }, 10000)
 	}
 
 	spelare1Score() {
