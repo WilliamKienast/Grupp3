@@ -115,6 +115,10 @@ border-color: white;
 .colu.tom {
 	cursor: crosshair;
 }
+.rubrik {
+	font-size: 18px;
+	font-weight:bold;
+}
 
 { 
     transform-origin:50% 50%;
@@ -223,10 +227,6 @@ border-color: white;
 
 .modal-body audio {
   display: none;
-}
-
-#brick-audio {
-	display: none;
 }
 
 
