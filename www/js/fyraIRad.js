@@ -241,11 +241,10 @@ class Fyrairad {
 			if (vinnare){
 				//gör så att spelet sluta när man vunnit
 				that.speletSlut = true;
-				
-				
 				that.delayedAlert("Game is OVER!!! " + that.player.name + " has won!!! with a score of " + that.player.score);
 				//tar bort så att muspekaren inte syns ifall man har vunnit
 				$(".colu.tom").removeClass("tom");
+
 				if(that.player.isBot){
 
 				} else {

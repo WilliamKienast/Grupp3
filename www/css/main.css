@@ -76,12 +76,40 @@ border-color: white;
 	background-color: blue;
 	opacity: 0.5;
 }
+
+@keyframes effect {
+	0%, 100% {
+		background-color: #ff1493;
+		opacity: 1;
+	}
+
+	50% {
+		background-color: black;
+		opacity: 0.5;
+	}
+}
+
+
+@keyframes effecttwo {
+	0%, 100% {
+		background-color: blue;
+		opacity: 1;
+	}
+
+	50% {
+		background-color: black;
+		opacity: 0.5;
+	}
+}
+
 .colu.player1 {
 	background-color: #ff1493;
+	animation: effect 0.15s 2;
 }
 
 .colu.player2 {
 	background-color: blue;
+	animation: effecttwo 0.15s 2;
 }
 /*När man har sin mus på en tom cell så kommer musen bli en pointer*/
 .colu.tom {
