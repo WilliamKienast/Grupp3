@@ -26,7 +26,7 @@ class FortuneTeller  {
 			}
 
 			Player2VictoryCheck() {
-			if (BotPlacementMade == false) {
+				if (BotPlacementMade == false) {
 						for (var i=0; i < 7; i++) {
 							if (5-NumberOfClicks[i] >= 0) {	
 								VirtualBoard[ 5-NumberOfClicks[i] ] [ [i] ] = -1;
@@ -39,10 +39,10 @@ class FortuneTeller  {
 									$('.ThisIsColu0Rad0').trigger("mouseleave");
 									TheBotKnowsIfPlayer2CanWin = false;
 									
-								}
-							}	
-						}
-					}
+									}
+								}	
+							}
+				}
 			}
 			
 			Player2VictoryCheck2ndDraw() {
@@ -121,19 +121,19 @@ class Scanner {
 		         }
 		      }
 		    }
-		  }
+	}
 		 
 
   check4InaColuumn() {
 		    for (var i = 0; i < 7; i++) {
-		          for (var c = 0; c < 3; c++) {
+		        for (var c = 0; c < 3; c++) {
 		             if (VirtualBoard[c][i] + VirtualBoard[c+1][i] + VirtualBoard[c+2][i] + VirtualBoard[c+3][i] == 4) {
 		                TheBotKnowsIfPlayer1CanWin = true;
 		             } else if (VirtualBoard[c][i] + VirtualBoard[c+1][i] + VirtualBoard[c+2][i] + VirtualBoard[c+3][i] == -4) {
 		                TheBotKnowsIfPlayer2CanWin = true; 
 
 		             }
-		           }
+		        }
 		     }
 	}
 	
@@ -141,7 +141,7 @@ class Scanner {
 
     check4InaLeftDiagonal() {									//Doing this diagonal \ <-- bottom to top
     	                   	  
-		          for (var c = 0; c < 4; c++) {
+		   		 for (var c = 0; c < 4; c++) {
 		            for (var r = 0; r < 3; r++) {           
 		                  if (VirtualBoard[r][c] + VirtualBoard[r+1][c+1] + VirtualBoard[r+2][c+2] + VirtualBoard[r+3][c+3] == 4) {
 		                  TheBotKnowsIfPlayer1CanWin = true;         
@@ -150,14 +150,14 @@ class Scanner {
 		   
 		              }               
 		           	}
-		         }
+		  		  }
 		      
 	}
 	
 
     check4InaRightDiagonal() {									//Doing this diagonal \ <-- bottom to top
     	                   	  
-		          for (var c = 0; c < 4; c++) {
+		    	for (var c = 0; c < 4; c++) {
 		            for (var r = 0; r < 3; r++) {           
 		                  if (VirtualBoard[r][c+3] + VirtualBoard[r+1][c+2] + VirtualBoard[r+2][c+1] + VirtualBoard[r+3][c+0] == 4) {
 		                  TheBotKnowsIfPlayer1CanWin = true;
@@ -167,7 +167,7 @@ class Scanner {
 		   
 		              }               
 		           	}
-		         }
+		   		 }
 		      
 	}
 
