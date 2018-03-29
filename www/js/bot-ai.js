@@ -189,7 +189,7 @@ class Scanner {
 
   	PlaceAbrick(){
   		window.blockPlayerClick = true
-  		setTimeout(() => this.PlaceAbrickStep2(), 300);
+  		setTimeout(() => this.PlaceAbrickStep2(), 450);
   	}
 
 
