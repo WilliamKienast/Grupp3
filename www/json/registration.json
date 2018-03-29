@@ -1,18 +1,10 @@
 [
   {
     "name": "",
-<<<<<<< Updated upstream
     "isBot": true
   },
   {
     "name": "",
     "isBot": true
-=======
-    "isBot": false
-  },
-  {
-    "name": "",
-    "isBot": false
->>>>>>> Stashed changes
   }
 ]
