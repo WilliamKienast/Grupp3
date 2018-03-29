@@ -72,7 +72,7 @@ class Fyrairad {
 		$('#winner-audio').trigger('play');
         setTimeout(function(){
             $('#winner-audio').trigger('pause');
-        }, 10000)
+        }, 5000)
 	} else if (this.player1.isBot == true && this.player2.isBot == true){
 		$("#modal-twobots .player-name").text(this.player.name);
 		setTimeout(() => $("#modal-twobots").modal("show"));
